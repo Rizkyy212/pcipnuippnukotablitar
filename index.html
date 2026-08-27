@@ -180,11 +180,13 @@
   .btn-gold { background: #DCC384; color: #0B3B27; }
   .btn-outline { background: rgba(255,255,255,0.12); color: #FFFFFF; border: 1px solid rgba(255,255,255,0.3); }
 
-  /* STATISTIK */
+  /* STATISTIK (WARNA KEMBALI SEPERTI AWAL & ANGKA BERGERAK) */
   .stats-band {
-    background: #FFFFFF;
-    border-bottom: 1px solid #E2E8F0;
-    padding: 30px 0;
+    background: #0B3B27;
+    border-top: 1px solid rgba(220, 195, 132, 0.2);
+    border-bottom: 3px solid #DCC384;
+    padding: 35px 0;
+    color: #FFFFFF;
   }
   .stats-grid {
     display: grid;
@@ -192,8 +194,20 @@
     gap: 20px;
     text-align: center;
   }
-  .stat-num { font-size: 32px; font-weight: 800; color: #0B3B27; }
-  .stat-label { font-size: 13px; color: #64748B; font-weight: 600; margin-top: 4px; }
+  .stat-num { 
+    font-size: 36px; 
+    font-weight: 800; 
+    color: #DCC384; 
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .stat-label { 
+    font-size: 12.5px; 
+    color: rgba(255, 255, 255, 0.85); 
+    font-weight: 600; 
+    margin-top: 6px; 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
 
   /* SECTION UMUM */
   .section { padding: 60px 0; }
@@ -205,14 +219,12 @@
   .link-more { color: #146C43; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
 
   /* ========================================================
-     STRUKTUR ORGANISASI (BORDER DISESUAIKAN DENGAN TEMA)
+     STRUKTUR ORGANISASI
      ======================================================== */
   .struktur-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .struktur-col { background: #F8FAFC; border-radius: 16px; padding: 24px; }
   
-  /* Kolom IPNU (Border Hijau) */
   .struktur-col.ipnu { border: 2px solid #0B3B27; }
-  /* Kolom IPPNU (Border Kuning Emas) */
   .struktur-col.ippnu { border: 2px solid #B4923A; }
 
   .struktur-col-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #E2E8F0; }
@@ -228,9 +240,7 @@
     gap: 16px;
     text-align: left;
   }
-  /* Border Kartu Pengurus IPNU */
   .struktur-col.ipnu .person-card { border: 1.5px solid rgba(11, 59, 39, 0.25); }
-  /* Border Kartu Pengurus IPPNU */
   .struktur-col.ippnu .person-card { border: 1.5px solid rgba(180, 146, 58, 0.3); }
 
   .person-card .avatar { 
@@ -371,8 +381,8 @@
     .hero-text-center h1 { font-size: 26px !important; }
     .hero-text-center .lead { font-size: 13.5px !important; }
 
-    .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; }
-    .stat-num { font-size: 24px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 20px; }
+    .stat-num { font-size: 28px; }
     .struktur-grid { grid-template-columns: 1fr !important; gap: 16px; }
     .card-grid-3 { grid-template-columns: 1fr !important; gap: 16px; }
     
@@ -454,24 +464,24 @@
   </div>
 </section>
 
-<!-- STATISTIK INTERAKTIF -->
+<!-- STATISTIK INTERAKTIF DENGAN ANIMASI ANGKA BERGERAK -->
 <section class="stats-band">
   <div class="wrap">
     <div class="stats-grid">
       <div>
-        <div class="stat-num">3</div>
+        <div class="stat-num" data-target="3">0</div>
         <div class="stat-label">Pimpinan Anak Cabang</div>
       </div>
       <div>
-        <div class="stat-num">22</div>
+        <div class="stat-num" data-target="22">0</div>
         <div class="stat-label">Pimpinan Ranting</div>
       </div>
       <div>
-        <div class="stat-num">7</div>
+        <div class="stat-num" data-target="7">0</div>
         <div class="stat-label">Pimpinan Komisariat</div>
       </div>
       <div>
-        <div class="stat-num">150+</div>
+        <div class="stat-num" data-target="150" data-suffix="+">0</div>
         <div class="stat-label">Kader Aktif &amp; Program</div>
       </div>
     </div>
@@ -490,7 +500,7 @@
     </div>
     <div class="struktur-grid">
       
-      <!-- IPNU (Border Hijau) -->
+      <!-- IPNU -->
       <div class="struktur-col ipnu">
         <div class="struktur-col-head">
           <span style="background:#0B3B27;color:#fff;padding:5px 10px;border-radius:6px;font-size:11px;font-weight:800;">IPNU</span>
@@ -521,7 +531,7 @@
         </div>
       </div>
 
-      <!-- IPPNU (Border Kuning Emas) -->
+      <!-- IPPNU -->
       <div class="struktur-col ippnu">
         <div class="struktur-col-head">
           <span style="background:#B4923A;color:#fff;padding:5px 10px;border-radius:6px;font-size:11px;font-weight:800;">IPPNU</span>
@@ -797,9 +807,10 @@
   </div>
 </footer>
 
-<!-- SCRIPT NAVBAR INTERAKTIF -->
+<!-- SCRIPT NAVBAR & ANIMASI COUNTER STATISTIK -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    // Mobile Nav Toggle
     const navToggle = document.getElementById("navToggle");
     const navLinks = document.getElementById("navLinks");
     
@@ -809,20 +820,41 @@
         navLinks.classList.toggle("show");
       });
 
-      // Tutup menu otomatis jika salah satu link diklik
       navLinks.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", () => {
           navLinks.classList.remove("show");
         });
       });
 
-      // Tutup menu jika klik di luar area navbar
       document.addEventListener("click", (e) => {
         if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
           navLinks.classList.remove("show");
         }
       });
     }
+
+    // Animasi Angka Statistik Bergerak (Counter Animation)
+    const counters = document.querySelectorAll('.stat-num');
+    const speed = 40; // Kecepatan animasi
+
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const suffix = counter.getAttribute('data-suffix') || '';
+        const count = +counter.innerText.replace('+', '');
+
+        const increment = target / speed;
+
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment) + suffix;
+          setTimeout(updateCount, 30);
+        } else {
+          counter.innerText = target + suffix;
+        }
+      };
+
+      updateCount();
+    });
   });
 </script>
 </body>
