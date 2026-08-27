@@ -349,9 +349,36 @@
   .footer-sosmed a { color: rgba(255, 255, 255, 0.8); text-decoration: none; font-size: 13px; transition: color 0.2s ease; }
   .footer-sosmed a:hover { color: #DCC384; }
 
-  @media (max-width: 980px) {
-    .hero-twin-wrap { flex-direction: column; }
-    .gapura-svg { width: 100px; }
+  /* PERBAIKAN KHUSUS RESPONSIVE HP AGAR PAS & MENU ATAS TETEP MUNCUL */
+  @media (max-width: 900px) {
+    .nav-toggle {
+      display: block !important;
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      font-size: 26px;
+      cursor: pointer;
+    }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #0B3B27;
+      flex-direction: column;
+      padding: 20px 0;
+      gap: 14px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    .nav-links.show {
+      display: flex !important;
+    }
+    .hero-twin-wrap { flex-direction: column; padding: 30px 0 40px; }
+    .gapura-svg { display: none; } /* Sembunyikan gapura hiasan di HP agar teks hero muat & tidak kebesaran */
+    .hero-text-center h1 { font-size: 28px !important; }
     .modern-contact-wrapper { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
   }
@@ -359,6 +386,7 @@
     .modern-contact-cards { grid-template-columns: 1fr; }
     .contact-card-dash.full { flex-direction: column; align-items: flex-start; gap: 12px; }
     .btn-maps-fix { width: 100%; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; }
   }
 </style>
 </head>
@@ -388,7 +416,7 @@
       <li><a href="dashboard.html">Dashboard</a></li>
     </ul>
     <a href="dashboard.html" class="nav-cta" style="background: var(--gold); color: var(--green-900);">Masuk Admin</a>
-    <button class="nav-toggle" id="navToggle">☰</button>
+    <button class="nav-toggle" id="navToggle" style="display: none;">☰</button>
   </div>
 </nav>
 
@@ -520,7 +548,7 @@
   </div>
 </section>
 
-<!-- PREVIEW BERITA TERBARU (DISAMAKAN DENGAN HALAMAN BERITA) -->
+<!-- PREVIEW BERITA TERBARU -->
 <section class="section">
   <div class="wrap">
     <div class="section-head flex-head">
@@ -532,7 +560,7 @@
     </div>
     
     <div class="card-grid-3">
-      <!-- Berita 1 (Rencana MAKESTA dan Reaktivasi PK SMK Islam 1 Blitar - audiensiatmi.jpeg) -->
+      <!-- Berita 1 -->
       <article class="news-card-pro">
         <div class="news-thumb-pro">
           <span class="news-tag-pro">Kaderisasi</span>
@@ -546,7 +574,7 @@
         </div>
       </article>
 
-      <!-- Berita 2 (RAPIMCAB & RAKORCAB - rapimrakor.jpeg) -->
+      <!-- Berita 2 -->
       <article class="news-card-pro">
         <div class="news-thumb-pro">
           <span class="news-tag-pro">Konsolidasi</span>
@@ -560,7 +588,7 @@
         </div>
       </article>
 
-      <!-- Berita 3 (MPLS STMI - mplstmi.jpeg) -->
+      <!-- Berita 3 -->
       <article class="news-card-pro">
         <div class="news-thumb-pro">
           <span class="news-tag-pro">Pendidikan</span>
@@ -590,7 +618,7 @@
         </div>
         <a href="kegiatan.html" class="link-more" style="font-size: 13px;">Lihat Semua →</a>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
         <div class="agenda-card" style="padding: 16px; display: flex; align-items: center; gap: 16px; background:#fff; border-radius:12px; border:1px solid var(--line);">
           <div class="agenda-date-badge">
             <div class="d">11</div>
@@ -624,7 +652,7 @@
         </div>
         <a href="dokumen.html" class="link-more" style="font-size: 13px;">Lihat Semua Dokumen →</a>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
         <div class="doc-row" style="padding: 16px; display: flex; align-items: center; justify-content: space-between; background:#fff; border-radius:12px; border:1px solid var(--line);">
           <div>
             <div class="name" style="font-size:13.5px; font-weight: 700;">Template SK Kepengurusan</div>
@@ -704,7 +732,7 @@
     <div class="modern-contact-wrapper">
       <div class="modern-contact-cards">
         
-        <!-- ALAMAT KANTOR PCNU KOTA BLITAR (JL. CISADANE) -->
+        <!-- ALAMAT KANTOR PCNU KOTA BLITAR -->
         <div class="contact-card-dash full">
           <div class="ic-wrap" style="background:#FEE2E2; color:#DC2626;">📍</div>
           <div>
@@ -742,7 +770,7 @@
 
       </div>
       
-      <!-- KARTU EMBED MAPS KANTOR PCNU JL. CISADANE -->
+      <!-- KARTU EMBED MAPS -->
       <div class="map-card-dash">
         <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Kantor+PCNU+Kota+Blitar+Jl.+Cisadane+Bendo+Kepanjenkidul+Blitar&output=embed"></iframe>
       </div>
@@ -768,5 +796,17 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+  // Script interaktif untuk tombol menu hamburger di HP
+  document.addEventListener("DOMContentLoaded", () => {
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+    if (navToggle && navLinks) {
+      navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+    }
+  });
+</script>
 </body>
 </html>
