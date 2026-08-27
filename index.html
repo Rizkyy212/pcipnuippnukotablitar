@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PC IPNU-IPPNU Kota Blitar — Portal Beranda</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* HERO DUA GAPURA BENTAR EMAS */
+  .hero-twin-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 60px 0 80px;
+  }
+  .hero-text-center {
+    flex: 1;
+    text-align: center;
+    z-index: 2;
+  }
+  .gapura-svg {
+    width: 140px;
+    height: auto;
+    flex-shrink: 0;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+    opacity: 0.95;
+  }
+  .gapura-svg.flip {
+    transform: scaleX(-1);
+  }
+
+  /* KARTU BERITA STYLE MODERN */
+  .news-card-pro {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    height: 100%;
+  }
+  .news-card-pro:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(11, 59, 39, 0.1);
+    border-color: rgba(20, 108, 67, 0.3);
+  }
+  .news-thumb-pro {
+    position: relative;
+    height: 180px;
+    background: #0B3B27;
+    overflow: hidden;
+  }
+  .news-thumb-pro img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .news-card-pro:hover .news-thumb-pro img {
+    transform: scale(1.05);
+  }
+  .news-tag-pro {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #146C43;
+    color: #FFFFFF;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    font-weight: 700;
+    z-index: 2;
+  }
+  .news-body-pro {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .news-title-pro {
+    font-size: 16px;
+    font-weight: 800;
+    color: #0B3B27;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .news-meta-pro {
+    font-size: 12px;
+    color: #64748B;
+    margin-bottom: 12px;
+  }
+  .news-excerpt-pro {
+    font-size: 13.5px;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  .news-action-link {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #146C43;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    transition: gap 0.25s ease;
+  }
+  .news-action-link:hover {
+    gap: 10px;
+    color: #0B3B27;
+  }
+
+  /* PORTAL AKSES CEPAT KEREN & MODERN */
+  .quick-card-pro {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 32px 26px;
+    text-decoration: none;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  }
+  .quick-card-pro::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 4px;
+    background: transparent;
+    transition: background 0.3s ease;
+  }
+  .quick-card-pro:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 20px 40px rgba(11, 59, 39, 0.12) !important;
+    border-color: rgba(20, 108, 67, 0.3) !important;
+  }
+  .quick-card-pro:hover::before {
+    background: linear-gradient(90deg, var(--green-700), var(--gold));
+  }
+  .quick-card-pro.featured {
+    background: linear-gradient(145deg, #0B3B27, #146C43);
+    color: #FFFFFF !important;
+    border: 1px solid var(--gold);
+  }
+  .quick-card-pro.featured .quick-icon-pro {
+    background: rgba(220, 195, 132, 0.2);
+    color: var(--gold-soft);
+    border: 1px solid rgba(220, 195, 132, 0.4);
+  }
+  .quick-card-pro.featured p {
+    color: rgba(255, 255, 255, 0.82) !important;
+  }
+  .quick-icon-pro {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    background: var(--green-100);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--green-700);
+    transition: transform 0.3s ease;
+  }
+  .quick-card-pro:hover .quick-icon-pro {
+    transform: scale(1.1) rotate(-4deg);
+  }
+  .quick-card-pro h3 {
+    font-size: 18px; font-weight: 800; margin-bottom: 8px;
+  }
+  .quick-card-pro p {
+    font-size: 13.5px; color: var(--muted); line-height: 1.5;
+  }
+  .quick-card-arrow {
+    margin-top: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--green-700);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.25s ease;
+  }
+  .quick-card-pro.featured .quick-card-arrow {
+    color: var(--gold-soft);
+  }
+  .quick-card-pro:hover .quick-card-arrow {
+    gap: 10px;
+  }
+
+  /* KOTAK TANGGAL AGENDA */
+  .agenda-date-badge {
+    width: 58px;
+    padding: 8px 0;
+    flex-shrink: 0;
+    background: #FEE2E2;
+    border: 1px solid #FCA5A5;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .agenda-date-badge .d { font-size: 17px; font-weight: 800; color: #DC2626; line-height: 1.1; }
+  .agenda-date-badge .m { font-size: 10.5px; font-weight: 700; color: #991B1B; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 2px; }
+
+  /* KONTAK DASHBOARD & CTA ACTION */
+  .modern-contact-wrapper {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 24px;
+  }
+  .modern-contact-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .contact-card-dash {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 22px;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+  }
+  .contact-card-dash:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(11, 59, 39, 0.08);
+    border-color: var(--green-600);
+  }
+  .contact-card-dash .ic-wrap {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: var(--green-100);
+    color: var(--green-700);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+  .contact-card-dash h4 {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: 6px;
+  }
+  .contact-card-dash p {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.4;
+    word-break: break-word;
+  }
+  .card-cta-link {
+    margin-top: auto;
+    padding-top: 15px;
+    font-size: 12.5px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.3s ease;
+  }
+  .contact-card-dash:hover .card-cta-link { gap: 10px; }
+  .contact-card-dash.full {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 20px 24px;
+  }
+  .contact-card-dash.full .ic-wrap { margin-bottom: 0; flex-shrink: 0; }
+  .btn-maps-fix {
+    background: var(--paper-2);
+    color: var(--ink);
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .map-card-dash {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+  }
+  .map-card-dash iframe { width: 100%; flex: 1; min-height: 280px; border-radius: 10px; border: none; }
+
+  /* QUOTE / SLOGAN GAGAH & PREMIUM */
+  .quote-band-epic {
+    background: linear-gradient(160deg, var(--green-900), #061A11);
+    color: #fff;
+    padding: 110px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .quote-band-epic h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(34px, 5.5vw, 68px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    color: var(--gold);
+    text-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  }
+  .quote-band-epic p {
+    font-size: clamp(16px, 2vw, 22px);
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 860px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+  .quote-band-epic .accent-line { width: 60px; height: 4px; background: var(--gold); margin: 30px auto 0; border-radius: 4px; }
+
+  /* FOOTER */
+  .footer-modern { background: #0B3B27; color: #FFFFFF; padding: 50px 20px 30px; border-top: 3px solid #DCC384; }
+  .footer-content { max-width: 1150px; margin: 0 auto; padding-bottom: 30px; border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
+  .footer-content h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 800; color: #FFFFFF; margin-bottom: 10px; }
+  .footer-content p { font-size: 14.5px; color: rgba(255, 255, 255, 0.8); line-height: 1.6; max-width: 480px; margin: 0; }
+  .footer-bottom { max-width: 1150px; margin: 25px auto 0; display: flex; align-items: center; justify-content: space-between; font-size: 13.5px; color: rgba(255, 255, 255, 0.7); }
+  .footer-sosmed { display: flex; gap: 16px; }
+  .footer-sosmed a { color: rgba(255, 255, 255, 0.8); text-decoration: none; font-size: 13px; transition: color 0.2s ease; }
+  .footer-sosmed a:hover { color: #DCC384; }
+
+  @media (max-width: 980px) {
+    .hero-twin-wrap { flex-direction: column; }
+    .gapura-svg { width: 100px; }
+    .modern-contact-wrapper { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  }
+  @media (max-width: 640px) {
+    .modern-contact-cards { grid-template-columns: 1fr; }
+    .contact-card-dash.full { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .btn-maps-fix { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGASI UTAMA -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">IP</div>
+      <div class="brand-text">
+        <div class="t1">PC IPNU-IPPNU</div>
+        <div class="t2">Kota Blitar</div>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Beranda</a></li>
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="organisasi.html">Organisasi</a></li>
+      <li><a href="kegiatan.html">Kegiatan</a></li>
+      <li><a href="berita.html">Berita</a></li>
+      <li><a href="kaderisasi.html">Kaderisasi</a></li>
+      <li><a href="layanan.html">Layanan</a></li>
+      <li><a href="dokumen.html">Dokumen</a></li>
+      <li><a href="dokumentasi.html">Dokumentasi</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+    <a href="dashboard.html" class="nav-cta" style="background: var(--gold); color: var(--green-900);">Masuk Admin</a>
+    <button class="nav-toggle" id="navToggle">☰</button>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-twin-wrap">
+      <!-- GAPURA KIRI -->
+      <svg class="gapura-svg" viewBox="0 0 160 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="110" y="30" width="50" height="14" rx="2" fill="#DCC384"/>
+        <rect x="90" y="52" width="70" height="16" rx="2" fill="#DCC384"/>
+        <rect x="70" y="76" width="90" height="18" rx="2" fill="#DCC384"/>
+        <rect x="50" y="102" width="110" height="20" rx="2" fill="#DCC384"/>
+        <rect x="30" y="130" width="130" height="24" rx="2" fill="#DCC384"/>
+        <rect x="10" y="162" width="150" height="130" rx="4" fill="#B4923A"/>
+        <line x1="160" y1="20" x2="160" y2="300" stroke="#0B3B27" stroke-width="4"/>
+      </svg>
+      <!-- TEKS HERO -->
+      <div class="hero-text-center">
+        <div class="eyebrow-pill"><span class="dot"></span> ORGANISASI PELAJAR NAHDLATUL ULAMA KOTA BLITAR</div>
+        <h1 style="font-size: clamp(32px, 4.5vw, 52px);">Bergerak, <span>Berkhidmat</span>,<br>Bertumbuh.</h1>
+        <p class="lead" style="margin: 18px auto 0; max-width: 580px;">Menjadi ruang tumbuh bagi pelajar Nahdlatul Ulama untuk belajar, berorganisasi, dan berkhidmat bagi masyarakat Kota Blitar.</p>
+        <div class="hero-actions" style="justify-content: center; margin-top: 28px;">
+          <a href="layanan.html" class="btn btn-gold">Ajukan Layanan Online</a>
+          <a href="dashboard.html" class="btn btn-outline">Portal Dashboard Admin</a>
+        </div>
+      </div>
+      <!-- GAPURA KANAN -->
+      <svg class="gapura-svg flip" viewBox="0 0 160 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="110" y="30" width="50" height="14" rx="2" fill="#DCC384"/>
+        <rect x="90" y="52" width="70" height="16" rx="2" fill="#DCC384"/>
+        <rect x="70" y="76" width="90" height="18" rx="2" fill="#DCC384"/>
+        <rect x="50" y="102" width="110" height="20" rx="2" fill="#DCC384"/>
+        <rect x="30" y="130" width="130" height="24" rx="2" fill="#DCC384"/>
+        <rect x="10" y="162" width="150" height="130" rx="4" fill="#B4923A"/>
+        <line x1="160" y1="20" x2="160" y2="300" stroke="#0B3B27" stroke-width="4"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- STATISTIK INTERAKTIF -->
+<section class="stats-band">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-num" data-target="3">0</div>
+        <div class="stat-label">Pimpinan Anak Cabang</div>
+      </div>
+      <div>
+        <div class="stat-num" data-target="22">0</div>
+        <div class="stat-label">Pimpinan Ranting</div>
+      </div>
+      <div>
+        <div class="stat-num" data-target="7" data-suffix="">0</div>
+        <div class="stat-label">Pimpinan Komisariat</div>
+      </div>
+      <div>
+        <div class="stat-num" data-target="150" data-suffix="+">0</div>
+        <div class="stat-label">Kader Aktif &amp; Program</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW STRUKTUR ORGANISASI -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head flex-head">
+      <div>
+        <div class="section-eyebrow">Kepengurusan</div>
+        <h2>Struktur Organisasi</h2>
+      </div>
+      <a href="organisasi.html" class="link-more" style="font-size: 14px;">Lihat Selengkapnya →</a>
+    </div>
+    <div class="struktur-grid">
+      
+      <!-- IPNU -->
+      <div class="struktur-col">
+        <div class="struktur-col-head">
+          <span class="badge" style="background:var(--green-700);color:#fff;padding:6px 10px;border-radius:8px;font-size:11px;font-weight:800;">IPNU</span>
+          <div><strong>PC IPNU Kota Blitar</strong></div>
+        </div>
+        <div class="people-grid">
+          <div class="person-card">
+            <div class="avatar"><img src="ketuaipnu.png" alt="Ketua IPNU" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="person-name" style="font-size:13px;">Achmad Hafy Akmal Moeslim</div>
+            <div class="person-role">Ketua</div>
+          </div>
+          <div class="person-card">
+            <div class="avatar">Foto</div>
+            <div class="person-name" style="font-size:13px;">Muhammad Risko Saputra</div>
+            <div class="person-role">Sekretaris</div>
+          </div>
+          <div class="person-card">
+            <div class="avatar">Foto</div>
+            <div class="person-name" style="font-size:13px;">Mohammad Ardiansyah Athalla P.</div>
+            <div class="person-role">Bendahara</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IPPNU -->
+      <div class="struktur-col">
+        <div class="struktur-col-head">
+          <span class="badge" style="background:var(--gold);color:#fff;padding:6px 10px;border-radius:8px;font-size:11px;font-weight:800;">IPPNU</span>
+          <div><strong>PC IPPNU Kota Blitar</strong></div>
+        </div>
+        <div class="people-grid">
+          <div class="person-card">
+            <div class="avatar"><img src="ketuaippnu.png" alt="Ketua IPPNU" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div class="person-name" style="font-size:13px;">Sofia Annas Ashari</div>
+            <div class="person-role">Ketua</div>
+          </div>
+          <div class="person-card">
+            <div class="avatar">Foto</div>
+            <div class="person-name" style="font-size:13px;">Amilil 'Ulya</div>
+            <div class="person-role">Sekretaris</div>
+          </div>
+          <div class="person-card">
+            <div class="avatar">Foto</div>
+            <div class="person-name" style="font-size:13px;">Deta Reztifa Putri</div>
+            <div class="person-role">Bendahara</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW BERITA TERBARU (DISAMAKAN DENGAN HALAMAN BERITA) -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head flex-head">
+      <div>
+        <div class="section-eyebrow">Warta &amp; Informasi</div>
+        <h2>Berita Terbaru</h2>
+      </div>
+      <a href="berita.html" class="link-more" style="font-size: 14px;">Semua Berita →</a>
+    </div>
+    
+    <div class="card-grid-3">
+      <!-- Berita 1 (Rencana MAKESTA dan Reaktivasi PK SMK Islam 1 Blitar - audiensiatmi.jpeg) -->
+      <article class="news-card-pro">
+        <div class="news-thumb-pro">
+          <span class="news-tag-pro">Kaderisasi</span>
+          <img src="audiensiatmi.jpeg" alt="Rencana MAKESTA dan Reaktivasi PK SMK Islam 1 Blitar">
+        </div>
+        <div class="news-body-pro">
+          <h3 class="news-title-pro">Gebrak Pengkaderan Sekolah, PC IPNU-IPPNU Kota Blitar Siapkan MAKESTA &amp; Reaktivasi PK SMK Islam 1 Blitar</h3>
+          <div class="news-meta-pro">28 Agustus 2026 · Tim Media PC IPNU-IPPNU Kota Blitar</div>
+          <p class="news-excerpt-pro">Langkah taktis perkuat basis pelajar: PC IPNU-IPPNU Kota Blitar matangkan persiapan MAKESTA dan reaktivasi komisariat di SMK Islam 1 Blitar...</p>
+          <a href="berita.html?id=berita1" class="news-action-link">Baca Selengkapnya →</a>
+        </div>
+      </article>
+
+      <!-- Berita 2 (RAPIMCAB & RAKORCAB - rapimrakor.jpeg) -->
+      <article class="news-card-pro">
+        <div class="news-thumb-pro">
+          <span class="news-tag-pro">Konsolidasi</span>
+          <img src="rapimrakor.jpeg" alt="RAPIMCAB & RAKORCAB">
+        </div>
+        <div class="news-body-pro">
+          <h3 class="news-title-pro">Konsolidasi Tanpa Batas! RAPIMCAB &amp; RAKORCAB Satukan Visi Perjuangan Pelajar Nahdliyin Blitar</h3>
+          <div class="news-meta-pro">20 Februari 2026 · Tim Media PC IPNU-IPPNU Kota Blitar</div>
+          <p class="news-excerpt-pro">Forum strategis satukan langkah pengurus harian dan PAC demi optimalisasi program kerja tahunan organisasi...</p>
+          <a href="berita.html?id=berita2" class="news-action-link">Baca Selengkapnya →</a>
+        </div>
+      </article>
+
+      <!-- Berita 3 (MPLS STMI - mplstmi.jpeg) -->
+      <article class="news-card-pro">
+        <div class="news-thumb-pro">
+          <span class="news-tag-pro">Pendidikan</span>
+          <img src="mplstmi.jpeg" alt="MPLS STMI Kota Blitar">
+        </div>
+        <div class="news-body-pro">
+          <h3 class="news-title-pro">Tanamkan Nilai Moderasi Sejak Dini, PC IPNU-IPPNU Bekali Ratusan Siswa Baru STMI</h3>
+          <div class="news-meta-pro">Juli 2026 · Tim Media PC IPNU-IPPNU Kota Blitar</div>
+          <p class="news-excerpt-pro">Hadir di MPLS STMI Kota Blitar, kader IPNU-IPPNU sukses inspirasi siswa lewat materi Aswaja dan kepemimpinan...</p>
+          <a href="berita.html?id=berita3" class="news-action-link">Baca Selengkapnya →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW AGENDA & DOKUMEN -->
+<section class="section alt">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 48px;">
+    
+    <!-- Agenda -->
+    <div>
+      <div class="section-head flex-head" style="margin-bottom: 24px;">
+        <div>
+          <div class="section-eyebrow">Jadwal Acara</div>
+          <h2 style="font-size: 24px;">Agenda Mendatang</h2>
+        </div>
+        <a href="kegiatan.html" class="link-more" style="font-size: 13px;">Lihat Semua →</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+        <div class="agenda-card" style="padding: 16px; display: flex; align-items: center; gap: 16px; background:#fff; border-radius:12px; border:1px solid var(--line);">
+          <div class="agenda-date-badge">
+            <div class="d">11</div>
+            <div class="m">SEP</div>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:14px;">MAKESTA &amp; Reaktivasi PK SMK Islam 1 Blitar</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px;">Kompleks SMK Islam 1 Blitar (13.00 - Selesai)</div>
+          </div>
+        </div>
+
+        <div class="agenda-card" style="padding: 16px; display: flex; align-items: center; gap: 16px; background:#fff; border-radius:12px; border:1px solid var(--line);">
+          <div class="agenda-date-badge">
+            <div class="d">28</div>
+            <div class="m">AUG</div>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:14px;">Rapat Koordinasi Pengkaderan</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px;">Kantor PCNU Kota Blitar (Jl. Cisadane)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Dokumen / Berkas Resmi -->
+    <div>
+      <div class="section-head flex-head" style="margin-bottom: 24px;">
+        <div>
+          <div class="section-eyebrow">Berkas Resmi</div>
+          <h2 style="font-size: 24px;">Pusat Dokumen</h2>
+        </div>
+        <a href="dokumen.html" class="link-more" style="font-size: 13px;">Lihat Semua Dokumen →</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+        <div class="doc-row" style="padding: 16px; display: flex; align-items: center; justify-content: space-between; background:#fff; border-radius:12px; border:1px solid var(--line);">
+          <div>
+            <div class="name" style="font-size:13.5px; font-weight: 700;">Template SK Kepengurusan</div>
+            <div class="cat" style="font-size:11px; color: var(--muted);">Format SK Resmi</div>
+          </div>
+          <a href="dokumen.html" style="background:var(--green-700); padding:7px 16px; border-radius:8px; font-size:11.5px; font-weight:700; text-decoration:none; color:#fff;">Unduh</a>
+        </div>
+        <div class="doc-row" style="padding: 16px; display: flex; align-items: center; justify-content: space-between; background:#fff; border-radius:12px; border:1px solid var(--line);">
+          <div>
+            <div class="name" style="font-size:13.5px; font-weight: 700;">Template Proposal &amp; LPJ</div>
+            <div class="cat" style="font-size:11px; color: var(--muted);">Format Administrasi</div>
+          </div>
+          <a href="dokumen.html" style="background:var(--green-700); padding:7px 16px; border-radius:8px; font-size:11.5px; font-weight:700; text-decoration:none; color:#fff;">Unduh</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PORTAL AKSES CEPAT -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Portal Akses Cepat</div>
+      <h2>Akses Halaman Administrator &amp; Layanan Terpadu</h2>
+      <p>Akses fitur unggulan dan modul utama organisasi secara langsung melalui navigasi praktis di bawah ini.</p>
+    </div>
+
+    <div class="card-grid-3">
+      <a class="quick-card-pro featured" href="dashboard.html">
+        <div>
+          <div class="quick-icon-pro">📊</div>
+          <h3>Dashboard Admin</h3>
+          <p>Akses khusus pengurus untuk mengelola pengajuan SK, verifikasi berkas, dan perbarui statistik organisasi.</p>
+        </div>
+        <div class="quick-card-arrow">Buka Dashboard Admin →</div>
+      </a>
+      <a class="quick-card-pro" href="layanan.html">
+        <div>
+          <div class="quick-icon-pro">📄</div>
+          <h3>Pengajuan SK &amp; Tracking</h3>
+          <p>Formulir online permohonan SK PAC/PK/PR serta fitur lacak status resi permohonan real-time.</p>
+        </div>
+        <div class="quick-card-arrow">Masuk Portal Layanan →</div>
+      </a>
+      <a class="quick-card-pro" href="kaderisasi.html">
+        <div>
+          <div class="quick-icon-pro">🎓</div>
+          <h3>Kaderisasi Pelajar</h3>
+          <p>Informasi alur jenjang kaderisasi serta permohonan kegiatan MAKESTA, LAKMUD, dan pelatihan.</p>
+        </div>
+        <div class="quick-card-arrow">Lihat Alur Kaderisasi →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE SLOGAN GAGAH & PREMIUM -->
+<section class="quote-band-epic">
+  <div class="wrap">
+    <h2>"Belajar, Berjuang, Bertakwa."</h2>
+    <p>Mencetak Generasi Pelajar Nahdlatul Ulama Kota Blitar yang Tangguh, Berdaya Saing, Inovatif, dan Berakhlakul Karimah di Era Digital.</p>
+    <div class="accent-line"></div>
+  </div>
+</section>
+
+<!-- KONTAK & LOKASI SEKRETARIAT MODERN CTA -->
+<section class="section alt" id="kontak">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Hubungi Kami</div>
+      <h2>Kontak &amp; Lokasi Sekretariat</h2>
+      <p>Pimpinan Cabang IPNU &amp; IPPNU Kota Blitar terbuka untuk sinergi, informasi, dan konsultasi organisasi.</p>
+    </div>
+    
+    <div class="modern-contact-wrapper">
+      <div class="modern-contact-cards">
+        
+        <!-- ALAMAT KANTOR PCNU KOTA BLITAR (JL. CISADANE) -->
+        <div class="contact-card-dash full">
+          <div class="ic-wrap" style="background:#FEE2E2; color:#DC2626;">📍</div>
+          <div>
+            <h4>Kantor PCNU Kota Blitar</h4>
+            <p>Jl. Cisadane, Bendo, Kec. Kepanjenkidul, Kota Blitar, Jawa Timur 66116</p>
+          </div>
+          <a href="https://maps.google.com/?q=Kantor+PCNU+Kota+Blitar+Jl.+Cisadane+Bendo+Kepanjenkidul+Blitar" target="_blank" class="btn-maps-fix">Buka Maps</a>
+        </div>
+
+        <!-- KARTU WHATSAPP IPNU -->
+        <a href="https://wa.me/6281234567891" target="_blank" class="contact-card-dash" style="border-top: 4px solid #16a34a;">
+          <div class="ic-wrap" style="background:#DCFCE7; color:#16A34A;">💬</div>
+          <h4>WhatsApp IPNU</h4>
+          <p>+62 812-3456-7891 (Rekan Ahmad)</p>
+          <div class="card-cta-link" style="color:#16A34A;">Hubungi IPNU →</div>
+        </a>
+
+        <!-- KARTU WHATSAPP IPPNU -->
+        <a href="https://wa.me/6281234567892" target="_blank" class="contact-card-dash" style="border-top: 4px solid #ca8a04;">
+          <div class="ic-wrap" style="background:#FEF9C3; color:#CA8A04;">💬</div>
+          <h4>WhatsApp IPPNU</h4>
+          <p>+62 812-3456-7892 (Rekanita Siti)</p>
+          <div class="card-cta-link" style="color:#CA8A04;">Hubungi IPPNU →</div>
+        </a>
+
+        <!-- EMAIL -->
+        <div class="contact-card-dash full">
+          <div class="ic-wrap" style="background:#DBEAFE; color:#2563EB;">✉️</div>
+          <div>
+            <h4>Email Resmi</h4>
+            <p>pc.ipnuippnu.kotablitar@gmail.com</p>
+          </div>
+          <a href="mailto:pc.ipnuippnu.kotablitar@gmail.com" class="btn-maps-fix" style="background:#DBEAFE; color:#2563EB;">Kirim Email</a>
+        </div>
+
+      </div>
+      
+      <!-- KARTU EMBED MAPS KANTOR PCNU JL. CISADANE -->
+      <div class="map-card-dash">
+        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Kantor+PCNU+Kota+Blitar+Jl.+Cisadane+Bendo+Kepanjenkidul+Blitar&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-modern">
+  <div class="footer-content">
+    <h4>PC IPNU–IPPNU Kota Blitar</h4>
+    <p>Pelajar Nahdliyin untuk masa depan yang berdaya, berkarakter, dan berkhidmat.</p>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 PC IPNU-IPPNU Kota Blitar. All Rights Reserved.</div>
+    <div class="footer-sosmed">
+      <a href="#" target="_blank">[Instagram]</a>
+      <a href="#" target="_blank">[Facebook]</a>
+      <a href="#" target="_blank">[YouTube]</a>
+      <a href="#" target="_blank">[TikTok]</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

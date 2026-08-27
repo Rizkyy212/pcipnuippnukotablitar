@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dokumen &amp; Pedoman Persuratan Terpisah — PC IPNU-IPPNU Kota Blitar</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Kotak Pedoman Persuratan Terpisah IPNU & IPPNU */
+  .pedoman-split-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+  .pedoman-card-box {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .pedoman-card-box.box-ipnu {
+    border-top: 5px solid #16a34a;
+  }
+  .pedoman-card-box.box-ippnu {
+    border-top: 5px solid #ca8a04;
+  }
+
+  .pedoman-card-box h3 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .box-ipnu h3 { color: #16a34a; }
+  .box-ippnu h3 { color: #ca8a04; }
+
+  .pedoman-card-box p, .pedoman-card-box ul {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .pedoman-card-box ul {
+    padding-left: 18px;
+    margin: 0 0 15px 0;
+  }
+  .pedoman-card-box li {
+    margin-bottom: 6px;
+  }
+
+  .btn-pedoman-top {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--green-900);
+    transition: all 0.2s;
+    margin-top: auto;
+  }
+  .box-ipnu .btn-pedoman-top:hover { background: #16a34a; color: #fff; border-color: #16a34a; }
+  .box-ippnu .btn-pedoman-top:hover { background: #ca8a04; color: #fff; border-color: #ca8a04; }
+
+  /* Kotak Indeks & Penjelasan Kode Surat Sesuai Konbes */
+  .index-shared-box {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 35px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    border-left: 5px solid var(--green-700);
+  }
+  .index-shared-box h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--green-900);
+    margin-bottom: 10px;
+  }
+  .index-shared-box p {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+  }
+  .index-item {
+    background: var(--paper);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+  }
+  .index-item code {
+    display: inline-block;
+    background: var(--green-900);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .index-item h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--green-900);
+    margin-bottom: 6px;
+  }
+  .index-item p {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .penjelasan-sp-box {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 24px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .penjelasan-sp-box h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--green-900);
+    margin-bottom: 8px;
+  }
+
+  /* Tombol Unduh Hasil Konbes di Bawah Pedoman */
+  .konbes-download-strip {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    padding: 18px 24px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .konbes-download-strip p {
+    margin: 0;
+    font-size: 13.5px;
+    color: #166534;
+    font-weight: 600;
+  }
+  .btn-konbes-dl {
+    background: #16a34a;
+    color: #fff;
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-konbes-dl:hover { background: #15803d; }
+
+  /* Tombol Filter Kategori */
+  .doc-filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .doc-filter button {
+    background: var(--white);
+    border: 1px solid var(--line);
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--green-900);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .doc-filter button.active, .doc-filter button:hover {
+    background: var(--green-700);
+    color: #fff;
+    border-color: var(--green-700);
+  }
+
+  /* Tata Letak Dua Kolom Kiri (IPNU) & Kanan (IPPNU) */
+  .doc-split-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    position: relative;
+  }
+
+  /* Garis Pemisah Tengah */
+  .doc-split-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: var(--line);
+    transform: translateX(-50%);
+  }
+
+  .doc-column h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .doc-column.col-ipnu h3 {
+    color: #16a34a;
+    border-bottom: 3px solid #16a34a;
+  }
+  .doc-column.col-ippnu h3 {
+    color: #ca8a04;
+    border-bottom: 3px solid #ca8a04;
+  }
+
+  .doc-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .doc-card-split {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .doc-card-split:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  }
+  .col-ipnu .doc-card-split { border-left: 5px solid #16a34a; }
+  .col-ippnu .doc-card-split { border-left: 5px solid #ca8a04; }
+
+  .doc-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .doc-badge-cat {
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .doc-card-split h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--green-900);
+    margin-bottom: 6px;
+  }
+  .doc-card-split p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .doc-btn-group {
+    display: flex;
+    gap: 10px;
+  }
+  .btn-action-doc {
+    flex: 1;
+    padding: 9px 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-dl {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    color: var(--green-900);
+  }
+  .col-ipnu .btn-dl:hover { background: #16a34a; color: #fff; border-color: #16a34a; }
+  .col-ippnu .btn-dl:hover { background: #ca8a04; color: #fff; border-color: #ca8a04; }
+
+  /* Responsive Mobile */
+  @media (max-width: 900px) {
+    .pedoman-split-wrap {
+      grid-template-columns: 1fr;
+    }
+    .doc-split-container {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .doc-split-container::after {
+      display: none;
+    }
+  }
+
+  /* Notifikasi Toast */
+  #downloadToast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--green-900);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  #downloadToast.show { transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><div class="brand-mark">IP</div><div class="brand-text"><div class="t1">PC IPNU-IPPNU</div><div class="t2">Kota Blitar</div></div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="organisasi.html">Organisasi</a></li>
+      <li><a href="kegiatan.html">Kegiatan</a></li>
+      <li><a href="berita.html">Berita</a></li>
+      <li><a href="kaderisasi.html">Kaderisasi</a></li>
+      <li><a href="layanan.html">Layanan</a></li>
+      <li><a href="dokumen.html" class="active">Dokumen</a></li>
+      <li><a href="dokumentasi.html">Dokumentasi</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a href="layanan.html" class="nav-cta">Ajukan Layanan</a>
+    <button class="nav-toggle" id="navToggle">☰</button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="wrap">
+    <h1>Pusat Dokumen &amp; Pedoman Persuratan Resmi</h1>
+    <p>Ketentuan Tata Naskah Dinas, Kode Indeks Konbes, Penjelasan Surat Permohonan (SP), dan Arsip Unduhan Terpisah.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    
+    <!-- KOTAK PEDOMAN PERSURATAN TERPISAH (IPNU vs IPPNU) DENGAN TOMBOL UNDUH PD/PRT DI ATAS -->
+    <div class="pedoman-split-wrap">
+      
+      <!-- Pedoman IPNU -->
+      <div class="pedoman-card-box box-ipnu">
+        <div>
+          <h3>🟢 Pedoman Persuratan IPNU</h3>
+          <p><strong>Ikatan Pelajar Nahdlatul Ulama (IPNU)</strong>:</p>
+          <ul>
+            <li><strong>Kop Surat &amp; Atribut:</strong> Menggunakan logo resmi IPNU di sebelah kiri, nomor surat sekretariat putra, dan identitas kelembagaan <em>PC IPNU Kota Blitar</em>.</li>
+            <li><strong>Warna Identitas:</strong> Hijau terang mendominasi atribut administratif dan stempel resmi organisasi.</li>
+            <li><strong>Pengesahan &amp; Penandatanganan:</strong> Surat Kepengurusan (SK) dan Surat Permohonan (SP) ditandatangani oleh Ketua dan Sekretaris Pimpinan IPNU sesuai tingkatannya.</li>
+          </ul>
+        </div>
+        <a href="javascript:void(0)" onclick="triggerDownload('PD_PRT_Pedoman_Administrasi_IPNU.pdf')" class="btn-pedoman-top">📥 Unduh Berkas Arsip PD/PRT IPNU</a>
+      </div>
+
+      <!-- Pedoman IPPNU -->
+      <div class="pedoman-card-box box-ippnu">
+        <div>
+          <h3>🟡 Pedoman Persuratan IPPNU</h3>
+          <p><strong>Ikatan Pelajar Putri Nahdlatul Ulama (IPPNU)</strong>:</p>
+          <ul>
+            <li><strong>Kop Surat &amp; Atribut:</strong> Menggunakan logo resmi IPPNU di sebelah kiri, penomoran kearsipan putri, dan identitas kelembagaan <em>PC IPPNU Kota Blitar</em>.</li>
+            <li><strong>Warna Identitas:</strong> Kuning emas khas pelajar putri mendominasi atribut administratif dan stempel resmi organisasi.</li>
+            <li><strong>Pengesahan &amp; Penandatanganan:</strong> Surat Kepengurusan (SK) dan Surat Permohonan (SP) ditandatangani oleh Ketua dan Sekretaris Pimpinan IPPNU sesuai tingkat kewenangan putri.</li>
+          </ul>
+        </div>
+        <a href="javascript:void(0)" onclick="triggerDownload('PD_PRT_Pedoman_Administrasi_IPPNU.pdf')" class="btn-pedoman-top">📥 Unduh Berkas Arsip PD/PRT IPPNU</a>
+      </div>
+
+    </div>
+
+
+    <!-- KOTAK RINCIAN KODE INDEKS KONBES & SURAT PERMOHONAN (SP) -->
+    <div class="index-shared-box">
+      <h3>📌 Rincian Kode Indeks Surat (Sesuai Konbes IPNU-IPPNU) &amp; Surat Permohonan (SP)</h3>
+      <p>Berdasarkan hasil Keputusan Konferensi Besar (Konbes) mengenai Tata Naskah Dinas dan Administrasi Organisasi, berikut adalah rincian kode indeks klasifikasi dan penjelasan surat permohonan:</p>
+      
+      <div class="index-grid">
+        <div class="index-item">
+          <code>Indeks A</code>
+          <h4>Lingkungan Internal IPNU/IPPNU</h4>
+          <p>Digunakan untuk surat-surat yang ditujukan ke dalam struktur internal organisasi, mencakup korespondensi antar pengurus harian, pleno, Pimpinan Ranting (PR), Pimpinan Komisariat (PK), hingga Pimpinan Anak Cabang (PAC).</p>
+        </div>
+        <div class="index-item">
+          <code>Indeks B</code>
+          <h4>Lingkungan Eksternal</h4>
+          <p>Digunakan untuk surat-surat yang keluar dan ditujukan kepada pihak luar atau instansi umum, seperti lembaga pemerintah, kepolisian, pihak sekolah/madrasah, instansi swasta, dan badan sponsor.</p>
+        </div>
+        <div class="index-item">
+          <code>Indeks C</code>
+          <h4>NU, Banom &amp; Lembaga</h4>
+          <p>Digunakan khusus untuk surat korespondensi yang ditujukan kepada Pengurus Cabang Nahdlatul Ulama (PCNU), Badan Otonom lain (GP Ansor, Fatayat NU, Muslimat NU, Pagar Nusa, dsb.), serta lembaga-lembaga di lingkungan NU.</p>
+        </div>
+      </div>
+
+      <div class="penjelasan-sp-box">
+        <h4>📄 Penjelasan Rinci Surat Permohonan (SP) &amp; Jenis Naskah Dinas Lainnya:</h4>
+        <p style="margin:0;">
+          • <strong>Surat Permohonan (SP):</strong> Naskah resmi yang diterbitkan oleh kepengurusan tingkat bawah (Ranting/Komisariat/Anak Cabang) untuk mengajukan permohonan pengesahan SK kepengurusan, perpanjangan masa khidmat, rekomendasi acara, atau permohonan instruktur/pemandu kaderisasi kepada Pimpinan Cabang.<br>
+          • <strong>Surat Pengesahan (SK):</strong> Dokumen legalitas formal yang diterbitkan oleh Pimpinan Cabang untuk mengesahkan susunan pengurus baru hasil konferensi atau rapat anggota.<br>
+          • <strong>Surat Mandat / Tugas:</strong> Dokumen penugasan resmi bagi kader untuk mewakili organisasi dalam forum pelatihan, musyawarah, atau kegiatan eksternal.
+        </p>
+      </div>
+
+
+      
+    <!-- Tombol Filter Kategori -->
+    <div class="doc-filter" id="docFilter">
+      <button class="active" onclick="filterDoc('Semua', this)">Semua Dokumen</button>
+      <button onclick="filterDoc('SK', this)">SK &amp; Pengesahan</button>
+      <button onclick="filterDoc('Proposal', this)">Proposal</button>
+      <button onclick="filterDoc('LPJ', this)">LPJ</button>
+      <button onclick="filterDoc('Surat', this)">Surat &amp; Mandat</button>
+      <button onclick="filterDoc('Pedoman', this)">Pedoman</button>
+    </div>
+
+    <!-- Kontainer Pemisah Kiri (IPNU) & Kanan (IPPNU) -->
+    <div class="doc-split-container">
+      
+      <!-- KOLOM KIRI: IPNU (Hijau Terang) -->
+      <div class="doc-column col-ipnu">
+        <h3>🟢 Unduh Dokumen &amp; Format IPNU</h3>
+        <div class="doc-stack" id="stackIpnu"></div>
+      </div>
+
+      <!-- KOLOM KANAN: IPPNU (Kuning Emas) -->
+      <div class="doc-column col-ippnu">
+        <h3>🟡 Unduh Dokumen &amp; Format IPPNU</h3>
+        <div class="doc-stack" id="stackIppnu"></div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Toast Notifikasi Unduh -->
+<div id="downloadToast">📥 Berkas dokumen berhasil diunduh!</div>
+
+<footer>
+  <div class="wrap"><p style="text-align:center; font-size:13px;">© 2026 PC IPNU-IPPNU Kota Blitar. All Rights Reserved.</p></div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Data Dokumen Lengkap Terpisah Kategori & Organisasi
+  const allDocuments = [
+    // --- IPNU ---
+    {
+      org: "IPNU",
+      category: "SK",
+      title: "Draft Format Surat Pengesahan (SK) & Formatur IPNU",
+      desc: "Format resmi pengajuan dan penerbitan Surat Pengesahan / SK kepengurusan PAC, PK, atau PR IPNU.",
+      filename: "Format_SK_Dan_Formatur_IPNU.docx"
+    },
+    {
+      org: "IPNU",
+      category: "Surat",
+      title: "Template Surat Mandat & Tugas Kegiatan IPNU",
+      desc: "Format baku pemberian mandat resmi utusan konferensi, diklat, atau delegasi acara kader.",
+      filename: "Surat_Mandat_IPNU.docx"
+    },
+    {
+      org: "IPNU",
+      category: "Proposal",
+      title: "Template Proposal MAKESTA IPNU",
+      desc: "Format baku proposal Masa Kesetiaan Anggota Pimpinan Ranting / Komisariat IPNU.",
+      filename: "Proposal_Makesta_IPNU.docx"
+    },
+    {
+      org: "IPNU",
+      category: "Surat",
+      title: "Template Surat Permohonan (SP) Indeks A, B, C IPNU",
+      desc: "Kumpulan format surat keluar lengkap dengan penomoran indeks internal, eksternal, dan NU.",
+      filename: "Template_Surat_Indeks_IPNU.docx"
+    },
+    {
+      org: "IPNU",
+      category: "LPJ",
+      title: "Format LPJ Kegiatan & Keuangan IPNU",
+      desc: "Sistematika pelaporan pertanggungjawaban kegiatan dan rekapitulasi dana kepengurusan IPNU.",
+      filename: "Format_LPJ_IPNU.docx"
+    },
+    {
+      org: "IPNU",
+      category: "Pedoman",
+      title: "PD / PRT & Pedoman Administrasi IPNU",
+      desc: "Peraturan Dasar/Rumah Tangga dan aturan baku penulisan administrasi IPNU.",
+      filename: "PD_PRT_Pedoman_Administrasi_IPNU.pdf"
+    },
+
+    // --- IPPNU ---
+    {
+      org: "IPPNU",
+      category: "SK",
+      title: "Draft Format Surat Pengesahan (SK) & Formatur IPPNU",
+      desc: "Format resmi pengajuan dan penerbitan Surat Pengesahan / SK kepengurusan PAC, PK, atau PR IPPNU.",
+      filename: "Format_SK_Dan_Formatur_IPPNU.docx"
+    },
+    {
+      org: "IPPNU",
+      category: "Surat",
+      title: "Template Surat Mandat & Tugas Kegiatan IPPNU",
+      desc: "Format baku pemberian mandat resmi utusan konferensi, diklat, atau delegasi acara kader putri.",
+      filename: "Surat_Mandat_IPPNU.docx"
+    },
+    {
+      org: "IPPNU",
+      category: "Proposal",
+      title: "Template Proposal MAKESTA IPPNU",
+      desc: "Format baku proposal Masa Kesetiaan Anggota Pimpinan Ranting / Komisariat IPPNU.",
+      filename: "Proposal_Makesta_IPPNU.docx"
+    },
+    {
+      org: "IPPNU",
+      category: "Surat",
+      title: "Template Surat Permohonan (SP) Indeks A, B, C IPPNU",
+      desc: "Kumpulan format surat keluar lengkap dengan penomoran indeks internal, eksternal, dan NU.",
+      filename: "Template_Surat_Indeks_IPPNU.docx"
+    },
+    {
+      org: "IPPNU",
+      category: "LPJ",
+      title: "Format LPJ Kegiatan & Keuangan IPPNU",
+      desc: "Sistematika pelaporan pertanggungjawaban kegiatan dan rekapitulasi dana IPPNU.",
+      filename: "Format_LPJ_IPPNU.docx"
+    },
+    {
+      org: "IPPNU",
+      category: "Pedoman",
+      title: "PD / PRT & Pedoman Administrasi IPPNU",
+      desc: "Peraturan Dasar/Rumah Tangga dan aturan baku penulisan administrasi IPPNU.",
+      filename: "PD_PRT_Pedoman_Administrasi_IPPNU.pdf"
+    }
+  ];
+
+  // Fungsi Render Dokumen Berdasarkan Kategori Filter
+  function renderSplitDocuments(selectedCategory) {
+    const stackIpnu = document.getElementById('stackIpnu');
+    const stackIppnu = document.getElementById('stackIppnu');
+    
+    stackIpnu.innerHTML = '';
+    stackIppnu.innerHTML = '';
+
+    const filteredIpnu = selectedCategory === 'Semua' 
+      ? allDocuments.filter(d => d.org === 'IPNU')
+      : allDocuments.filter(d => d.org === 'IPNU' && d.category === selectedCategory);
+
+    const filteredIppnu = selectedCategory === 'Semua' 
+      ? allDocuments.filter(d => d.org === 'IPPNU')
+      : allDocuments.filter(d => d.org === 'IPPNU' && d.category === selectedCategory);
+
+    // Render Kolom IPNU
+    if(filteredIpnu.length === 0) {
+      stackIpnu.innerHTML = `<p style="color:var(--muted); font-size:13px; padding:15px;">Tidak ada dokumen IPNU dalam kategori ini.</p>`;
+    } else {
+      filteredIpnu.forEach(doc => {
+        stackIpnu.appendChild(createDocCard(doc));
+      });
+    }
+
+    // Render Kolom IPPNU
+    if(filteredIppnu.length === 0) {
+      stackIppnu.innerHTML = `<p style="color:var(--muted); font-size:13px; padding:15px;">Tidak ada dokumen IPPNU dalam kategori ini.</p>`;
+    } else {
+      filteredIppnu.forEach(doc => {
+        stackIppnu.appendChild(createDocCard(doc));
+      });
+    }
+  }
+
+  // Pembuat Elemen Kartu Dokumen
+  function createDocCard(doc) {
+    const card = document.createElement('div');
+    card.className = 'doc-card-split';
+    card.innerHTML = `
+      <div class="doc-meta-row">
+        <span class="doc-badge-cat">${doc.category}</span>
+        <span style="font-size:11px; color:var(--muted);">Format Berkas</span>
+      </div>
+      <h4>${doc.title}</h4>
+      <p>${doc.desc}</p>
+      <div class="doc-btn-group">
+        <a href="javascript:void(0)" onclick="triggerDownload('${doc.filename}')" class="btn-action-doc btn-dl">📥 Unduh Berkas Arsip</a>
+      </div>
+    `;
+    return card;
+  }
+
+  // Fungsi Filter Tombol
+  function filterDoc(category, btnElement) {
+    const buttons = document.querySelectorAll('.doc-filter button');
+    buttons.forEach(b => b.classList.remove('active'));
+    btnElement.classList.add('active');
+    renderSplitDocuments(category);
+  }
+
+  // Simulasi Unduh Dokumen
+  function triggerDownload(filename) {
+    const judulToast = document.getElementById('downloadToast');
+    judulToast.innerHTML = `📥 Mengunduh <strong>${filename}</strong>...`;
+    judulToast.classList.add('show');
+    setTimeout(() => {
+      judulToast.classList.remove('show');
+    }, 3500);
+  }
+
+  // Inisialisasi awal saat halaman dimuat
+  window.onload = function() {
+    renderSplitDocuments('Semua');
+  };
+</script>
+</body>
+</html>

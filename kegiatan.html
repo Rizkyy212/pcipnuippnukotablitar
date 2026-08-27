@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kegiatan & Program Kerja (2026–2027) — PC IPNU-IPPNU Kota Blitar</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* TATA LETAK UTAMA: KALENDER DAN DAFTAR KEGIATAN */
+  .kegiatan-layout {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 30px;
+    align-items: start;
+  }
+
+  /* KOTAK KALENDER INTERAKTIF */
+  .calendar-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  }
+  .cal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .cal-header h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--green-900);
+  }
+  .cal-nav-btn {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--green-900);
+    transition: background 0.2s;
+  }
+  .cal-nav-btn:hover {
+    background: var(--green-100);
+  }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    text-align: center;
+  }
+  .cal-day-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    padding-bottom: 8px;
+  }
+  .cal-date {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 0;
+    border-radius: 6px;
+    color: var(--ink);
+  }
+  .cal-date.muted {
+    color: #D1D5DB;
+  }
+  .cal-date.today {
+    border: 2px solid var(--green-700);
+    font-weight: 800;
+  }
+  
+  /* Indikator Kotak di Tanggal Kalender */
+  .cal-date.has-event {
+    background: var(--green-700);
+    color: #fff;
+    font-weight: 800;
+    border-radius: 6px;
+  }
+  .cal-date.has-coming {
+    background: var(--gold);
+    color: var(--green-900);
+    font-weight: 800;
+    border-radius: 6px;
+  }
+
+  /* DAFTAR AGENDA 2 KOLOM KE SAMPING */
+  .agenda-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .agenda-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--green-700);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .agenda-category {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--green-700);
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    margin-bottom: 2px;
+  }
+  .agenda-card h3 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--green-900);
+    margin: 4px 0 4px;
+  }
+  .agenda-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+    border-top: 1px solid var(--line);
+    padding-top: 8px;
+  }
+  .no-agenda {
+    grid-column: span 2;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  @media (max-width: 1024px) {
+    .kegiatan-layout { grid-template-columns: 1fr; }
+    .agenda-container { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><div class="brand-mark">IP</div><div class="brand-text"><div class="t1">PC IPNU-IPPNU</div><div class="t2">Kota Blitar</div></div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="organisasi.html">Organisasi</a></li>
+      <li><a href="kegiatan.html" class="active">Kegiatan</a></li>
+      <li><a href="berita.html">Berita</a></li>
+      <li><a href="kaderisasi.html">Kaderisasi</a></li>
+      <li><a href="layanan.html">Layanan</a></li>
+      <li><a href="dokumen.html">Dokumen</a></li>
+      <li><a href="dokumentasi.html">Dokumentasi</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a href="layanan.html" class="nav-cta">Ajukan Layanan</a>
+    <button class="nav-toggle" id="navToggle">☰</button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="wrap">
+    <h1>Agenda &amp; Program Kerja (2026–2027)</h1>
+    <p>Kalender Interaktif dengan informasi departemen/lembaga di setiap agenda kegiatan.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    
+    <div class="kegiatan-layout">
+      
+      <!-- KALENDER INTERAKTIF -->
+      <div class="calendar-card">
+        <div class="cal-header">
+          <button class="cal-nav-btn" onclick="prevMonth()">‹ Prev</button>
+          <h3 id="calendarMonthTitle">Agustus 2026</h3>
+          <button class="cal-nav-btn" onclick="nextMonth()">Next ›</button>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-day-name">Sen</div>
+          <div class="cal-day-name">Sel</div>
+          <div class="cal-day-name">Rab</div>
+          <div class="cal-day-name">Kam</div>
+          <div class="cal-day-name">Jum</div>
+          <div class="cal-day-name">Sab</div>
+          <div class="cal-day-name">Min</div>
+        </div>
+        <div class="cal-grid" id="calendarDaysContainer" style="margin-top: 6px;">
+          <!-- Rendered via JavaScript -->
+        </div>
+        <div style="margin-top: 14px; font-size: 11.5px; color: var(--muted); text-align: center; display: flex; justify-content: center; gap: 15px;">
+          <span><span style="display:inline-block; width:10px; height:10px; background:var(--green-700); border-radius:2px; margin-right:4px;"></span> Terlaksana</span>
+          <span><span style="display:inline-block; width:10px; height:10px; background:var(--gold); border-radius:2px; margin-right:4px;"></span> Mendatang</span>
+        </div>
+      </div>
+
+      <!-- DAFTAR AGENDA BERDASARKAN BULAN (2 KOLOM) -->
+      <div>
+        <h3 id="agendaSectionTitle" style="font-size:16px; font-weight:800; color:var(--green-900); margin-bottom:16px;">Agenda Bulan Agustus 2026</h3>
+        <div class="agenda-container" id="agendaListContainer">
+          <!-- Rendered via JavaScript -->
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><p style="text-align:center; font-size:13px;">© 2026 PC IPNU-IPPNU Kota Blitar. All Rights Reserved.</p></div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // DATABASE AGENDA DENGAN KETERANGAN DEPARTEMEN / LEMBAGA
+  const agendaDatabase = {
+    // ================= TAHUN 2026 =================
+    "2026-0": [ // Januari 2026
+      { day: 4, category: "Dept. Pengembangan Organisasi", title: "Upgrading Pengurus Baru", desc: "Pelatihan internal kapasitas dan soliditas pengurus.", date: "4 Januari 2026", location: "PP Bustanul Mutaalimin", status: "Terlaksana" },
+      { day: 10, category: "Dept. Kaderisasi", title: "Rapat Triwulan Kaderisasi 1", desc: "Evaluasi program kerja departemen kaderisasi.", date: "10 Januari 2026", location: "Kantor PCNU", status: "Terlaksana" },
+      { day: 11, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Konsolidasi kader dan pembacaan tahlil rutin.", date: "11 Januari 2026", location: "Bergantian PAC/PR", status: "Terlaksana" },
+      { day: 17, category: "Dept. Pengembangan Organisasi", title: "Renstra Organisasi", desc: "Forum perumusan arah gerak kebijakan organisasi.", date: "17 Januari 2026", location: "Kantor NU", status: "Terlaksana" },
+      { day: 18, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Olahraga berkala menjaga kebugaran jasmani.", date: "18 Januari 2026", location: "Green Futsal", status: "Terlaksana" },
+      { day: 25, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Silaturahmi dan pengajian bersama PCNU.", date: "25 Januari 2026", location: "Gedung PCNU", status: "Terlaksana" }
+    ],
+    "2026-1": [ // Februari 2026
+      { day: 8, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Kajian ke-NU-an dan laporan perkembangan ranting.", date: "8 Februari 2026", location: "Kantor PCNU", status: "Terlaksana" },
+      { day: 15, category: "Dept. Pengembangan Organisasi", title: "Pelantikan Pengurus Cabang", desc: "Seremonial pengambilan sumpah jabatan pengurus.", date: "15 Februari 2026", location: "Kusuma Wicitro", status: "Terlaksana" },
+      { day: 15, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Menyalurkan minat bakat olahraga.", date: "15 Februari 2026", location: "Green Futsal", status: "Terlaksana" },
+      { day: 20, category: "Lembaga Ekonomi Kreatif", title: "Distribusi Seragam PO Tahap 1", desc: "Fasilitasi pemesanan seragam resmi organisasi.", date: "20 Februari 2026", location: "Sekretariat PC", status: "Terlaksana" },
+      { day: 21, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian umum koordinasi lembaga NU.", date: "21 Februari 2026", location: "Gedung PCNU", status: "Terlaksana" },
+      { day: 22, category: "Dept. Kaderisasi", title: "Rihlah Kaderisasi ke PAC", desc: "Turba sosialisasi program pengkaderan.", date: "22 Februari 2026", location: "Kec. Sananwetan", status: "Terlaksana" }
+    ],
+    "2026-2": [ // Maret 2026
+      { day: 8, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Kajian ramadhan dan buka bersama.", date: "8 Maret 2026", location: "Kantor PCNU", status: "Terlaksana" },
+      { day: 15, category: "Lembaga Ekonomi Kreatif", title: "Pemasaran Produk Kreatif Kader", desc: "Pameran produk UMKM anggota.", date: "15 Maret 2026", location: "Kantor PCNU", status: "Terlaksana" },
+      { day: 22, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan bersama MWC & PCNU.", date: "22 Maret 2026", location: "Gedung PCNU", status: "Terlaksana" },
+      { day: 25, category: "Dept. Jaringan Sekolah", title: "Pesantren Ramadhan Teaching Squad", desc: "Pemberdayaan anggota sebagai pemateri.", date: "Ramadhan 2026", location: "Sekolah Kota Blitar", status: "Terlaksana" }
+    ],
+    "2026-3": [ // April 2026
+      { day: 5, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Pertemuan rutin bulanan kader.", date: "5 April 2026", location: "Kepanjenkidul", status: "Terlaksana" },
+      { day: 12, category: "Dept. Kaderisasi", title: "Monitoring Kaderisasi Sukorejo", desc: "Pemantauan keaktifan kader dan ranting.", date: "12 April 2026", location: "Sukorejo", status: "Terlaksana" },
+      { day: 18, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "18 April 2026", location: "Gedung PCNU", status: "Terlaksana" },
+      { day: 19, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Menjaga kebugaran jasmani kader.", date: "19 April 2026", location: "Green Futsal", status: "Terlaksana" },
+      { day: 26, category: "Dept. Pengembangan Organisasi", title: "Raker 1 (Rapat Kerja Cabang)", desc: "Pemaparan program kerja semester pertama.", date: "26 April 2026", location: "Kantor DPRD", status: "Terlaksana" },
+      { day: 28, category: "Kegiatan Bersama PC", title: "Halal Bihalal Akbar", desc: "Konsolidasi pasca Idul Fitri pengurus.", date: "28 April 2026", location: "Gedung PCNU", status: "Terlaksana" }
+    ],
+    "2026-4": [ // Mei 2026
+      { day: 5, category: "Lembaga Ekonomi Kreatif", title: "Penjualan Snack Lebaran Repack", desc: "Distribusi paket produk ekonomi kreatif.", date: "5 Mei 2026", location: "Kondisional", status: "Terlaksana" },
+      { day: 15, category: "Dept. Kaderisasi", title: "Penyusunan Modul Kepanitiaan", desc: "Sosialisasi standar minimal kepanitiaan.", date: "15 Mei 2026", location: "Sekretariat PC", status: "Terlaksana" },
+      { day: 16, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "16 Mei 2026", location: "Gedung PCNU", status: "Terlaksana" },
+      { day: 17, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Olahraga rutin bulanan.", date: "17 Mei 2026", location: "Green Futsal", status: "Terlaksana" },
+      { day: 20, category: "Dept. Jaringan Sekolah", title: "Santri Visit and Connect", desc: "Pendampingan pesantren mitra.", date: "20 Mei 2026", location: "Pesantren Mitra", status: "Terlaksana" },
+      { day: 24, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Konsolidasi bulanan kader.", date: "24 Mei 2026", location: "Sananwetan", status: "Terlaksana" },
+      { day: 28, category: "Dept. Pengembangan Organisasi", title: "Sekolah Persidangan", desc: "Pelatihan tata cara persidangan formal.", date: "Mei 2026", location: "SDI Tanjungsari", status: "Terlaksana" }
+    ],
+    "2026-5": [ // Juni 2026
+      { day: 6, category: "Lembaga CBP-KPP", title: "Funcamp CBP-KPP", desc: "Perkemahan dan pelatihan gabungan kader.", date: "Juni 2026", location: "Maliran", status: "Terlaksana" },
+      { day: 10, category: "Dept. Media & Digital / LPP", title: "Podcast Sejarah NU & IPNU", desc: "Bincang kreatif pengurus dan lembaga LPP.", date: "10 Juni 2026", location: "Studio Media PC", status: "Terlaksana" },
+      { day: 13, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "13 Juni 2026", location: "Gedung PCNU", status: "Terlaksana" },
+      { day: 14, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Futsal rutin bulanan.", date: "14 Juni 2026", location: "Green Futsal", status: "Terlaksana" },
+      { day: 15, category: "Dept. Kaderisasi", title: "Latpel 1 (Latihan Pelatih)", desc: "Pelatihan tingkat cabang pencetak pelatih.", date: "15 Juni 2026", location: "Kota Blitar", status: "Terlaksana" },
+      { day: 21, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Silaturahmi bulanan kader.", date: "21 Juni 2026", location: "Sukorejo", status: "Terlaksana" },
+      { day: 25, category: "Dept. Kaderisasi", title: "Database & Pemutakhiran Anggota", desc: "Pembaruan arsip pengkaderan NIA.", date: "25 Juni 2026", location: "Sekretariat PC", status: "Terlaksana" }
+    ],
+    "2026-6": [ // Juli 2026
+      { day: 5, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Konsolidasi ranting.", date: "5 Juli 2026", location: "Kepanjenkidul", status: "Terlaksana" },
+      { day: 11, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "11 Juli 2026", location: "Gedung PCNU", status: "Terlaksana" },
+      { day: 12, category: "Dept. Kaderisasi", title: "Rapat Triwulan Kaderisasi 2", desc: "Evaluasi tengah tahun program kaderisasi.", date: "12 Juli 2026", location: "Kantor PCNU", status: "Terlaksana" },
+      { day: 19, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Futsal rutin bulanan.", date: "19 Juli 2026", location: "Green Futsal", status: "Terlaksana" },
+      { day: 20, category: "Lembaga Ekonomi Kreatif", title: "Distribusi Seragam PO Tahap 2", desc: "Pengadaan jas dan batik gelombang dua.", date: "20 Juli 2026", location: "Sekretariat PC", status: "Terlaksana" },
+      { day: 25, category: "Dept. Jaringan Sekolah", title: "Speak Up Movement (MPLS)", desc: "Edukasi anti-bullying di sekolah baru.", date: "Juli 2026", location: "SMA/SMK se-Kota Blitar", status: "Terlaksana" }
+    ],
+    "2026-7": [ // Agustus 2026
+      { day: 8, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "8 Agustus 2026", location: "Gedung PCNU", status: "Terlaksana" },
+      { day: 15, category: "Kegiatan Bersama PC", title: "Tasyakuran Kemerdekaan RI", desc: "Refleksi kebangsaan dan istighosah HUT RI.", date: "15 Agustus 2026", location: "Gedung PCNU", status: "Terlaksana" },
+      { day: 22, category: "Dept. Seni Budaya & Olahraga", title: "Festival Sholawat Pelajar", desc: "Lomba grup sholawat antar pelajar.", date: "22 Agustus 2026", location: "PP Bustanul Muta'alimin", status: "Terlaksana" },
+      { day: 23, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Kajian bulanan kader.", date: "23 Agustus 2026", location: "Sananwetan", status: "Akan Datang" },
+      { day: 26, category: "Dept. Media & Digital / LPP", title: "Pelatihan Desain & Konten Kreatif", desc: "Workshop peningkatan skill digital admin.", date: "26 Agustus 2026", location: "Sekretariat PC", status: "Terlaksana" },
+      { day: 29, category: "Dept. Seni Budaya & Olahraga", title: "Turnamen Futsal Komisariat", desc: "Kompetisi olahraga antar pelajar.", date: "29 Agustus 2026", location: "Mareno Futsal", status: "Akan Datang" }
+    ],
+    "2026-8": [ // September 2026
+      { day: 6, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "6 September 2026", location: "Gedung PCNU", status: "Akan Datang" },
+      { day: 13, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Pertemuan selapanan rutin.", date: "13 September 2026", location: "Sukorejo", status: "Akan Datang" },
+      { day: 18, category: "Dept. Media & Digital / LPP", title: "Dokumenter Semester 1 Proker", desc: "Peluncuran video dokumenter capaian proker.", date: "18 September 2026", location: "Media Sosial", status: "Akan Datang" },
+      { day: 20, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Futsal rutin bulanan.", date: "20 September 2026", location: "Green Futsal", status: "Akan Datang" },
+      { day: 25, category: "Dept. Kaderisasi", title: "MAKESTA Raya", desc: "Kaderisasi formal jenjang pertama massal.", date: "September 2026", location: "Sekolah Mitra", status: "Akan Datang" },
+      { day: 28, category: "Dept. Kaderisasi", title: "Lakut (Latihan Kader Utama)", desc: "Pelatihan kader tingkat lanjut Aswaja.", date: "September 2026", location: "Kota Blitar", status: "Akan Datang" }
+    ],
+    "2026-9": [ // Oktober 2026
+      { day: 4, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "4 Oktober 2026", location: "Gedung PCNU", status: "Akan Datang" },
+      { day: 11, category: "Dept. Kaderisasi", title: "Rapat Triwulan Kaderisasi 3", desc: "Evaluasi pelaksanaan MAKESTA serentak.", date: "11 Oktober 2026", location: "Kantor PCNU", status: "Akan Datang" },
+      { day: 18, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Futsal rutin bulanan.", date: "18 Oktober 2026", location: "Green Futsal", status: "Akan Datang" },
+      { day: 22, category: "Kegiatan Bersama PCNU", title: "Hari Santri Nasional", desc: "Apel akbar, kirab santri, dan expo pesantren.", date: "22 Oktober 2026", location: "Alun-Alun Blitar", status: "Akan Datang" },
+      { day: 25, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Konsolidasi kader.", date: "25 Oktober 2026", location: "Kepanjenkidul", status: "Akan Datang" },
+      { day: 28, category: "Lembaga CBP-KPP", title: "Harlah CBP-KPP (Baksos)", desc: "Aksi donor darah dan baksos masyarakat.", date: "Oktober 2026", location: "Titik Publik Blitar", status: "Akan Datang" }
+    ],
+    "2026-10": [ // November 2026
+      { day: 1, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "1 November 2026", location: "Gedung PCNU", status: "Akan Datang" },
+      { day: 10, category: "Kegiatan Bersama PC", title: "Hari Pahlawan & Seminar", desc: "Dialog interaktif kepemudaan nasional.", date: "10 November 2026", location: "Aula Bung Karno", status: "Akan Datang" },
+      { day: 15, category: "Lembaga Konseling Pelajar", title: "Pelatihan Konseling Pelajar", desc: "Workshop pendampingan psikologi remaja.", date: "15 November 2026", location: "Kantor Sekretariat", status: "Akan Datang" },
+      { day: 15, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Futsal rutin bulanan.", date: "15 November 2026", location: "Green Futsal", status: "Akan Datang" },
+      { day: 22, category: "Lembaga Ekonomi Kreatif", title: "Pameran Produk Kreatif Anggota", desc: "Bazar kewirausahaan mandiri kader.", date: "22 November 2026", location: "Lokasi Acara PC", status: "Akan Datang" },
+      { day: 22, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Pertemuan selapanan rutin.", date: "22 November 2026", location: "Sananwetan", status: "Akan Datang" }
+    ],
+    "2026-11": [ // Desember 2026
+      { day: 6, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Refleksi akhir tahun kader.", date: "6 Desember 2026", location: "Sukorejo", status: "Akan Datang" },
+      { day: 13, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Futsal penutup tahun.", date: "13 Desember 2026", location: "Green Futsal", status: "Akan Datang" },
+      { day: 20, category: "Dept. Pengembangan Organisasi", title: "Evaluasi Pengurus Akhir Tahun", desc: "Penilaian kinerja pengurus harian.", date: "20 Desember 2026", location: "Kantor PCNU", status: "Akan Datang" },
+      { day: 25, category: "Lembaga CBP-KPP", title: "Diklatama CBP-KPP", desc: "Pendidikan dan pelatihan kader militan.", date: "Desember 2026", location: "Lapangan Tlumpu", status: "Akan Datang" },
+      { day: 27, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan penutup tahun.", date: "27 Desember 2026", location: "Gedung PCNU", status: "Akan Datang" },
+      { day: 28, category: "Dept. Pengembangan Organisasi", title: "Penyusunan Buku Pedoman", desc: "Finalisasi buku pedoman tata kelola.", date: "28 Desember 2026", location: "Sekretariat PC", status: "Akan Datang" }
+    ],
+
+    // ================= TAHUN 2027 =================
+    "2027-0": [ // Januari 2027
+      { day: 10, category: "Dept. Pengembangan Organisasi", title: "Rapat Pleno Awal Tahun 2027", desc: "Evaluasi proker dan proyeksi agenda tahunan.", date: "10 Januari 2027", location: "Kantor PCNU", status: "Akan Datang" },
+      { day: 10, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Konsolidasi bulanan kader.", date: "10 Januari 2027", location: "Bergantian PAC", status: "Akan Datang" },
+      { day: 17, category: "Dept. Pengembangan Organisasi", title: "Upgrading Kapasitas Pengurus", desc: "Penguatan koordinasi internal tahun kedua.", date: "17 Januari 2027", location: "Kondisional", status: "Akan Datang" },
+      { day: 24, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Olahraga rutin bulanan kader.", date: "24 Januari 2027", location: "Green Futsal", status: "Akan Datang" },
+      { day: 31, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan bersama PCNU.", date: "31 Januari 2027", location: "Gedung PCNU", status: "Akan Datang" }
+    ],
+    "2027-1": [ // Februari 2027
+      { day: 7, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Kajian bulanan kader.", date: "7 Februari 2027", location: "Kantor PCNU", status: "Akan Datang" },
+      { day: 14, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Futsal rutin bulanan.", date: "14 Februari 2027", location: "Green Futsal", status: "Akan Datang" },
+      { day: 15, category: "Dept. Pengembangan Organisasi", title: "Tasyakuran 2 Tahun Khidmat", desc: "Refleksi masa khidmat pengurus cabang.", date: "15 Februari 2027", location: "Sekretariat PC", status: "Akan Datang" },
+      { day: 21, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "21 Februari 2027", location: "Gedung PCNU", status: "Akan Datang" },
+      { day: 21, category: "Dept. Kaderisasi", title: "Rihlah Evaluasi ke PAC", desc: "Kunjungan kerja memantau ranting.", date: "21 Februari 2027", location: "Kepanjenkidul", status: "Akan Datang" }
+    ],
+    "2027-2": [ // Maret 2027
+      { day: 14, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Buka puasa bersama dan kajian rutin.", date: "14 Maret 2027", location: "Kantor PCNU", status: "Akan Datang" },
+      { day: 18, category: "Lembaga Ekonomi Kreatif", title: "Bazar & Pemasaran Produk", desc: "Pameran kewirausahaan ekonomi kreatif.", date: "18 Maret 2027", location: "Area PCNU", status: "Akan Datang" },
+      { day: 21, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "21 Maret 2027", location: "Gedung PCNU", status: "Akan Datang" },
+      { day: 25, category: "Dept. Jaringan Sekolah", title: "Pondok Ramadhan Teaching", desc: "Penugasan kader pemateri pesantren.", date: "Ramadhan 2027", location: "Sekolah Mitra", status: "Akan Datang" },
+      { day: 28, category: "Kegiatan Bersama PC", title: "Buka Bersama Lintas Generasi", desc: "Silaturahmi pembina, alumni, pengurus.", date: "Ramadhan 2027", location: "Gedung PCNU", status: "Akan Datang" }
+    ],
+    "2027-3": [ // April 2027
+      { day: 4, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Konsolidasi pasca lebaran.", date: "4 April 2027", location: "Sananwetan", status: "Akan Datang" },
+      { day: 11, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "11 April 2027", location: "Gedung PCNU", status: "Akan Datang" },
+      { day: 18, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Futsal rutin bulanan.", date: "18 April 2027", location: "Green Futsal", status: "Akan Datang" },
+      { day: 20, category: "Kegiatan Bersama PC", title: "Halal Bihalal Idul Fitri 1448 H", desc: "Silaturahmi akbar keluarga besar pelajar.", date: "20 April 2027", location: "Gedung PCNU", status: "Akan Datang" },
+      { day: 25, category: "Dept. Pengembangan Organisasi", title: "Raker 2 (Rapat Kerja Akhir)", desc: "Evaluasi program kerja akhir periode.", date: "25 April 2027", location: "Kondisional", status: "Akan Datang" }
+    ],
+    "2027-4": [ // Mei 2027
+      { day: 9, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "9 Mei 2027", location: "Gedung PCNU", status: "Akan Datang" },
+      { day: 15, category: "Dept. Pengembangan Organisasi", title: "Sekolah Kepemimpinan Pelajar", desc: "Pelatihan manajemen organisasi.", date: "15 Mei 2027", location: "Aula NU", status: "Akan Datang" },
+      { day: 16, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Futsal rutin bulanan.", date: "16 Mei 2027", location: "Green Futsal", status: "Akan Datang" },
+      { day: 22, category: "Dept. Jaringan Sekolah", title: "Santri Visit and Connect", desc: "Penguatan jejaring pesantren Blitar.", date: "22 Mei 2027", location: "Pesantren Mitra", status: "Akan Datang" },
+      { day: 23, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Kajian rutin bulanan.", date: "23 Mei 2027", location: "Sukorejo", status: "Akan Datang" }
+    ],
+    "2027-5": [ // Juni 2027
+      { day: 6, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "6 Juni 2027", location: "Gedung PCNU", status: "Akan Datang" },
+      { day: 13, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Futsal rutin bulanan.", date: "13 Juni 2027", location: "Green Futsal", status: "Akan Datang" },
+      { day: 19, category: "Dept. Media & Digital / LPP", title: "Pelatihan Jurnalistik Pelajar", desc: "Workshop penulisan berita dan web oleh LPP.", date: "19 Juni 2027", location: "Sekretariat PC", status: "Akan Datang" },
+      { day: 20, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Pertemuan selapanan rutin.", date: "20 Juni 2027", location: "Kepanjenkidul", status: "Akan Datang" },
+      { day: 25, category: "Lembaga CBP-KPP", title: "Funcamp CBP-KPP Jilid 2", desc: "Perkemahan bakti dan peningkatan skill.", date: "Juni 2027", location: "Maliran", status: "Akan Datang" }
+    ],
+    "2027-6": [ // Juli 2027
+      { day: 4, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "4 Juli 2027", location: "Gedung PCNU", status: "Akan Datang" },
+      { day: 11, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Futsal rutin bulanan.", date: "11 Juli 2027", location: "Green Futsal", status: "Akan Datang" },
+      { day: 18, category: "Dept. Pengembangan Organisasi", title: "Audit Administratif Akhir", desc: "Pemeriksaan berkas surat & inventaris.", date: "18 Juli 2027", location: "Sekretariat PC", status: "Akan Datang" },
+      { day: 25, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Konsolidasi bulanan kader.", date: "25 Juli 2027", location: "Sananwetan", status: "Akan Datang" },
+      { day: 28, category: "Dept. Jaringan Sekolah", title: "Speak Up Movement", desc: "Kampanye sosial anti-bullying pelajar.", date: "Juli 2027", location: "Sekolah Mitra", status: "Akan Datang" }
+    ],
+    "2027-7": [ // Agustus 2027
+      { day: 8, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "8 Agustus 2027", location: "Gedung PCNU", status: "Akan Datang" },
+      { day: 15, category: "Dept. Seni Budaya & Olahraga", title: "Rutinan Futsal PC", desc: "Futsal rutin bulanan.", date: "15 Agustus 2027", location: "Green Futsal", status: "Akan Datang" },
+      { day: 17, category: "Kegiatan Bersama PC", title: "Doa Bersama Refleksi HUT RI", desc: "Upacara internal dan tasyakuran kemerdekaan.", date: "17 Agustus 2027", location: "Gedung PCNU", status: "Akan Datang" },
+      { day: 22, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Kajian bulanan kader.", date: "22 Agustus 2027", location: "Sukorejo", status: "Akan Datang" },
+      { day: 28, category: "Dept. Pengembangan Organisasi", title: "Pra-Konferensi Cabang", desc: "Penyusunan LPJ dan tata tertib Konfercab.", date: "28 Agustus 2027", location: "Kantor PCNU", status: "Akan Datang" }
+    ],
+    "2027-8": [ // September 2027
+      { day: 5, category: "Kegiatan Bersama PCNU", title: "Pengajian Rutin Minggu Wage", desc: "Pengajian selapanan rutin.", date: "5 September 2027", location: "Gedung PCNU", status: "Akan Datang" },
+      { day: 12, category: "Kegiatan Bersama / Selapanan", title: "Rutinan Selapanan Minggu Pon", desc: "Selapanan pamitan kepengurusan.", date: "12 September 2027", location: "Kantor PCNU", status: "Akan Datang" },
+      { day: 18, category: "Dept. Pengembangan Organisasi", title: "Konferensi Cabang (Konfercab)", desc: "Pemilihan ketua baru masa khidmat berikutnya.", date: "September 2027", location: "Aula Kota Blitar", status: "Akan Datang" },
+      { day: 25, category: "Dept. Pengembangan Organisasi", title: "Serah Terima Jabatan (Sertijab)", desc: "Estafet kepemimpinan pengurus baru.", date: "September 2027", location: "Gedung PCNU", status: "Akan Datang" }
+    ]
+  };
+
+  let currentMonth = 7; // Agustus 2026
+  let currentYear = 2026;
+
+  const monthNames = [
+    "Januari", "Februari", "Maret", "April", "Mei", "Juni", 
+    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+  ];
+
+  function renderCalendar(month, year) {
+    const title = document.getElementById("calendarMonthTitle");
+    const container = document.getElementById("calendarDaysContainer");
+    
+    title.innerText = `${monthNames[month]} ${year}`;
+    container.innerHTML = "";
+
+    let firstDayIndex = new Date(year, month, 1).getDay();
+    firstDayIndex = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
+
+    let totalDays = new Date(year, month + 1, 0).getDate();
+    let prevTotalDays = new Date(year, month, 0).getDate();
+
+    const key = `${year}-${month}`;
+    const agendas = agendaDatabase[key] || [];
+
+    let html = "";
+
+    for (let i = firstDayIndex; i > 0; i--) {
+      let dayNum = prevTotalDays - i + 1;
+      html += `<div class="cal-date muted">${dayNum}</div>`;
+    }
+
+    let today = new Date();
+    for (let i = 1; i <= totalDays; i++) {
+      let isToday = (i === today.getDate() && month === today.getMonth() && year === today.getFullYear());
+      let todayClass = isToday ? "today" : "";
+      
+      let eventOnThisDay = agendas.find(item => item.day === i);
+      let eventClass = "";
+      if (eventOnThisDay) {
+        if (eventOnThisDay.status === "Terlaksana") {
+          eventClass = "has-event"; // Hijau
+        } else {
+          eventClass = "has-coming"; // Kuning
+        }
+      }
+      
+      html += `<div class="cal-date ${todayClass} ${eventClass}">${i}</div>`;
+    }
+
+    let totalCellsPrinted = firstDayIndex + totalDays;
+    let nextDaysCount = (totalCellsPrinted > 35) ? 42 - totalCellsPrinted : 35 - totalCellsPrinted;
+    for (let i = 1; i <= nextDaysCount; i++) {
+      html += `<div class="cal-date muted">${i}</div>`;
+    }
+
+    container.innerHTML = html;
+    renderAgendas(month, year);
+  }
+
+  function renderAgendas(month, year) {
+    const sectionTitle = document.getElementById("agendaSectionTitle");
+    const listContainer = document.getElementById("agendaListContainer");
+    
+    sectionTitle.innerText = `Agenda Bulan ${monthNames[month]} ${year}`;
+    listContainer.innerHTML = "";
+
+    const key = `${year}-${month}`;
+    const agendas = agendaDatabase[key];
+
+    if (!agendas || agendas.length === 0) {
+      listContainer.innerHTML = `<div class="no-agenda">Belum ada kegiatan terjadwal pada bulan ini.</div>`;
+      return;
+    }
+
+    let html = "";
+    agendas.forEach(item => {
+      let badgeBg = item.status === "Terlaksana" ? "#DCFCE7" : "#FFF3D6";
+      let badgeColor = item.status === "Terlaksana" ? "#166534" : "#946200";
+
+      html += `
+        <div class="agenda-card">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <span class="agenda-category">${item.category}</span>
+              <span style="background:${badgeBg}; color:${badgeColor}; font-size:10px; font-weight:700; padding:2px 6px; border-radius:999px;">${item.status}</span>
+            </div>
+            <h3>${item.title}</h3>
+            <p style="font-size:12.5px; color:var(--muted); margin-top:2px;">${item.desc}</p>
+          </div>
+          <div class="agenda-meta">
+            <span>🗓️ ${item.date}</span>
+            <span>📍 ${item.location}</span>
+          </div>
+        </div>
+      `;
+    });
+
+    listContainer.innerHTML = html;
+  }
+
+  function prevMonth() {
+    currentMonth--;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+    }
+    if (currentYear < 2026) {
+      currentYear = 2026;
+      currentMonth = 0;
+    }
+    renderCalendar(currentMonth, currentYear);
+  }
+
+  function nextMonth() {
+    currentMonth++;
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    if (currentYear > 2027 || (currentYear === 2027 && currentMonth > 8)) {
+      currentYear = 2027;
+      currentMonth = 8;
+    }
+    renderCalendar(currentMonth, currentYear);
+  }
+
+  window.onload = function() {
+    renderCalendar(currentMonth, currentYear);
+  };
+</script>
+</body>
+</html>

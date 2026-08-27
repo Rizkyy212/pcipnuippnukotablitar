@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontak — PC IPNU-IPPNU Kota Blitar</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Tata Letak Dua Kolom Kontak WhatsApp IPNU & IPPNU */
+  .contact-split-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+  .contact-card-box {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .contact-card-box.box-ipnu {
+    border-top: 5px solid #16a34a;
+  }
+  .contact-card-box.box-ippnu {
+    border-top: 5px solid #ca8a04;
+  }
+
+  .contact-card-box h3 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .box-ipnu h3 { color: #16a34a; }
+  .box-ippnu h3 { color: #ca8a04; }
+
+  .contact-detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 25px;
+  }
+  .contact-detail-item {
+    font-size: 13.5px;
+    color: var(--ink);
+  }
+  .contact-detail-item span {
+    font-weight: 700;
+    display: block;
+    color: var(--green-900);
+    margin-bottom: 3px;
+  }
+  .contact-detail-item p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .btn-contact-wa {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13.5px;
+    text-decoration: none;
+    color: #fff;
+    transition: opacity 0.2s;
+  }
+  .box-ipnu .btn-contact-wa { background: #16a34a; }
+  .box-ippnu .btn-contact-wa { background: #ca8a04; }
+  .btn-contact-wa:hover { opacity: 0.9; }
+
+  /* Kotak Informasi Umum Bersama (Email, Medsos, Alamat) */
+  .general-info-box {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    border-left: 5px solid var(--green-700);
+  }
+  .general-info-box h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--green-900);
+    margin-bottom: 15px;
+  }
+  .general-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .general-item span {
+    font-weight: 700;
+    color: var(--green-900);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13.5px;
+  }
+  .general-item p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* Google Maps Embed Container */
+  .map-section-box {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  }
+  .map-section-box h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--green-900);
+    margin-bottom: 15px;
+  }
+  .map-embed iframe {
+    width: 100%;
+    height: 380px;
+    border: none;
+    border-radius: 8px;
+  }
+
+  /* Responsive Mobile */
+  @media (max-width: 900px) {
+    .contact-split-wrap {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><div class="brand-mark">IP</div><div class="brand-text"><div class="t1">PC IPNU-IPPNU</div><div class="t2">Kota Blitar</div></div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="organisasi.html">Organisasi</a></li>
+      <li><a href="kegiatan.html">Kegiatan</a></li>
+      <li><a href="berita.html">Berita</a></li>
+      <li><a href="kaderisasi.html">Kaderisasi</a></li>
+      <li><a href="layanan.html">Layanan</a></li>
+      <li><a href="dokumen.html">Dokumen</a></li>
+      <li><a href="dokumentasi.html">Dokumentasi</a></li>
+      <li><a href="kontak.html" class="active">Kontak</a></li>
+    </ul>
+    <a href="layanan.html" class="nav-cta">Ajukan Layanan</a>
+    <button class="nav-toggle" id="navToggle">☰</button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="wrap">
+    <h1>Hubungi Kami</h1>
+    <p>Alamat Sekretariat &amp; Kontak Resmi PC IPNU-IPPNU Kota Blitar.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    
+    <!-- KARTU KONTAK KHUSUS NOMOR WHATSAPP (IPNU & IPPNU) -->
+    <div class="contact-split-wrap">
+      
+      <!-- IPNU -->
+      <div class="contact-card-box box-ipnu">
+        <div>
+          <h3>🟢 Pimpinan Cabang IPNU Kota Blitar</h3>
+          <div class="contact-detail-list">
+            <div class="contact-detail-item">
+              <span>💬 WhatsApp Sekretariat IPNU:</span>
+              <p>+62 812-3456-7891 (Rekan Ahmad)</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/6281234567891" target="_blank" class="btn-contact-wa">💬 Hubungi WhatsApp IPNU</a>
+      </div>
+
+      <!-- IPPNU -->
+      <div class="contact-card-box box-ippnu">
+        <div>
+          <h3>🟡 Pimpinan Cabang IPPNU Kota Blitar</h3>
+          <div class="contact-detail-list">
+            <div class="contact-detail-item">
+              <span>💬 WhatsApp Sekretariat IPPNU:</span>
+              <p>+62 812-3456-7892 (Rekanita Siti)</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/6281234567892" target="_blank" class="btn-contact-wa">💬 Hubungi WhatsApp IPPNU</a>
+      </div>
+
+    </div>
+
+
+    <!-- KOTAK INFORMASI UMUM BERSAMA (EMAIL, MEDSOS, ALAMAT) -->
+    <div class="general-info-box">
+      <h3>📋 Informasi &amp; Sekretariat Bersama</h3>
+      <div class="general-grid">
+        <div class="general-item">
+          <span>📍 Alamat Sekretariat:</span>
+          <p>Gedung Kantor PCNU Kota Blitar, Jl. Masjid, Kota Blitar, Jawa Timur.</p>
+        </div>
+        <div class="general-item">
+          <span>✉️ Email Resmi:</span>
+          <p>pc.ipnuippnu.kotablitar@gmail.com</p>
+        </div>
+        <div class="general-item">
+          <span>📺 YouTube &amp; Media Sosial:</span>
+          <p>YouTube: PC IPNU-IPPNU Kota Blitar<br>Instagram IPNU: @pcipnukotablitar<br>Instagram IPPNU: @pcippnukotablitar</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- PETA LOKASI -->
+    <div class="map-section-box">
+      <h3>📍 Peta Lokasi Kantor PCNU Kota Blitar</h3>
+      <div class="map-embed">
+        <iframe src="https://www.google.com/maps?q=Kantor+PCNU+Kota+Blitar&output=embed"></iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><p style="text-align:center; font-size:13px;">© 2026 PC IPNU-IPPNU Kota Blitar.</p></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

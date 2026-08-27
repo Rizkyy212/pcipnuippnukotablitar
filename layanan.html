@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layanan Digital — PC IPNU-IPPNU Kota Blitar</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Gaya Tambahan Khusus Portal Layanan */
+  .service-nav-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tab-btn {
+    background: var(--white);
+    border: 1px solid var(--line);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: var(--green-900);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--green-700);
+    color: #fff;
+    border-color: var(--green-700);
+  }
+
+  .form-panel {
+    display: none;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 35px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .form-panel.active {
+    display: block;
+  }
+  .panel-header-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+  }
+  .badge-sp { background: #dbeafe; color: #1e40af; }
+  .badge-kad { background: #fef3c7; color: #92400e; }
+  .badge-cert { background: #d1fae5; color: #065f46; }
+
+  .file-upload-box {
+    border: 2px dashed var(--line);
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+    background: var(--paper);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .file-upload-box input {
+    margin-top: 6px;
+    font-size: 12px;
+  }
+
+  .success-alert {
+    margin-top: 20px;
+    padding: 14px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+    border-radius: 8px;
+    font-size: 13.5px;
+    display: none;
+  }
+
+  /* Kotak Prosedur & Ketentuan SP */
+  .sp-procedure-box {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 4px solid #1e40af;
+    padding: 20px 24px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .sp-procedure-box h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #1e40af;
+    margin-bottom: 8px;
+  }
+  .sp-procedure-box ol {
+    margin: 6px 0 0 18px;
+    padding: 0;
+  }
+  .sp-procedure-box li {
+    margin-bottom: 6px;
+  }
+
+  /* Kotak Info Ketentuan Kaderisasi */
+  .kader-rule-box {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--green-700);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .kader-rule-box h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--green-900);
+    margin-bottom: 6px;
+  }
+</style>
+</head>
+<body>
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><div class="brand-mark">IP</div><div class="brand-text"><div class="t1">PC IPNU-IPPNU</div><div class="t2">Kota Blitar</div></div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="organisasi.html">Organisasi</a></li>
+      <li><a href="kegiatan.html">Kegiatan</a></li>
+      <li><a href="berita.html">Berita</a></li>
+      <li><a href="kaderisasi.html">Kaderisasi</a></li>
+      <li><a href="layanan.html" class="active">Layanan</a></li>
+      <li><a href="dokumen.html">Dokumen</a></li>
+      <li><a href="dokumentasi.html">Dokumentasi</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a href="layanan.html" class="nav-cta">Ajukan Layanan</a>
+    <button class="nav-toggle" id="navToggle">☰</button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="wrap">
+    <h1>Portal Layanan Digital Terpadu</h1>
+    <p>Pengajuan Surat Permohonan (SP), Perizinan Kaderisasi, Legalisasi Sertifikat, dan Tracking Berkas Online.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    
+    <!-- Tab Navigasi Pilihan Layanan -->
+    <div class="service-nav-tabs">
+      <button class="tab-btn active" onclick="switchForm('sp', event)">📄 Pengajuan Surat Permohonan (SP)</button>
+      <button class="tab-btn" onclick="switchForm('kaderisasi', event)">🎯 Perizinan &amp; Proposal Kaderisasi</button>
+      <button class="tab-btn" onclick="switchForm('sertifikat', event)">📜 Penerbitan &amp; Validasi Sertifikat</button>
+    </div>
+
+
+    <!-- ================= FORM 1: SURAT PERMOHONAN (SP) & REKOMENDASI ================= -->
+    <div class="form-panel active" id="panel-sp">
+      <span class="panel-header-badge badge-sp">Layanan Administrasi</span>
+      <h3>Formulir Pengajuan Surat Permohonan (SP) &amp; Rekomendasi</h3>
+      <p style="font-size:13.5px; color:var(--muted); margin-top:4px; margin-bottom:20px;">Gunakan formulir ini untuk mengajukan permohonan SK kepengurusan baru, perpanjangan, surat rekomendasi acara, atau mandat kader.</p>
+      
+      <!-- Prosedur & Ketentuan Pengajuan SP -->
+      <div class="sp-procedure-box">
+        <h4>📋 Prosedur &amp; Ketentuan Pengajuan Surat Permohonan (SP):</h4>
+        <ol>
+          <li><strong>Batas Waktu Unggah:</strong> Berkas permohonan dan kelengkapan wajib diunggah paling lambat <strong>1 minggu (7 hari)</strong> sebelum tanggal pelaksanaan acara atau prosesi pelantikan.</li>
+          <li><strong>Surat Rekomendasi MWC NU:</strong> Wajib melampirkan surat rekomendasi sah dari Majelis Wakil Cabang Nahdlatul Ulama (MWC NU) setempat.</li>
+          <li><strong>Berita Acara &amp; Formatur:</strong> Untuk pengajuan SK Kepengurusan baru/perpanjangan, wajib menyertakan scan Berita Acara Rapat Pemilihan serta draf susunan pengurus lengkap (tim formatur).</li>
+          <li><strong>Verifikasi:</strong> Sekretariat Cabang akan melakukan verifikasi berkas dalam waktu 2–3 hari kerja sebelum nomor surat / SK diterbitkan.</li>
+        </ol>
+      </div>
+
+      <!-- Formulir diarahkan ke proses-simpan.php menggunakan method POST -->
+      <form id="spForm" action="proses-simpan.php" method="POST" class="form-grid" style="margin-top:20px;">
+        <div class="field">
+          <label>Jenis Permohonan (SP)</label>
+          <select name="layanan" required>
+            <option value="">-- Pilih Jenis SP --</option>
+            <option value="SP Permohonan SK Kepengurusan Baru (PAC/PK/PR)">SP Permohonan SK Kepengurusan Baru (PAC/PK/PR)</option>
+            <option value="SP Perpanjangan Masa Khidmat Kepengurusan">SP Perpanjangan Masa Khidmat Kepengurusan</option>
+            <option value="SP Rekomendasi Kegiatan Eksternal / Kerjasama">SP Rekomendasi Kegiatan Eksternal / Kerjasama</option>
+            <option value="SP Permohonan Mandat / Delegasi Acara">SP Permohonan Mandat / Delegasi Acara</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Tingkatan Organisasi</label>
+          <select name="tingkatan" required>
+            <option value="PAC">PAC (Pimpinan Anak Cabang)</option>
+            <option value="PK">PK (Pimpinan Komisariat)</option>
+            <option value="PR">PR (Pimpinan Ranting)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Nama Organisasi / Basis</label>
+          <input name="instansi" required placeholder="Misal: PAC Sukorejo / PR Turi">
+        </div>
+
+        <div class="field">
+          <label>Kecamatan / Wilayah</label>
+          <input name="wilayah" required placeholder="Kepanjenkidul / Sananwetan / Sukorejo">
+        </div>
+
+        <div class="field">
+          <label>Periode Kepengurusan</label>
+          <input name="periode" required placeholder="Contoh: 2026–2028">
+        </div>
+
+        <div class="field">
+          <label>Nama Ketua / Pemohon</label>
+          <input name="nama_pemohon" required placeholder="Nama lengkap beserta gelar jika ada">
+        </div>
+
+        <div class="field">
+          <label>Nomor WhatsApp Kontak Aktif</label>
+          <input name="telepon" required type="tel" placeholder="081234567890">
+        </div>
+
+        <div class="field full">
+          <label>Keterangan Tambahan / Catatan</label>
+          <textarea name="keterangan" rows="3" placeholder="Tuliskan keterangan tambahan jika diperlukan..." style="width:100%; padding:10px; border:1px solid var(--line); border-radius:8px; font-family:inherit;"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Unggah Surat Rekomendasi MWC NU</label>
+          <div class="file-upload-box">
+            <span>Format PDF / Foto (Maks. 5MB)</span>
+            <input type="file" accept=".pdf,.jpg,.png" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Unggah Berkas Berita Acara &amp; Formatur (ZIP / PDF)</label>
+          <div class="file-upload-box">
+            <span>Lampirkan Berita Acara Rapat &amp; Susunan Formatur</span>
+            <input type="file" accept=".pdf,.zip,.rar" required>
+          </div>
+        </div>
+
+        <div class="field full">
+          <button type="submit" class="form-submit">Kirim Pengajuan Surat Permohonan (SP)</button>
+        </div>
+      </form>
+    </div>
+
+
+    <!-- ================= FORM 2: PENGAJUAN KADERISASI ================= -->
+    <div class="form-panel" id="panel-kaderisasi">
+      <span class="panel-header-badge badge-kad">Layanan Kaderisasi</span>
+      <h3>Formulir Pengajuan &amp; Perizinan Kegiatan Kaderisasi</h3>
+      <p style="font-size:13.5px; color:var(--muted); margin-top:4px; margin-bottom:20px;">Pemberitahuan resmi dan permohonan instruktur/pemandu untuk agenda pengkaderan formal.</p>
+      
+      <!-- Ketentuan Penyelenggaraan MAKESTA & LAKMUD -->
+      <div class="kader-rule-box">
+        <h4>📌 Ketentuan Penyelenggaraan Jenjang:</h4>
+        <ul style="margin:6px 0 0 18px; padding:0;">
+          <li><strong>MAKESTA (Masa Kesetiaan Anggota):</strong> Dapat diselenggarakan secara mandiri oleh tingkat <strong>Pimpinan Ranting (PR)</strong> atau <strong>Pimpinan Komisariat (PK)</strong> sekolah/pesantren dengan koordinasi bersama PAC dan PC.</li>
+          <li><strong>LAKMUD (Latihan Kader Muda):</strong> Wajib diselenggarakan oleh tingkat <strong>Pimpinan Anak Cabang (PAC)</strong> atau atas mandat khusus dari Pimpinan Cabang (PC).</li>
+          <li><strong>Batas Waktu Pengajuan:</strong> Proposal wajib diunggah minimal <strong>1 minggu (7 hari)</strong> sebelum acara dimulai agar jadwal instruktur dapat dikoordinasikan.</li>
+        </ul>
+      </div>
+
+      <form id="kadForm" action="proses-simpan.php" method="POST" class="form-grid" style="margin-top:20px;">
+        <input type="hidden" name="layanan" value="Perizinan Kaderisasi">
+        <div class="field">
+          <label>Nama Kegiatan</label>
+          <input name="nama_kegiatan" required placeholder="Misal: MAKESTA PR Turi / LAKMUD PAC Sukorejo">
+        </div>
+
+        <div class="field">
+          <label>Tingkatan Kaderisasi</label>
+          <select name="tingkatan_kaderisasi" required>
+            <option>MAKESTA (Tingkat Ranting / Komisariat)</option>
+            <option>LAKMUD (Tingkat Anak Cabang / PAC)</option>
+            <option>LATPEL / LATIN (Latihan Pelatih Instruktur)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Penyelenggara (Ranting / Komisariat / PAC)</label>
+          <input name="instansi" required placeholder="Nama kepanitiaan pelaksana">
+        </div>
+
+        <div class="field">
+          <label>Nama Ketua Panitia (Pemohon)</label>
+          <input name="nama_pemohon" required placeholder="Nama lengkap ketua panitia">
+        </div>
+
+        <div class="field">
+          <label>Rencana Tanggal Pelaksanaan</label>
+          <input name="tanggal_pelaksanaan" type="date" required>
+        </div>
+
+        <div class="field">
+          <label>Estimasi Jumlah Peserta</label>
+          <input name="estimasi_peserta" type="number" required placeholder="Contoh: 40 orang">
+        </div>
+
+        <div class="field full">
+          <label>Keterangan / Catatan Tambahan</label>
+          <textarea name="keterangan" rows="3" placeholder="Tuliskan detail tempat atau catatan lainnya..." style="width:100%; padding:10px; border:1px solid var(--line); border-radius:8px; font-family:inherit;"></textarea>
+        </div>
+
+        <div class="field full">
+          <label>Unggah Proposal Kegiatan &amp; Rundown Acara (PDF)</label>
+          <div class="file-upload-box">
+            <span>Pilih file proposal berstempel panitia penyelenggara</span>
+            <input type="file" accept=".pdf" required>
+          </div>
+        </div>
+
+        <div class="field full">
+          <button type="submit" class="form-submit">Kirim Pengajuan Perizinan Kaderisasi</button>
+        </div>
+      </form>
+    </div>
+
+
+    <!-- ================= FORM 3: SERTIFIKAT & VALIDASI ================= -->
+    <div class="form-panel" id="panel-sertifikat">
+      <span class="panel-header-badge badge-cert">Layanan Sertifikasi</span>
+      <h3>Formulir Penerbitan &amp; Validasi Sertifikat Kaderisasi</h3>
+      <p style="font-size:13.5px; color:var(--muted); margin-top:4px;">Pengajuan blangko sertifikat resmi atau legalisasi bagi alumni pengkaderan IPNU-IPPNU Kota Blitar.</p>
+      
+      <form id="certForm" action="proses-simpan.php" method="POST" class="form-grid" style="margin-top:20px;">
+        <input type="hidden" name="layanan" value="Penerbitan/Validasi Sertifikat">
+        <div class="field">
+          <label>Jenis Layanan Sertifikat</label>
+          <select name="jenis_sertifikat" required>
+            <option>Permohonan Cetak Blangko Sertifikat Baru</option>
+            <option>Legalisasi / Validasi Keaslian Sertifikat Lama</option>
+            <option>Penggantian Sertifikat Rusak / Hilang</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Jenis Pengkaderan</label>
+          <select name="jenjang_kader" required>
+            <option>MAKESTA</option>
+            <option>LAKMUD</option>
+            <option>Demisioner / Pengurus Cabang</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Nama Peserta / Pemohon</label>
+          <input name="nama_pemohon" required placeholder="Sesuai nama lengkap di KTA/Ijazah">
+        </div>
+
+        <div class="field">
+          <label>Tahun Pelaksanaan Kegiatan</label>
+          <input name="tahun_kegiatan" required placeholder="Contoh: 2025">
+        </div>
+
+        <div class="field full">
+          <label>Keterangan Tambahan</label>
+          <textarea name="keterangan" rows="3" placeholder="Informasi tambahan terkait sertifikat..." style="width:100%; padding:10px; border:1px solid var(--line); border-radius:8px; font-family:inherit;"></textarea>
+        </div>
+
+        <div class="field full">
+          <label>Unggah Data Peserta (Excel/CSV) atau Scan Sertifikat Lama</label>
+          <div class="file-upload-box">
+            <span>Lampirkan daftar nama peserta atau file pendukung</span>
+            <input type="file" accept=".pdf,.xlsx,.xls,.jpg" required>
+          </div>
+        </div>
+
+        <div class="field full">
+          <button type="submit" class="form-submit">Kirim Permohonan Sertifikat</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRACKING STATUS BERKAS -->
+<section class="section alt" id="tracking">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Status Mandiri</div>
+      <h2>Lacak Status Pengajuan Berkas</h2>
+    </div>
+    <div class="track-box" style="background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:30px; max-width:700px; margin:0 auto; box-shadow:0 4px 20px rgba(0,0,0,0.03);">
+      <div class="track-input-row" style="display:flex; gap:10px; flex-wrap:wrap;">
+        <input id="trackInput" placeholder="Masukkan nomor resi (contoh: SP-2026-001)" style="flex:1; padding:12px; border:1px solid var(--line); border-radius:8px; font-size:14px;">
+        <button onclick="checkTracking()" style="background:var(--green-700); color:#fff; border:none; padding:12px 24px; border-radius:8px; font-weight:700; cursor:pointer;">Cek Status</button>
+      </div>
+      <div class="track-result" id="trackResult" style="margin-top:20px;"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><p style="text-align:center; font-size:13px;">© 2026 PC IPNU-IPPNU Kota Blitar. All Rights Reserved.</p></div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Fungsi Tab Interaktif untuk Berpindah Formulir Layanan
+  function switchForm(type, evt) {
+    const tabs = document.querySelectorAll('.tab-btn');
+    tabs.forEach(t => t.classList.remove('active'));
+    evt.currentTarget.classList.add('active');
+
+    document.getElementById('panel-sp').classList.remove('active');
+    document.getElementById('panel-kaderisasi').classList.remove('active');
+    document.getElementById('panel-sertifikat').classList.remove('active');
+
+    if(type === 'sp') {
+      document.getElementById('panel-sp').classList.add('active');
+    } else if(type === 'kaderisasi') {
+      document.getElementById('panel-kaderisasi').classList.add('active');
+    } else if(type === 'sertifikat') {
+      document.getElementById('panel-sertifikat').classList.add('active');
+    }
+  }
+
+  // Simulasi Tracking Berkas
+  function checkTracking() {
+    const val = document.getElementById('trackInput').value.trim();
+    const res = document.getElementById('trackResult');
+    if(!val) {
+      res.innerHTML = '<p style="color:#dc2626; font-size:13.5px;">⚠️ Mohon masukkan nomor resi pengajuan Anda terlebih dahulu.</p>';
+      return;
+    }
+    res.innerHTML = `
+      <div style="background:var(--paper); padding:16px; border-radius:8px; border:1px solid var(--line); font-size:13.5px;">
+        <p style="margin-bottom:6px;"><strong>Nomor Resi:</strong> ${val}</p>
+        <p style="margin-bottom:6px;"><strong>Status:</strong> <span style="color:#166534; font-weight:700;">🟢 Sedang Verifikasi Berkas Sekretariat</span></p>
+        <p style="color:var(--muted); font-size:12.5px; margin:0;">Berkas persyaratan lengkap (Surat Rekomendasi MWC &amp; Berita Acara) sedang diperiksa oleh pengurus harian.</p>
+      </div>
+    `;
+  }
+</script>
+</body>
+</html>

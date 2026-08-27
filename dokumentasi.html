@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeri Dokumentasi — PC IPNU-IPPNU Kota Blitar</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Tombol Filter Bulan */
+  .month-filter-wrap {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .month-btn {
+    background: var(--white);
+    border: 1px solid var(--line);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--green-900);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .month-btn.active, .month-btn:hover {
+    background: var(--green-700);
+    color: #fff;
+    border-color: var(--green-700);
+  }
+
+  /* Judul Per Bulan */
+  .month-section-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--green-900);
+    margin: 40px 0 20px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Grid Galeri Modern dengan Keterangan di Bawah */
+  .gallery-grid-modern {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+
+  .gallery-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .gallery-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  }
+
+  /* Thumbnail dengan Gradasi Warna Menarik */
+  .gallery-thumb {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    padding: 20px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  }
+
+  /* Variasi Warna Gradasi untuk Setiap Kartu */
+  .thumb-color-1 { background: linear-gradient(135deg, #16a34a, #15803d); }
+  .thumb-color-2 { background: linear-gradient(135deg, #0284c7, #0369a1); }
+  .thumb-color-3 { background: linear-gradient(135deg, #ca8a04, #a16207); }
+  .thumb-color-4 { background: linear-gradient(135deg, #9333ea, #7e22ce); }
+  .thumb-color-5 { background: linear-gradient(135deg, #db2777, #be185d); }
+  .thumb-color-6 { background: linear-gradient(135deg, #0d9488, #0f766e); }
+  .thumb-color-7 { background: linear-gradient(135deg, #ea580c, #c2410c); }
+  .thumb-color-8 { background: linear-gradient(135deg, #4f46e5, #4338ca); }
+
+  .gallery-body {
+    padding: 20px;
+  }
+  .gallery-meta {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green-700);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .gallery-body h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--green-900);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .gallery-body p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><div class="brand-mark">IP</div><div class="brand-text"><div class="t1">PC IPNU-IPPNU</div><div class="t2">Kota Blitar</div></div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="organisasi.html">Organisasi</a></li>
+      <li><a href="kegiatan.html">Kegiatan</a></li>
+      <li><a href="berita.html">Berita</a></li>
+      <li><a href="kaderisasi.html">Kaderisasi</a></li>
+      <li><a href="layanan.html">Layanan</a></li>
+      <li><a href="dokumen.html">Dokumen</a></li>
+      <li><a href="dokumentasi.html" class="active">Dokumentasi</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a href="layanan.html" class="nav-cta">Ajukan Layanan</a>
+    <button class="nav-toggle" id="navToggle">☰</button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="wrap">
+    <h1>Galeri Dokumentasi Kegiatan</h1>
+    <p>Arsip Visual Aktivitas &amp; Program Kerja Pengurus Cabang IPNU-IPPNU Kota Blitar Berdasarkan Bulan.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    
+    <!-- Tombol Filter Bulan -->
+    <div class="month-filter-wrap" id="monthFilter">
+      <button class="month-btn active" onclick="filterGallery('Semua', this)">Semua Bulan</button>
+      <button class="month-btn" onclick="filterGallery('Februari 2026', this)">Februari 2026</button>
+      <button class="month-btn" onclick="filterGallery('Maret 2026', this)">Maret 2026</button>
+      <button class="month-btn" onclick="filterGallery('April 2026', this)">April 2026</button>
+      <button class="month-btn" onclick="filterGallery('Mei 2026', this)">Mei 2026</button>
+      <button class="month-btn" onclick="filterGallery('Juni 2026', this)">Juni 2026</button>
+    </div>
+
+    <!-- Kontainer Galeri (Render via JavaScript) -->
+    <div id="galleryContainer"></div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><p style="text-align:center; font-size:13px;">© 2026 PC IPNU-IPPNU Kota Blitar. All Rights Reserved.</p></div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Data Dokumentasi Kegiatan Berdasarkan Bulan dengan Kelas Warna Unik
+  const galleryData = [
+    {
+      month: "Juni 2026",
+      title: "Rapat Koordinasi Cabang (Rakercab)",
+      date: "15 Juni 2026",
+      desc: "Koordinasi bersama pengurus harian dan perwakilan PAC membahas evaluasi program kerja tengah tahun.",
+      thumbText: "📸 Foto Rakercab 2026",
+      colorClass: "thumb-color-1"
+    },
+    {
+      month: "Juni 2026",
+      title: "Pelatihan Desain Grafis & Aset Digital",
+      date: "08 Juni 2026",
+      desc: "Pelatihan peningkatan skill pembuatan template dan media publikasi bagi kader departemen media.",
+      thumbText: "💻 Pelatihan Desain Digital",
+      colorClass: "thumb-color-2"
+    },
+    {
+      month: "Mei 2026",
+      title: "Pelantikan Pimpinan Komisariat SMK Islam",
+      date: "28 Mei 2026",
+      desc: "Prosesi khidmat pengukuhan pengurus baru komisariat sekolah menengah kejuruan.",
+      thumbText: "📜 Pelantikan Komisariat",
+      colorClass: "thumb-color-3"
+    },
+    {
+      month: "Mei 2026",
+      title: "Kunjungan Silaturahmi PCNU Kota Blitar",
+      date: "14 Mei 2026",
+      desc: "Sowan kepada jajaran syuriah dan tanfidziyah PCNU guna meminta arahan pembinaan pelajar.",
+      thumb: "🤝 Silaturahmi PCNU",
+      colorClass: "thumb-color-4"
+    },
+    {
+      month: "April 2026",
+      title: "Bakti Sosial & Santunan Anak Yatim",
+      date: "20 April 2026",
+      desc: "Agenda sosial bulan ramadan mempererat kebersamaan kader dengan masyarakat sekitar.",
+      thumb: "❤️ Bakti Sosial Ramadan",
+      colorClass: "thumb-color-5"
+    },
+    {
+      month: "Maret 2026",
+      title: "Kaderisasi LAKMUD PAC Sukorejo",
+      date: "15 Maret 2026",
+      desc: "Pelatihan kader tingkat menengah guna mencetak pimpinan organisasi yang militan dan progresif.",
+      thumb: "🎯 LAKMUD Sukorejo",
+      colorClass: "thumb-color-6"
+    },
+    {
+      month: "Februari 2026",
+      title: "Peringatan Harlah IPNU-IPPNU",
+      date: "24 Februari 2026",
+      desc: "Tasyakuran dan khatmil quran bersama di gedung sekretariat PCNU Kota Blitar.",
+      thumb: "🎉 Tasyakuran Harlah",
+      colorClass: "thumb-color-7"
+    },
+    {
+      month: "Februari 2026",
+      title: "Makesta Raya Serentak Ranting",
+      date: "10 Februari 2026",
+      desc: "Penerimaan anggota baru secara serentak di berbagai basis ranting dan sekolah.",
+      thumb: "🌟 Makesta Serentak",
+      colorClass: "thumb-color-8"
+    }
+  ];
+
+  // Fungsi Render Galeri Berdasarkan Bulan
+  function renderGallery(selectedMonth) {
+    const container = document.getElementById('galleryContainer');
+    container.innerHTML = '';
+
+    const filtered = selectedMonth === 'Semua' 
+      ? galleryData 
+      : galleryData.filter(item => item.month === selectedMonth);
+
+    if(filtered.length === 0) {
+      container.innerHTML = `<p style="text-align:center; color:var(--muted); padding:40px;">Tidak ada dokumentasi untuk bulan ini.</p>`;
+      return;
+    }
+
+    // Kelompokkan data berdasarkan bulan jika memilih "Semua"
+    if(selectedMonth === 'Semua') {
+      const months = [...new Set(filtered.map(item => item.month))];
+      
+      months.forEach(m => {
+        const titleEl = document.createElement('h3');
+        titleEl.className = 'month-section-title';
+        titleEl.innerHTML = `🗓️ Arsip Bulan ${m}`;
+        container.appendChild(titleEl);
+
+        const gridEl = document.createElement('div');
+        gridEl.className = 'gallery-grid-modern';
+
+        filtered.filter(i => i.month === m).forEach(item => {
+          gridEl.appendChild(createCard(item));
+        });
+
+        container.appendChild(gridEl);
+      });
+    } else {
+      // Jika pilih bulan tertentu
+      const titleEl = document.createElement('h3');
+      titleEl.className = 'month-section-title';
+      titleEl.innerHTML = `🗓️ Arsip Bulan ${selectedMonth}`;
+      container.appendChild(titleEl);
+
+      const gridEl = document.createElement('div');
+      gridEl.className = 'gallery-grid-modern';
+
+      filtered.forEach(item => {
+        gridEl.appendChild(createCard(item));
+      });
+
+      container.appendChild(gridEl);
+    }
+  }
+
+  // Pembuat Elemen Kartu Galeri
+  function createCard(item) {
+    const card = document.createElement('div');
+    card.className = 'gallery-card';
+    card.innerHTML = `
+      <div class="gallery-thumb ${item.colorClass}">${item.thumbText}</div>
+      <div class="gallery-body">
+        <span class="gallery-meta">📅 ${item.date}</span>
+        <h4>${item.title}</h4>
+        <p>${item.desc}</p>
+      </div>
+    `;
+    return card;
+  }
+
+  // Fungsi Filter Tombol Bulan
+  function filterGallery(month, btnElement) {
+    const buttons = document.querySelectorAll('.month-btn');
+    buttons.forEach(b => b.classList.remove('active'));
+    btnElement.classList.add('active');
+    renderGallery(month);
+  }
+
+  // Inisialisasi awal saat halaman dimuat
+  window.onload = function() {
+    renderGallery('Semua');
+  };
+</script>
+</body>
+</html>

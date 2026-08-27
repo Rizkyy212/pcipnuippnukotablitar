@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaderisasi &amp; Jenjang Pelatihan — PC IPNU-IPPNU Kota Blitar</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Gaya Halaman Kaderisasi Modern & Rinci */
+  .kad-hero-intro {
+    max-width: 780px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .section-subtitle {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--green-900);
+    margin: 40px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .kad-grid-modern {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+  }
+
+  .kad-card-modern {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .kad-card-modern:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    border-color: var(--green-700);
+  }
+
+  .kad-badge-level {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+  }
+  .b-makesta { background: #dbeafe; color: #1e40af; }
+  .b-lakmud { background: #fef3c7; color: #92400e; }
+  .b-lakut { background: #fee2e2; color: #991b1b; }
+  .b-laknas { background: #fae8ff; color: #86198f; }
+  .b-pelatih { background: #e0e7ff; color: #3730a3; }
+  .b-profesi { background: #d1fae5; color: #065f46; }
+
+  .kad-card-modern h3 {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--green-900);
+    margin-bottom: 4px;
+    margin-top: 10px;
+  }
+
+  .kad-sub {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green-700);
+    margin-bottom: 14px;
+  }
+
+  .kad-desc {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .kad-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    color: var(--green-900);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.2s;
+    text-align: center;
+    justify-content: center;
+  }
+  .kad-action-btn:hover {
+    background: var(--green-700);
+    color: #fff;
+    border-color: var(--green-700);
+  }
+
+  /* Kotak Ketentuan Penyelenggaraan */
+  .info-penyelenggaraan {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--gold);
+    padding: 20px 24px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .info-penyelenggaraan h4 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--green-900);
+    margin-bottom: 6px;
+  }
+
+  /* Prosedur Kaderisasi Section */
+  .procedure-box {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    margin-top: 50px;
+  }
+  .procedure-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--green-900);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .procedure-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  .proc-step {
+    background: var(--paper);
+    padding: 24px;
+    border-radius: 8px;
+    border-top: 4px solid var(--green-700);
+  }
+  .proc-step span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: var(--green-700);
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 800;
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+  .proc-step h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--green-900);
+    margin-bottom: 6px;
+  }
+  .proc-step p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><div class="brand-mark">IP</div><div class="brand-text"><div class="t1">PC IPNU-IPPNU</div><div class="t2">Kota Blitar</div></div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="organisasi.html">Organisasi</a></li>
+      <li><a href="kegiatan.html">Kegiatan</a></li>
+      <li><a href="berita.html">Berita</a></li>
+      <li><a href="kaderisasi.html" class="active">Kaderisasi</a></li>
+      <li><a href="layanan.html">Layanan</a></li>
+      <li><a href="dokumen.html">Dokumen</a></li>
+      <li><a href="dokumentasi.html">Dokumentasi</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a href="layanan.html" class="nav-cta">Ajukan Layanan</a>
+    <button class="nav-toggle" id="navToggle">☰</button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="wrap">
+    <h1>Jenjang &amp; Prosedur Kaderisasi Formal</h1>
+    <p>Sistem Pengkaderan Terpadu, Berjenjang, dan Berkelanjutan bagi Pelajar Nahdlatul Ulama.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="kad-hero-intro">
+      <p>Kaderisasi merupakan jantung dari organisasi IPNU dan IPPNU. Melalui sistem jenjang pengkaderan yang terstruktur, setiap pelajar dibimbing untuk memiliki militansi, kedalaman akidah Ahlussunnah wal Jamaah An-Nahdliyah, kecintaan tanah air, serta keahlian kepemimpinan yang adaptif terhadap zaman.</p>
+    </div>
+
+    <!-- PANDUAN TINGKATAN PENYELENGGARAAN -->
+    <div class="info-penyelenggaraan">
+      <h4>📌 Panduan Pelaksanaan Berdasarkan Tingkatan:</h4>
+      <p style="margin:6px 0 0 0;">
+        • <strong>MAKESTA (Masa Kesetiaan Anggota)</strong> umumnya diselenggarakan di tingkat basis seperti <strong>Pimpinan Ranting (PR)</strong> atau <strong>Pimpinan Komisariat (PK)</strong> sekolah/pesantren.<br>
+        • <strong>LAKMUD (Latihan Kader Muda)</strong> diselenggarakan di tingkat wilayah <strong>Pimpinan Anak Cabang (PAC)</strong> kecamatan atau atas mandat khusus dari Pimpinan Cabang.
+      </p>
+    </div>
+
+    <!-- JENJANG KADERISASI FORMAL -->
+    <div class="section-subtitle">📌 Jenjang Kaderisasi Formal</div>
+    <div class="kad-grid-modern">
+      
+      <!-- MAKESTA -->
+      <div class="kad-card-modern">
+        <div>
+          <span class="kad-badge-level b-makesta">Tingkat Dasar (Ranting)</span>
+          <h3>MAKESTA</h3>
+          <div class="kad-sub">Masa Kesetiaan Anggota</div>
+          <p class="kad-desc"><strong>MAKESTA (Masa Kesetiaan Anggota):</strong> Pintu gerbang awal pengenalan organisasi, ke-NU-an, dan kebangsaan bagi anggota baru di tingkat ranting atau komisariat.</p>
+        </div>
+        <a href="layanan.html" class="kad-action-btn">Ajukan Perizinan MAKESTA →</a>
+      </div>
+
+      <!-- LAKMUD -->
+      <div class="kad-card-modern">
+        <div>
+          <span class="kad-badge-level b-lakmud">Tingkat Menengah (PAC)</span>
+          <h3>LAKMUD</h3>
+          <div class="kad-sub">Latihan Kader Muda</div>
+          <p class="kad-desc"><strong>LAKMUD (Latihan Kader Muda):</strong> Jenjang tingkat menengah yang diselenggarakan oleh PAC untuk memperkuat wawasan ideologi, kepemimpinan, dan manajemen organisasi.</p>
+        </div>
+        <a href="layanan.html" class="kad-action-btn">Ajukan Perizinan LAKMUD →</a>
+      </div>
+
+      <!-- LAKUT -->
+      <div class="kad-card-modern">
+        <div>
+          <span class="kad-badge-level b-lakut">Tingkat Utama</span>
+          <h3>LAKUT</h3>
+          <div class="kad-sub">Latihan Kader Utama</div>
+          <p class="kad-desc"><strong>LAKUT (Latihan Kader Utama):</strong> Jenjang tertinggi formal untuk mencetak kader strategis tingkat wilayah dan pusat.</p>
+        </div>
+        <a href="layanan.html" class="kad-action-btn">Konsultasi Pelatihan Utama →</a>
+      </div>
+
+      <!-- LAKNAS -->
+      <div class="kad-card-modern">
+        <div>
+          <span class="kad-badge-level b-laknas">Tingkat Nasional</span>
+          <h3>LAKNAS</h3>
+          <div class="kad-sub">Latihan Kader Nasional</div>
+          <p class="kad-desc"><strong>LAKNAS (Latihan Kader Nasional):</strong> Forum pengkaderan puncak tingkat nasional guna merumuskan arah kebijakan strategis organisasi secara komprehensif.</p>
+        </div>
+        <a href="layanan.html" class="kad-action-btn">Informasi LAKNAS →</a>
+      </div>
+
+    </div>
+
+
+    <!-- PELATIHAN PELATIH DAN PROFESI -->
+    <div class="section-subtitle" style="margin-top:50px;">🎯 Pelatihan Pelatih dan Profesi</div>
+    <div class="kad-grid-modern">
+      
+      <!-- LATPEL / LATIN -->
+      <div class="kad-card-modern">
+        <div>
+          <span class="kad-badge-level b-pelatih">Pelatihan Instruktur</span>
+          <h3>LATPEL / LATIN</h3>
+          <div class="kad-sub">Latihan Pelatih / Pelatihan Instruktur</div>
+          <p class="kad-desc"><strong>LATPEL / LATIN (Latihan Pelatih / Pelatihan Instruktur):</strong> Pelatihan khusus untuk mencetak instruktur yang akan memandu proses kaderisasi di bawahnya.</p>
+        </div>
+        <a href="layanan.html" class="kad-action-btn">Ajukan Jadwal Instruktur →</a>
+      </div>
+
+      <!-- KADERISASI PROFESI -->
+      <div class="kad-card-modern">
+        <div>
+          <span class="kad-badge-level b-profesi">Pengembangan Skill</span>
+          <h3>Kaderisasi Profesi</h3>
+          <div class="kad-sub">Keahlian Khusus &amp; Vokasi</div>
+          <p class="kad-desc"><strong>Kaderisasi Profesi:</strong> Pelatihan tambahan untuk meningkatkan keahlian khusus kader di luar materi organisasi seperti jurnalistik, desain grafis, digital marketing, hingga kebencanaan.</p>
+        </div>
+        <a href="layanan.html" class="kad-action-btn">Lihat Pelatihan Profesi →</a>
+      </div>
+
+    </div>
+
+
+    <!-- PROSEDUR KADERISASI -->
+    <div class="procedure-box">
+      <div class="procedure-title">Prosedur Pengajuan &amp; Pelaksanaan Kaderisasi</div>
+      <p style="text-align:center; font-size:13.5px; color:var(--muted); margin-bottom:10px;">Tahapan resmi yang harus ditempuh oleh panitia penyelenggara di tingkat ranting, komisariat, atau anak cabang.</p>
+      
+      <div class="procedure-grid">
+        <div class="proc-step">
+          <span>1</span>
+          <h4>Koordinasi &amp; Konsultasi</h4>
+          <p>Panitia berkoordinasi terlebih dahulu dengan pengurus MWC NU setempat dan Departemen Kaderisasi PC IPNU-IPPNU Kota Blitar.</p>
+        </div>
+        <div class="proc-step">
+          <span>2</span>
+          <h4>Pengajuan Proposal &amp; SP</h4>
+          <p>Mengunggah proposal kegiatan dan Surat Permohonan (SP) melalui Portal Layanan Digital minimal 14 hari sebelum acara.</p>
+        </div>
+        <div class="proc-step">
+          <span>3</span>
+          <h4>Verifikasi &amp; Mandat</h4>
+          <p>Tim pengurus cabang memverifikasi berkas, menentukan tim pemandu/instruktur, serta menerbitkan surat mandat resmi.</p>
+        </div>
+        <div class="proc-step">
+          <span>4</span>
+          <h4>Pelaksanaan &amp; Pelaporan</h4>
+          <p>Acara terlaksana sesuai kurikulum, diikuti pelaporan hasil kegiatan serta pengajuan blangko sertifikat resmi.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><p style="text-align:center; font-size:13px;">© 2026 PC IPNU-IPPNU Kota Blitar. All Rights Reserved.</p></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
