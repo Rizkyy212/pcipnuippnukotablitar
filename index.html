@@ -7,203 +7,52 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-  * { box-sizing: border-box; }
+  /* Tambahan pengaman agar ukuran di HP pas dan tidak meluber */
   body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    color: #334155;
-    background-color: #F8FAFC;
-    line-height: 1.6;
     overflow-x: hidden;
   }
-  
-  /* NAVIGASI UTAMA */
-  .site-nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #0B3B27;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    width: 100%;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
-  .nav-inner {
+  .wrap, .nav-inner, .footer-content, .footer-bottom {
     max-width: 1150px;
     margin: 0 auto;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-  }
-  .brand-mark {
-    width: 38px; height: 38px;
-    background: #DCC384;
-    color: #0B3B27;
-    font-weight: 800;
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
-  }
-  .brand-text .t1 { font-size: 13px; font-weight: 800; color: #FFFFFF; line-height: 1.2; }
-  .brand-text .t2 { font-size: 11px; color: #DCC384; font-weight: 600; }
-
-  /* MENU DESKTOP & MOBILE */
-  .nav-links {
-    display: flex;
-    gap: 16px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-  }
-  .nav-links a {
-    color: rgba(255,255,255,0.85);
-    text-decoration: none;
-    font-size: 13.5px;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover, .nav-links a.active {
-    color: #DCC384;
-  }
-  .nav-cta {
-    background: #DCC384;
-    color: #0B3B27;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-  }
-  .nav-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: #FFFFFF;
-    font-size: 26px;
-    cursor: pointer;
-    padding: 4px 8px;
-  }
-
-  /* HERO SECTION */
-  .hero-section {
-    background: linear-gradient(135deg, #0B3B27, #146C43);
-    color: #FFFFFF;
-    padding: 60px 20px;
-    text-align: center;
-  }
-  .hero-content {
-    max-width: 750px;
-    margin: 0 auto;
-  }
-  .hero-content h1 {
-    font-size: clamp(26px, 5vw, 40px);
-    font-weight: 800;
-    margin-bottom: 12px;
-    line-height: 1.3;
-  }
-  .hero-content p {
-    font-size: clamp(14px, 3vw, 16px);
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 24px;
-  }
-  .hero-btns {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .btn-primary {
-    background: #DCC384;
-    color: #0B3B27;
-    padding: 12px 22px;
-    border-radius: 8px;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 14px;
-  }
-  .btn-secondary {
-    background: rgba(255,255,255,0.15);
-    color: #FFFFFF;
-    padding: 12px 22px;
-    border-radius: 8px;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 14px;
-    border: 1px solid rgba(255,255,255,0.3);
-  }
-
-  /* KONTEN UTAMA */
-  .section { padding: 40px 20px; }
-  .wrap { max-width: 1150px; margin: 0 auto; width: 100%; }
-  .section-head { text-align: center; margin-bottom: 30px; }
-  .section-eyebrow {
-    font-size: 12px; font-weight: 700; color: #146C43;
-    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
-  }
-  .section-head h2 {
-    font-size: clamp(22px, 4vw, 30px); font-weight: 800; color: #0B3B27; margin: 0;
-  }
-  .card-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
     width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
   }
-  .card-pro {
-    background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px;
-    padding: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-    display: flex; flex-direction: column; justify-content: space-between; height: 100%;
-  }
-  .card-pro h3 { font-size: 18px; font-weight: 800; color: #0B3B27; margin-top: 0; margin-bottom: 10px; }
-  .card-pro p { font-size: 14px; color: #64748B; margin-bottom: 20px; line-height: 1.5; }
-
-  /* FOOTER */
-  .footer-modern { background: #0B3B27; color: #FFFFFF; padding: 40px 20px 20px; border-top: 3px solid #DCC384; }
-  .footer-content { max-width: 1150px; margin: 0 auto; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.15); }
-  .footer-bottom {
-    max-width: 1150px; margin: 20px auto 0; display: flex; align-items: center;
-    justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.7); flex-wrap: wrap; gap: 12px;
-  }
-  .footer-sosmed { display: flex; gap: 14px; }
-  .footer-sosmed a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; }
-
-  /* MEDIA QUERY RESPONSIVE HP (MOBILE VIEW) */
+  
+  /* Responsif khusus untuk layar HP */
   @media (max-width: 768px) {
-    .nav-toggle {
-      display: block; /* Tombol garis tiga muncul di HP */
-    }
-    .nav-cta {
-      display: none; /* Sembunyikan tombol admin desktop di HP kecil */
-    }
     .nav-links {
-      display: none; /* Sembunyikan menu secara default di HP */
+      display: none;
       position: absolute;
       top: 100%;
       left: 0;
       width: 100%;
-      background: #0B3B27;
+      background: var(--green-900, #0B3B27);
       flex-direction: column;
       padding: 20px 0;
-      gap: 16px;
+      gap: 12px;
       text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.15);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      z-index: 999;
     }
     .nav-links.show {
-      display: flex !important; /* Muncul saat tombol diklik */
+      display: flex !important;
+    }
+    .nav-toggle {
+      display: block !important;
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      font-size: 26px;
+      cursor: pointer;
     }
     .card-grid-3 {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr !important;
     }
     .footer-bottom {
       flex-direction: column;
+      gap: 16px;
       text-align: center;
     }
   }
@@ -213,15 +62,15 @@
 
 <!-- NAVIGASI UTAMA -->
 <nav class="site-nav" id="siteNav">
-  <div class="nav-inner">
-    <a href="index.html" class="brand">
-      <div class="brand-mark">IP</div>
+  <div class="nav-inner" style="display: flex; align-items: center; justify-content: space-between; padding-top: 12px; padding-bottom: 12px;">
+    <a href="index.html" class="brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+      <div class="brand-mark" style="width: 38px; height: 38px; background: var(--gold, #DCC384); color: var(--green-900, #0B3B27); font-weight: 800; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px;">IP</div>
       <div class="brand-text">
-        <div class="t1">PC IPNU-IPPNU</div>
-        <div class="t2">Kota Blitar</div>
+        <div class="t1" style="font-size: 13px; font-weight: 800; color: #FFFFFF; line-height: 1.2;">PC IPNU-IPPNU</div>
+        <div class="t2" style="font-size: 11px; color: var(--gold, #DCC384); font-weight: 600;">Kota Blitar</div>
       </div>
     </a>
-    <ul class="nav-links" id="navLinks">
+    <ul class="nav-links" id="navLinks" style="display: flex; gap: 16px; list-style: none; margin: 0; padding: 0; align-items: center;">
       <li><a href="index.html" class="active">Beranda</a></li>
       <li><a href="profil.html">Profil</a></li>
       <li><a href="organisasi.html">Organisasi</a></li>
@@ -234,52 +83,52 @@
       <li><a href="kontak.html">Kontak</a></li>
       <li><a href="dashboard.html">Dashboard</a></li>
     </ul>
-    <a href="dashboard.html" class="nav-cta">Admin</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle Menu">☰</button>
+    <a href="dashboard.html" class="nav-cta" style="background: var(--gold, #DCC384); color: var(--green-900, #0B3B27); padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none;">Masuk Admin</a>
+    <button class="nav-toggle" id="navToggle" style="display: none;">☰</button>
   </div>
 </nav>
 
 <!-- HERO SECTION -->
-<section class="hero-section">
-  <div class="hero-content">
-    <h1>Selamat Datang di Portal Resmi PC IPNU-IPPNU Kota Blitar</h1>
-    <p>Media informasi, layanan kaderisasi, dan pusat koordinasi perjuangan pelajar Nahdlatul Ulama di Kota Blitar.</p>
-    <div class="hero-btns">
-      <a href="berita.html" class="btn-primary">Baca Berita Terbaru</a>
-      <a href="kaderisasi.html" class="btn-secondary">Info Kaderisasi</a>
+<section class="hero-section" style="background: linear-gradient(135deg, #0B3B27, #146C43); color: #FFFFFF; padding: 60px 20px; text-align: center;">
+  <div class="wrap" style="max-width: 750px;">
+    <h1 style="font-size: clamp(26px, 5vw, 40px); font-weight: 800; margin-bottom: 12px; line-height: 1.3;">Selamat Datang di Portal Resmi PC IPNU-IPPNU Kota Blitar</h1>
+    <p style="font-size: 16px; color: rgba(255,255,255,0.85); margin-bottom: 24px;">Media informasi, layanan kaderisasi, dan pusat koordinasi perjuangan pelajar Nahdlatul Ulama di Kota Blitar.</p>
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+      <a href="berita.html" style="background: var(--gold, #DCC384); color: var(--green-900, #0B3B27); padding: 12px 22px; border-radius: 8px; font-weight: 700; text-decoration: none;">Baca Berita Terbaru</a>
+      <a href="kaderisasi.html" style="background: rgba(255,255,255,0.15); color: #FFFFFF; padding: 12px 22px; border-radius: 8px; font-weight: 700; text-decoration: none; border: 1px solid rgba(255,255,255,0.3);">Info Kaderisasi</a>
     </div>
   </div>
 </section>
 
 <!-- KONTEN UTAMA -->
-<section class="section">
+<section class="section" style="padding: 50px 0;">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-eyebrow">Fokus Layanan</div>
-      <h2>Akses Cepat &amp; Informasi Utama</h2>
+    <div class="section-head" style="text-align: center; margin-bottom: 35px;">
+      <div class="section-eyebrow" style="font-size: 12px; font-weight: 700; color: #146C43; text-transform: uppercase; margin-bottom: 6px;">Fokus Layanan</div>
+      <h2 style="font-size: 28px; font-weight: 800; color: #0B3B27; margin: 0;">Akses Cepat &amp; Informasi Utama</h2>
     </div>
 
-    <div class="card-grid-3">
-      <div class="card-pro">
+    <div class="card-grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+      <div class="card-pro" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h3>Warta &amp; Berita</h3>
-          <p>Ikuti perkembangan terbaru mengenai kegiatan, konsolidasi, dan pers rilis resmi dari pimpinan cabang.</p>
+          <h3 style="font-size: 18px; font-weight: 800; color: #0B3B27; margin-top: 0; margin-bottom: 10px;">Warta &amp; Berita</h3>
+          <p style="font-size: 14px; color: #64748B; margin-bottom: 20px; line-height: 1.5;">Ikuti perkembangan terbaru mengenai kegiatan, konsolidasi, dan pers rilis resmi dari pimpinan cabang.</p>
         </div>
         <a href="berita.html" style="color: #146C43; font-weight: 700; text-decoration: none; font-size: 14px;">Buka Berita →</a>
       </div>
 
-      <div class="card-pro">
+      <div class="card-pro" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h3>Pusat Dokumen</h3>
-          <p>Unduh surat menyurat, format administrasi, dan panduan organisasi resmi dengan mudah.</p>
+          <h3 style="font-size: 18px; font-weight: 800; color: #0B3B27; margin-top: 0; margin-bottom: 10px;">Pusat Dokumen</h3>
+          <p style="font-size: 14px; color: #64748B; margin-bottom: 20px; line-height: 1.5;">Unduh surat menyurat, format administrasi, dan panduan organisasi resmi dengan mudah.</p>
         </div>
         <a href="dokumen.html" style="color: #146C43; font-weight: 700; text-decoration: none; font-size: 14px;">Akses Dokumen →</a>
       </div>
 
-      <div class="card-pro">
+      <div class="card-pro" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h3>Layanan Kaderisasi</h3>
-          <p>Informasi pendaftaran MAKESTA, LAKMUD, serta pemetaan kader di tingkat komisariat dan ranting.</p>
+          <h3 style="font-size: 18px; font-weight: 800; color: #0B3B27; margin-top: 0; margin-bottom: 10px;">Layanan Kaderisasi</h3>
+          <p style="font-size: 14px; color: #64748B; margin-bottom: 20px; line-height: 1.5;">Informasi pendaftaran MAKESTA, LAKMUD, serta pemetaan kader di tingkat komisariat dan ranting.</p>
         </div>
         <a href="kaderisasi.html" style="color: #146C43; font-weight: 700; text-decoration: none; font-size: 14px;">Lihat Kaderisasi →</a>
       </div>
@@ -288,17 +137,17 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="footer-modern">
-  <div class="footer-content">
+<footer class="footer-modern" style="background: #0B3B27; color: #FFFFFF; padding: 40px 0 20px; border-top: 3px solid #DCC384;">
+  <div class="footer-content" style="padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.15);">
     <h4 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">PC IPNU–IPPNU Kota Blitar</h4>
     <p style="font-size: 13.5px; color: rgba(255,255,255,0.8); margin: 0; max-width: 450px;">Pelajar Nahdliyin untuk masa depan yang berdaya, berkarakter, dan berkhidmat.</p>
   </div>
-  <div class="footer-bottom">
+  <div class="footer-bottom" style="display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 20px;">
     <div>© 2026 PC IPNU-IPPNU Kota Blitar. All Rights Reserved.</div>
-    <div class="footer-sosmed">
-      <a href="#" target="_blank">Instagram</a>
-      <a href="#" target="_blank">YouTube</a>
-      <a href="#" target="_blank">TikTok</a>
+    <div style="display: flex; gap: 16px;">
+      <a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;" target="_blank">Instagram</a>
+      <a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;" target="_blank">YouTube</a>
+      <a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;" target="_blank">TikTok</a>
     </div>
   </div>
 </footer>
@@ -308,7 +157,6 @@
   document.addEventListener("DOMContentLoaded", () => {
     const navToggle = document.getElementById("navToggle");
     const navLinks = document.getElementById("navLinks");
-    
     if (navToggle && navLinks) {
       navToggle.addEventListener("click", () => {
         navLinks.classList.toggle("show");
