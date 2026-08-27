@@ -349,14 +349,14 @@
   .footer-sosmed a { color: rgba(255, 255, 255, 0.8); text-decoration: none; font-size: 13px; transition: color 0.2s ease; }
   .footer-sosmed a:hover { color: #DCC384; }
 
-  /* PERBAIKAN KHUSUS RESPONSIVE HP AGAR PAS & MENU ATAS TETEP MUNCUL */
+  /* PENYESUAIAN UKURAN AGAR PROPORTIONAL & PAS DI HP */
   @media (max-width: 900px) {
     .nav-toggle {
       display: block !important;
       background: none;
       border: none;
       color: #FFFFFF;
-      font-size: 26px;
+      font-size: 24px;
       cursor: pointer;
     }
     .nav-links {
@@ -367,26 +367,54 @@
       width: 100%;
       background: #0B3B27;
       flex-direction: column;
-      padding: 20px 0;
-      gap: 14px;
+      padding: 15px 0;
+      gap: 10px;
       text-align: center;
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       z-index: 1000;
     }
+    .nav-links a {
+      font-size: 13px !important;
+    }
     .nav-links.show {
       display: flex !important;
     }
-    .hero-twin-wrap { flex-direction: column; padding: 30px 0 40px; }
-    .gapura-svg { display: none; } /* Sembunyikan gapura hiasan di HP agar teks hero muat & tidak kebesaran */
-    .hero-text-center h1 { font-size: 28px !important; }
-    .modern-contact-wrapper { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-  }
-  @media (max-width: 640px) {
-    .modern-contact-cards { grid-template-columns: 1fr; }
-    .contact-card-dash.full { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .btn-maps-fix { width: 100%; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; }
+    
+    /* Ukuran Hero & Teks di HP dikecilkan agar pas */
+    .hero-twin-wrap { flex-direction: column; padding: 25px 15px 30px; gap: 10px; }
+    .gapura-svg { display: none; }
+    .hero-text-center h1 { font-size: 24px !important; line-height: 1.3 !important; }
+    .hero-text-center .lead { font-size: 13px !important; margin-top: 10px !important; }
+    .hero-actions .btn { padding: 8px 16px !important; font-size: 12px !important; }
+
+    /* Ukuran section, padding, dan jarak */
+    .section { padding: 35px 0 !important; }
+    .wrap { padding-left: 15px !important; padding-right: 15px !important; }
+    .section-head h2 { font-size: 20px !important; }
+    .section-eyebrow { font-size: 11px !important; }
+
+    /* Statistik & Kolom */
+    .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+    .stat-num { font-size: 22px !important; }
+    .stat-label { font-size: 11px !important; }
+    
+    /* Kartu Grid */
+    .card-grid-3 { grid-template-columns: 1fr !important; gap: 16px !important; }
+    .quick-card-pro { padding: 22px 18px !important; }
+    .quick-card-pro h3 { font-size: 16px !important; }
+    .quick-card-pro p { font-size: 12.5px !important; }
+    .quick-icon-pro { width: 44px !important; height: 44px !important; font-size: 20px !important; margin-bottom: 14px !important; }
+
+    /* Kontak & Slogan */
+    .modern-contact-wrapper { grid-template-columns: 1fr !important; gap: 16px !important; }
+    .modern-contact-cards { grid-template-columns: 1fr !important; gap: 12px !important; }
+    .contact-card-dash.full { flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px !important; }
+    .btn-maps-fix { width: 100% !important; }
+    .quote-band-epic { padding: 50px 15px !important; }
+    .quote-band-epic h2 { font-size: 24px !important; margin-bottom: 14px !important; }
+    .quote-band-epic p { font-size: 13px !important; }
+
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; font-size: 12px !important; }
   }
 </style>
 </head>
@@ -437,7 +465,7 @@
       <!-- TEKS HERO -->
       <div class="hero-text-center">
         <div class="eyebrow-pill"><span class="dot"></span> ORGANISASI PELAJAR NAHDLATUL ULAMA KOTA BLITAR</div>
-        <h1 style="font-size: clamp(32px, 4.5vw, 52px);">Bergerak, <span>Berkhidmat</span>,<br>Bertumbuh.</h1>
+        <h1>Bergerak, <span>Berkhidmat</span>,<br>Bertumbuh.</h1>
         <p class="lead" style="margin: 18px auto 0; max-width: 580px;">Menjadi ruang tumbuh bagi pelajar Nahdlatul Ulama untuk belajar, berorganisasi, dan berkhidmat bagi masyarakat Kota Blitar.</p>
         <div class="hero-actions" style="justify-content: center; margin-top: 28px;">
           <a href="layanan.html" class="btn btn-gold">Ajukan Layanan Online</a>
