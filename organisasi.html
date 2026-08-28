@@ -7,7 +7,145 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-  /* TATA LETAK UTAMA SEJAJAR KANAN KIRI (2 KOLOM BESAR) */
+  :root {
+    --green-900: #0B3B27;
+    --green-700: #146C43;
+    --gold: #DCC384;
+    --ink: #1E293B;
+    --line: #E2E8F0;
+    --bg-light: #F8FAFC;
+    --white: #FFFFFF;
+    --paper: #F8FAFC;
+    --muted: #64748B;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--ink);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* ================= NAVIGASI UTAMA ================= */
+  nav.site-nav {
+    background: #0B3B27 !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+    width: 100% !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .nav-inner {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 12px 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  .brand {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    text-decoration: none !important;
+  }
+  .brand-mark {
+    width: 38px !important; 
+    height: 38px !important;
+    background: #DCC384 !important;
+    color: #0B3B27 !important;
+    font-weight: 800 !important;
+    border-radius: 8px !important;
+    display: flex !important; 
+    align-items: center !important; 
+    justify-content: center !important;
+    font-size: 16px !important;
+    flex-shrink: 0;
+  }
+  .brand-text .t1 { font-size: 13px !important; font-weight: 800 !important; color: #FFFFFF !important; line-height: 1.2 !important; }
+  .brand-text .t2 { font-size: 11px !important; color: #DCC384 !important; font-weight: 600 !important; }
+
+  /* Desktop Menu Links */
+  ul.nav-links {
+    display: flex !important;
+    gap: 14px !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    align-items: center !important;
+  }
+  ul.nav-links li a {
+    color: rgba(255,255,255,0.85) !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    transition: color 0.2s;
+  }
+  ul.nav-links li a:hover, ul.nav-links li a.active {
+    color: #DCC384 !important;
+  }
+
+  /* TOMBOL KANAN ATAS ("Ajukan Layanan") */
+  .nav-cta {
+    background: #DCC384 !important;
+    color: #0B3B27 !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover {
+    opacity: 0.9;
+  }
+
+  /* Tombol Hamburger HP */
+  button#navToggle {
+    display: none !important;
+    background: transparent !important;
+    border: 2px solid #DCC384 !important;
+    color: #DCC384 !important;
+    font-size: 24px !important;
+    cursor: pointer !important;
+    padding: 4px 10px !important;
+    border-radius: 6px !important;
+    line-height: 1 !important;
+  }
+
+  /* HEADER HALAMAN */
+  .page-header {
+    background: linear-gradient(135deg, #0B3B27, #146C43);
+    color: #FFFFFF;
+    padding: 50px 20px;
+    text-align: left;
+  }
+  .page-header .wrap {
+    max-width: 1150px;
+    margin: 0 auto;
+  }
+  .page-header h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .page-header p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+  }
+
+  /* KONTEN ORGANISASI */
+  .section { padding: 40px 0 60px; }
+  .wrap { max-width: 1150px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+
   .org-side-by-side {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -18,8 +156,8 @@
   .org-container {
     background: var(--white);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 30px;
+    border-radius: 16px;
+    padding: 24px;
     box-shadow: 0 4px 25px rgba(0,0,0,0.03);
     height: 100%;
     display: flex;
@@ -37,7 +175,7 @@
     font-size: 20px;
     font-weight: 800;
     color: var(--green-900);
-    margin-bottom: 4px;
+    margin: 8px 0 4px;
   }
   .org-header-title span.badge-ipnu {
     background: var(--green-700);
@@ -70,21 +208,45 @@
     padding-left: 8px;
   }
 
-  /* Grid BPH 1 Kolom ke bawah agar pas di samping-sampingan */
+  /* FOTO PENGURUS PADA TIAP ITEM */
   .bph-grid {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
   .bph-item {
     background: var(--paper);
     border: 1px solid var(--line);
     padding: 8px 12px;
-    border-radius: 8px;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
   }
+  .bph-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .person-avatar-sm {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #E2E8F0;
+    border: 1.5px solid var(--gold);
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--muted);
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .person-avatar-sm img { width: 100%; height: 100%; object-fit: cover; }
+  
   .bph-item .val {
     font-size: 12.5px;
     font-weight: 700;
@@ -94,8 +256,8 @@
     font-size: 10px;
     font-weight: 700;
     color: var(--green-700);
-    background: var(--green-100);
-    padding: 2px 6px;
+    background: #E6F4EA;
+    padding: 3px 8px;
     border-radius: 4px;
     text-transform: uppercase;
     text-align: right;
@@ -115,7 +277,7 @@
     padding: 14px;
   }
   .unit-card h4 {
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 800;
     color: var(--green-900);
     margin-bottom: 10px;
@@ -127,26 +289,22 @@
   }
   .unit-card h4 span.tag {
     font-size: 10px;
-    background: var(--green-100);
+    background: #E6F4EA;
     color: var(--green-700);
     padding: 2px 6px;
     border-radius: 4px;
     font-weight: 600;
   }
 
-  .div-group {
-    margin-bottom: 8px;
-  }
-  .div-group:last-child {
-    margin-bottom: 0;
-  }
+  .div-group { margin-bottom: 8px; }
+  .div-group:last-child { margin-bottom: 0; }
   .div-title {
-    font-size: 11.5px;
+    font-size: 11px;
     font-weight: 700;
     color: var(--green-700);
     text-transform: uppercase;
     letter-spacing: .03em;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   .member-list {
     list-style: none;
@@ -154,41 +312,86 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
   }
   .member-item {
-    font-size: 12.5px;
+    font-size: 12px;
     color: var(--ink);
     background: var(--white);
     padding: 6px 10px;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid var(--line);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
+  }
+  .member-left-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
   .member-item .name-left {
     font-weight: 700;
     color: var(--ink);
   }
   .member-item .role-right {
-    font-size: 10.5px;
+    font-size: 10px;
     font-weight: 600;
     color: var(--muted);
     background: var(--paper);
     padding: 2px 6px;
     border-radius: 4px;
+    flex-shrink: 0;
   }
+
+  /* FOOTER */
+  .footer-modern { background: #0B3B27; color: #FFFFFF; padding: 45px 20px 25px; border-top: 3px solid #DCC384; }
+  .footer-content { max-width: 1150px; margin: 0 auto; padding-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .footer-content h4 { font-size: 17px; font-weight: 800; color: #FFFFFF; margin-bottom: 8px; }
+  .footer-content p { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.6; max-width: 480px; margin: 0; }
+  .footer-bottom { max-width: 1150px; margin: 20px auto 0; display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.7); }
+  .footer-sosmed { display: flex; gap: 16px; }
+  .footer-sosmed a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; }
+  .footer-sosmed a:hover { color: #DCC384; }
 
   @media (max-width: 1024px) {
     .org-side-by-side { grid-template-columns: 1fr; }
+    button#navToggle { display: block !important; }
+    .nav-cta { display: none !important; }
+    ul.nav-links {
+      display: none !important;
+      position: absolute !important;
+      top: 100% !important;
+      left: 0 !important;
+      width: 100% !important;
+      background: #0B3B27 !important;
+      flex-direction: column !important;
+      padding: 20px 0 !important;
+      gap: 12px !important;
+      text-align: center !important;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
+      border-top: 1px solid rgba(255,255,255,0.15) !important;
+      z-index: 9999 !important;
+    }
+    ul.nav-links.show { display: flex !important; }
+    ul.nav-links li { width: 100% !important; }
+    ul.nav-links li a { font-size: 15px !important; padding: 8px 0 !important; display: block !important; }
+    .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
   }
 </style>
 </head>
 <body>
+
 <nav class="site-nav" id="siteNav">
   <div class="nav-inner">
-    <a href="index.html" class="brand"><div class="brand-mark">IP</div><div class="brand-text"><div class="t1">PC IPNU-IPPNU</div><div class="t2">Kota Blitar</div></div></a>
+    <a href="index.html" class="brand">
+      <div class="brand-mark">IP</div>
+      <div class="brand-text">
+        <div class="t1">PC IPNU-IPPNU</div>
+        <div class="t2">Kota Blitar</div>
+      </div>
+    </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Beranda</a></li>
       <li><a href="profil.html">Profil</a></li>
@@ -200,9 +403,10 @@
       <li><a href="dokumen.html">Dokumen</a></li>
       <li><a href="dokumentasi.html">Dokumentasi</a></li>
       <li><a href="kontak.html">Kontak</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
     </ul>
     <a href="layanan.html" class="nav-cta">Ajukan Layanan</a>
-    <button class="nav-toggle" id="navToggle">☰</button>
+    <button id="navToggle" aria-label="Toggle Menu">☰</button>
   </div>
 </nav>
 
@@ -218,7 +422,6 @@
     
     <div class="org-side-by-side">
       
-      <!-- ================= PC IPNU KOTA BLITAR ================= -->
       <div class="org-container">
         <div>
           <div class="org-header-title">
@@ -229,18 +432,18 @@
 
           <div class="section-block-title">Badan Pengurus Harian (BPH)</div>
           <div class="bph-grid">
-            <div class="bph-item"><span class="val">Achmad Hafy Akmal Moeslim</span><span class="label">Ketua</span></div>
-            <div class="bph-item"><span class="val">Muhammad Risko Saputra</span><span class="label">Sekretaris</span></div>
-            <div class="bph-item"><span class="val">Mohammad Ardiansyah Athalla Putra</span><span class="label">Bendahara</span></div>
-            <div class="bph-item"><span class="val">Mohamad Darul Ulum</span><span class="label">Wakil Ketua I</span></div>
-            <div class="bph-item"><span class="val">Niza’ul Idlal</span><span class="label">Wakil Ketua II</span></div>
-            <div class="bph-item"><span class="val">Ahmad Sahrul Munir Al Hasani</span><span class="label">Wakil Ketua III</span></div>
-            <div class="bph-item"><span class="val">Alan Risqi Satria</span><span class="label">Wakil Ketua IV</span></div>
-            <div class="bph-item"><span class="val">Rizky Fakhrizal</span><span class="label">Wakil Sekretaris I</span></div>
-            <div class="bph-item"><span class="val">Mohammad Rifqi Maulana</span><span class="label">Wakil Sekretaris II</span></div>
-            <div class="bph-item"><span class="val">Ryan Zacky Abdillah</span><span class="label">Wakil Sekretaris III</span></div>
-            <div class="bph-item"><span class="val">Achmad Andrian Nughroho</span><span class="label">Wakil Sekretaris IV</span></div>
-            <div class="bph-item"><span class="val">Fajar Juanda</span><span class="label">Wakil Bendahara</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm"><img src="ketuaipnu.png" alt="Ketua"></div><span class="val">Achmad Hafy Akmal M.</span></div><span class="label">Ketua</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Muhammad Risko Saputra</span></div><span class="label">Sekretaris</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">M. Ardiansyah Athalla P.</span></div><span class="label">Bendahara</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Mohamad Darul Ulum</span></div><span class="label">Wakil Ketua I</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Niza’ul Idlal</span></div><span class="label">Wakil Ketua II</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Ahmad Sahrul Munir A. H.</span></div><span class="label">Wakil Ketua III</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Alan Risqi Satria</span></div><span class="label">Wakil Ketua IV</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Rizky Fakhrizal</span></div><span class="label">Wakil Sekretaris I</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Mohammad Rifqi Maulana</span></div><span class="label">Wakil Sekretaris II</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Ryan Zacky Abdillah</span></div><span class="label">Wakil Sekretaris III</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Achmad Andrian Nughroho</span></div><span class="label">Wakil Sekretaris IV</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Fajar Juanda</span></div><span class="label">Wakil Bendahara</span></div>
           </div>
 
           <div class="section-block-title">Departemen – Departemen</div>
@@ -248,36 +451,36 @@
             <div class="unit-card">
               <h4>Departemen Organisasi <span class="tag">Bidang 1</span></h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Roqi Wildana Al Jauhar</span> <span class="role-right">Koordinator</span></li>
-                <li class="member-item"><span class="name-left">Mohammad Isna Ramadhan</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Roqi Wildana Al Jauhar</span></div> <span class="role-right">Koordinator</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Mohammad Isna Ramadhan</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
             <div class="unit-card">
               <h4>Departemen Kaderisasi <span class="tag">Bidang 2</span></h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Almas Zimamil Udzri</span> <span class="role-right">Koordinator</span></li>
-                <li class="member-item"><span class="name-left">Ahmad Musyaffa</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Rhahmanda Aji Darmawan</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">M. Ilham Perdana P</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Almas Zimamil Udzri</span></div> <span class="role-right">Koordinator</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Ahmad Musyaffa</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Rhahmanda Aji Darmawan</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">M. Ilham Perdana P</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
             <div class="unit-card">
               <h4>Departemen Jaringan Sekolah &amp; Pesantren <span class="tag">Bidang 3</span></h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Mahda Yusron Nurzain</span> <span class="role-right">Koordinator</span></li>
-                <li class="member-item"><span class="name-left">M. Iqbal Nur Rosyida</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Nur Dwi Hardiansyah</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">M. Fandy Alfian</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Ardiansyah Putra Waluyo</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Mahda Yusron Nurzain</span></div> <span class="role-right">Koordinator</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">M. Iqbal Nur Rosyida</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Nur Dwi Hardiansyah</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">M. Fandy Alfian</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Ardiansyah Putra Waluyo</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
             <div class="unit-card">
               <h4>Departemen Seni, Budaya, &amp; Olahraga <span class="tag">Bidang 4</span></h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Ridho Mayar Wicaksono</span> <span class="role-right">Koordinator</span></li>
-                <li class="member-item"><span class="name-left">David Jatmiko Putratama Hartono</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Muhammad Naufal Taufiurrohman</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Ahmad Smile Malsen</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Ridho Mayar Wicaksono</span></div> <span class="role-right">Koordinator</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">David Jatmiko Putratama H.</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Muhammad Naufal T.</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Ahmad Smile Malsen</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
           </div>
@@ -287,64 +490,64 @@
             <div class="unit-card">
               <h4>Lembaga Dakwah</h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Muhammad Yusuf Qardhawi</span> <span class="role-right">Direktur</span></li>
-                <li class="member-item"><span class="name-left">Ahda Aufaa Raafie Dhoifullah</span> <span class="role-right">Sekretaris</span></li>
-                <li class="member-item"><span class="name-left">M. Syaihul Janani</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Fairuz Mada</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Muhammad Yusuf Qardhawi</span></div> <span class="role-right">Direktur</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Ahda Aufaa Raafie D.</span></div> <span class="role-right">Sekretaris</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">M. Syaihul Janani</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Fairuz Mada</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
             <div class="unit-card">
               <h4>Lembaga Pers dan Penerbitan (LPP)</h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Miftakhul Adifian</span> <span class="role-right">Direktur</span></li>
-                <li class="member-item"><span class="name-left">Yanizar Ihsa Saynidra</span> <span class="role-right">Sekretaris</span></li>
-                <li class="member-item"><span class="name-left">Akbar Fandy Nugroho</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Muhammad Zidan Ashtama</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Junior Fakhri Ikhwananda</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Miftakhul Adifian</span></div> <span class="role-right">Direktur</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Yanizar Ihsa Saynidra</span></div> <span class="role-right">Sekretaris</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Akbar Fandy Nugroho</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Muhammad Zidan Ashtama</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Junior Fakhri Ikhwananda</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
             <div class="unit-card">
               <h4>Lembaga Ekonomi, Kewirausahaan, &amp; Koperasi (LEKAS)</h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Mohamad Rohman Fuadi</span> <span class="role-right">Direktur</span></li>
-                <li class="member-item"><span class="name-left">M. Firja Raditya Pratama</span> <span class="role-right">Sekretaris</span></li>
-                <li class="member-item"><span class="name-left">Rafif Robbani</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Mohamad Rohman Fuadi</span></div> <span class="role-right">Direktur</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">M. Firja Raditya Pratama</span></div> <span class="role-right">Sekretaris</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Rafif Robbani</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
             <div class="unit-card">
               <h4>Corps Brigade Pembangunan (CBP) — DKC</h4>
               <div class="div-group" style="margin-bottom: 8px;">
                 <ul class="member-list">
-                  <li class="member-item"><span class="name-left">Novanda Danang</span> <span class="role-right">Komandan</span></li>
-                  <li class="member-item"><span class="name-left">Yogi Nadroh Pranajaya</span> <span class="role-right">Wakil Komandan</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Novanda Danang</span></div> <span class="role-right">Komandan</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Yogi Nadroh Pranajaya</span></div> <span class="role-right">Wakil Komandan</span></li>
                 </ul>
               </div>
               <div class="div-title">Divisi Administrasi</div>
               <div class="div-group" style="margin-bottom: 8px;">
                 <ul class="member-list">
-                  <li class="member-item"><span class="name-left">Dimas Nurul Ulum</span> <span class="role-right">Kepala</span></li>
-                  <li class="member-item"><span class="name-left">Dimas Fajri Romadhon</span> <span class="role-right">Anggota</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Dimas Nurul Ulum</span></div> <span class="role-right">Kepala</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Dimas Fajri Romadhon</span></div> <span class="role-right">Anggota</span></li>
                 </ul>
               </div>
               <div class="div-title">Divisi Diklat</div>
               <div class="div-group" style="margin-bottom: 8px;">
                 <ul class="member-list">
-                  <li class="member-item"><span class="name-left">Muhammad Fauzan Prasetya</span> <span class="role-right">Kepala</span></li>
-                  <li class="member-item"><span class="name-left">Zaka Imam Maulana Assidiq</span> <span class="role-right">Anggota</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Muhammad Fauzan Prasetya</span></div> <span class="role-right">Kepala</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Zaka Imam M. Assidiq</span></div> <span class="role-right">Anggota</span></li>
                 </ul>
               </div>
               <div class="div-title">Divisi Logistik</div>
               <div class="div-group" style="margin-bottom: 8px;">
                 <ul class="member-list">
-                  <li class="member-item"><span class="name-left">Muhammad Zacky Fahrudin</span> <span class="role-right">Anggota</span></li>
-                  <li class="member-item"><span class="name-left">Mohammad Nor Yufadi Difadilah</span> <span class="role-right">Anggota</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Muhammad Zacky Fahrudin</span></div> <span class="role-right">Anggota</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Mohammad Nor Yufadi D.</span></div> <span class="role-right">Anggota</span></li>
                 </ul>
               </div>
               <div class="div-title">Divisi Sosial Kemanusiaan</div>
               <div class="div-group">
                 <ul class="member-list">
-                  <li class="member-item"><span class="name-left">Ade Putra Purnomo</span> <span class="role-right">Kepala</span></li>
-                  <li class="member-item"><span class="name-left">Daffa Zidan Ar Rasyid</span> <span class="role-right">Anggota</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Ade Putra Purnomo</span></div> <span class="role-right">Kepala</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Daffa Zidan Ar Rasyid</span></div> <span class="role-right">Anggota</span></li>
                 </ul>
               </div>
             </div>
@@ -355,15 +558,15 @@
             <div class="unit-card">
               <h4>Badan Student Crisis Center (BSCC)</h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Muhammad Iqbal Abiyyu Ghozy</span> <span class="role-right">Direktur</span></li>
-                <li class="member-item"><span class="name-left">Muhammad Yanuar Indra Kurniawan</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Muhammad Iqbal A. G.</span></div> <span class="role-right">Direktur</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Muhammad Yanuar Indra K.</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
             <div class="unit-card">
               <h4>Badan Student Research Center (BSRC)</h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Rafi Meylana Yusuf Santoso</span> <span class="role-right">Direktur</span></li>
-                <li class="member-item"><span class="name-left">Muhammad Fauzan</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Rafi Meylana Yusuf S.</span></div> <span class="role-right">Direktur</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Muhammad Fauzan</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
           </div>
@@ -371,7 +574,6 @@
       </div>
 
 
-      <!-- ================= PC IPPNU KOTA BLITAR ================= -->
       <div class="org-container">
         <div>
           <div class="org-header-title">
@@ -382,21 +584,21 @@
 
           <div class="section-block-title">Badan Pengurus Harian (BPH)</div>
           <div class="bph-grid">
-            <div class="bph-item"><span class="val">Sofia Annas Ashari</span><span class="label">Ketua</span></div>
-            <div class="bph-item"><span class="val">Amilil 'Ulya</span><span class="label">Sekretaris</span></div>
-            <div class="bph-item"><span class="val">Deta Reztifa Putri</span><span class="label">Bendahara</span></div>
-            <div class="bph-item"><span class="val">Maulinda Nuraini</span><span class="label">Wakil Ketua I</span></div>
-            <div class="bph-item"><span class="val">Siti Nur Indana Solihah</span><span class="label">Wakil Ketua II</span></div>
-            <div class="bph-item"><span class="val">Hikmah Risqi Ramadania</span><span class="label">Wakil Ketua III</span></div>
-            <div class="bph-item"><span class="val">Shofi Salsabila</span><span class="label">Wakil Ketua IV</span></div>
-            <div class="bph-item"><span class="val">Nabila Latifatul Khusna</span><span class="label">Wakil Ketua V</span></div>
-            <div class="bph-item"><span class="val">Putri Nur Mufida</span><span class="label">Wakil Sekretaris I</span></div>
-            <div class="bph-item"><span class="val">Finda Aulia Permadani</span><span class="label">Wakil Sekretaris II</span></div>
-            <div class="bph-item"><span class="val">Nobita Sinjei Provella</span><span class="label">Wakil Sekretaris III</span></div>
-            <div class="bph-item"><span class="val">Nurul Kholifah</span><span class="label">Wakil Sekretaris IV</span></div>
-            <div class="bph-item"><span class="val">Shofi Auliana</span><span class="label">Wakil Sekretaris V</span></div>
-            <div class="bph-item"><span class="val">Alfina Nur Hanifah</span><span class="label">Wakil Bendahara I</span></div>
-            <div class="bph-item"><span class="val">Imma Rotul Fitriah</span><span class="label">Wakil Bendahara II</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm"><img src="ketuaippnu.png" alt="Ketua"></div><span class="val">Sofia Annas Ashari</span></div><span class="label">Ketua</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Amilil 'Ulya</span></div><span class="label">Sekretaris</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Deta Reztifa Putri</span></div><span class="label">Bendahara</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Maulinda Nuraini</span></div><span class="label">Wakil Ketua I</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Siti Nur Indana Solihah</span></div><span class="label">Wakil Ketua II</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Hikmah Risqi Ramadania</span></div><span class="label">Wakil Ketua III</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Shofi Salsabila</span></div><span class="label">Wakil Ketua IV</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Nabila Latifatul Khusna</span></div><span class="label">Wakil Ketua V</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Putri Nur Mufida</span></div><span class="label">Wakil Sekretaris I</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Finda Aulia Permadani</span></div><span class="label">Wakil Sekretaris II</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Nobita Sinjei Provella</span></div><span class="label">Wakil Sekretaris III</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Nurul Kholifah</span></div><span class="label">Wakil Sekretaris IV</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Shofi Auliana</span></div><span class="label">Wakil Sekretaris V</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Alfina Nur Hanifah</span></div><span class="label">Wakil Bendahara I</span></div>
+            <div class="bph-item"><div class="bph-left"><div class="person-avatar-sm">Foto</div><span class="val">Imma Rotul Fitriah</span></div><span class="label">Wakil Bendahara II</span></div>
           </div>
 
           <div class="section-block-title">Departemen – Departemen</div>
@@ -404,43 +606,43 @@
             <div class="unit-card">
               <h4>Departemen Pengembangan Organisasi</h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Choirunisya Devy</span> <span class="role-right">Koordinator</span></li>
-                <li class="member-item"><span class="name-left">Nafisa Taja Azzahrah</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Siti Nur Azizah</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Choirunisya Devy</span></div> <span class="role-right">Koordinator</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Nafisa Taja Azzahrah</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Siti Nur Azizah</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
             <div class="unit-card">
               <h4>Departemen Kaderisasi</h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Ladifa Yulita Putri</span> <span class="role-right">Koordinator</span></li>
-                <li class="member-item"><span class="name-left">Norma Erzananda</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Devina Ameyta Maharani</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Aminatus Zuhriah</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Ladifa Yulita Putri</span></div> <span class="role-right">Koordinator</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Norma Erzananda</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Devina Ameyta Maharani</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Aminatus Zuhriah</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
             <div class="unit-card">
               <h4>Departemen Jaringan Sekolah, Madrasah, &amp; Pesantren</h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Nayla Hidayatul Mawadati</span> <span class="role-right">Koordinator</span></li>
-                <li class="member-item"><span class="name-left">Dwi Wardatu Sania</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Alfathan Nurkayla Nisa'</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Nayla Hidayatul Mawadati</span></div> <span class="role-right">Koordinator</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Dwi Wardatu Sania</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Alfathan Nurkayla Nisa'</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
             <div class="unit-card">
               <h4>Departemen Media &amp; Digitalisasi Organisasi</h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Eprilia Wachidatul Muzafiki</span> <span class="role-right">Koordinator</span></li>
-                <li class="member-item"><span class="name-left">Nisfatul Laily Khanifah</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Aliffa Rahmatul Zaida</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Zahra Amelia Dickna</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Eprilia Wachidatul M.</span></div> <span class="role-right">Koordinator</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Nisfatul Laily Khanifah</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Aliffa Rahmatul Zaida</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Zahra Amelia Dickna</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
             <div class="unit-card">
               <h4>Departemen Seni Budaya &amp; Olahraga</h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Iqlima Mutiara Nur Ramadhani</span> <span class="role-right">Koordinator</span></li>
-                <li class="member-item"><span class="name-left">Zahra Amalya Ulfa</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Raisya Azzahra Hergiadea</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Iqlima Mutiara Nur R.</span></div> <span class="role-right">Koordinator</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Zahra Amalya Ulfa</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Raisya Azzahra H.</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
           </div>
@@ -451,26 +653,26 @@
               <h4>Lembaga Korps Pelajar Putri (KPP)</h4>
               <div class="div-group" style="margin-bottom: 8px;">
                 <ul class="member-list">
-                  <li class="member-item"><span class="name-left">Lilia Qotrun Nada</span> <span class="role-right">Komandan</span></li>
-                  <li class="member-item"><span class="name-left">Dewi Fatimatuz Zahro</span> <span class="role-right">Sekretaris</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Lilia Qotrun Nada</span></div> <span class="role-right">Komandan</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Dewi Fatimatuz Zahro</span></div> <span class="role-right">Sekretaris</span></li>
                 </ul>
               </div>
               <div class="div-title">Bidang Lingkungan Alam</div>
               <div class="div-group" style="margin-bottom: 8px;">
                 <ul class="member-list">
-                  <li class="member-item"><span class="name-left">Ajeng Nur Zeptian Nissa</span> <span class="role-right">Bidang</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Ajeng Nur Zeptian Nissa</span></div> <span class="role-right">Bidang</span></li>
                 </ul>
               </div>
               <div class="div-title">Bidang Sosial Kemasyarakatan</div>
               <div class="div-group" style="margin-bottom: 8px;">
                 <ul class="member-list">
-                  <li class="member-item"><span class="name-left">Mahira Awalina Suharmanto</span> <span class="role-right">Bidang</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Mahira Awalina S.</span></div> <span class="role-right">Bidang</span></li>
                 </ul>
               </div>
               <div class="div-title">Bidang Kesehatan</div>
               <div class="div-group">
                 <ul class="member-list">
-                  <li class="member-item"><span class="name-left">Safira Azka Ghina</span> <span class="role-right">Bidang</span></li>
+                  <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Safira Azka Ghina</span></div> <span class="role-right">Bidang</span></li>
                 </ul>
               </div>
             </div>
@@ -478,28 +680,28 @@
             <div class="unit-card">
               <h4>Lembaga Konseling Pelajar Putri</h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Irma Febiana</span> <span class="role-right">Koordinator</span></li>
-                <li class="member-item"><span class="name-left">Dea Nasywa Aurallia</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Askinna Faradisal Jinani</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Kinanti Bening Syakira</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Irma Febiana</span></div> <span class="role-right">Koordinator</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Dea Nasywa Aurallia</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Askinna Faradisal J.</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Kinanti Bening Syakira</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
 
             <div class="unit-card">
               <h4>Lembaga Ekonomi Kreatif</h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Aisyatul Mukarromah</span> <span class="role-right">Koordinator</span></li>
-                <li class="member-item"><span class="name-left">Irnia Yuni Vitasari</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Nur Aini Wida Maulidina Naia</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Aisyatul Mukarromah</span></div> <span class="role-right">Koordinator</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Irnia Yuni Vitasari</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Nur Aini Wida M. N.</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
 
             <div class="unit-card">
               <h4>Lembaga Komisariat Development Center</h4>
               <ul class="member-list">
-                <li class="member-item"><span class="name-left">Nayla Nahari</span> <span class="role-right">Koordinator</span></li>
-                <li class="member-item"><span class="name-left">Diyah Maslukhi</span> <span class="role-right">Anggota</span></li>
-                <li class="member-item"><span class="name-left">Eva Trianingsi</span> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Nayla Nahari</span></div> <span class="role-right">Koordinator</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Diyah Maslukhi</span></div> <span class="role-right">Anggota</span></li>
+                <li class="member-item"><div class="member-left-wrap"><div class="person-avatar-sm">Foto</div><span class="name-left">Eva Trianingsi</span></div> <span class="role-right">Anggota</span></li>
               </ul>
             </div>
           </div>
@@ -511,10 +713,45 @@
   </div>
 </section>
 
-<footer>
-  <div class="wrap"><p style="text-align:center; font-size:13px;">© 2026 PC IPNU-IPPNU Kota Blitar. All Rights Reserved.</p></div>
+<footer class="footer-modern">
+  <div class="footer-content">
+    <h4>PC IPNU–IPPNU Kota Blitar</h4>
+    <p>Pelajar Nahdliyin untuk masa depan yang berdaya, berkarakter, dan berkhidmat.</p>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 PC IPNU-IPPNU Kota Blitar. All Rights Reserved.</div>
+    <div class="footer-sosmed">
+      <a href="#" target="_blank">Instagram</a>
+      <a href="#" target="_blank">YouTube</a>
+      <a href="#" target="_blank">TikTok</a>
+    </div>
+  </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+    
+    if (navToggle && navLinks) {
+      navToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle("show");
+      });
+
+      navLinks.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("show");
+        });
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+          navLinks.classList.remove("show");
+        }
+      });
+    }
+  });
+</script>
 </body>
 </html>
