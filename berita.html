@@ -261,7 +261,7 @@
   .author-info h4 { margin: 0; font-size: 13.5px; color: #0F172A; }
   .author-info p { margin: 2px 0 0; font-size: 11.5px; color: #64748B; }
   
-  /* SLIDER FOTO INTERAKTIF (RESPONSIF DESKTOP & HP) */
+  /* SLIDER FOTO INTERAKTIF (TOMBOL GESER LEBIH KECIL & KETERANGAN ZOOM) */
   .news-slider-wrapper {
     position: relative;
     width: 100%;
@@ -286,37 +286,52 @@
     top: 50%; transform: translateY(-50%);
     background: rgba(11, 59, 39, 0.85);
     color: #DCC384;
-    border: 2px solid #DCC384;
-    padding: 10px 14px;
+    border: 1.5px solid #DCC384;
+    padding: 6px 10px;
     cursor: pointer;
     font-weight: bold;
-    border-radius: 8px;
-    font-size: 18px;
+    border-radius: 6px;
+    font-size: 13px;
     z-index: 5;
     transition: background 0.2s, transform 0.2s;
   }
   .slider-btn:hover { background: #0B3B27; transform: translateY(-50%) scale(1.05); }
-  .slider-prev { left: 14px; }
-  .slider-next { right: 14px; }
+  .slider-prev { left: 10px; }
+  .slider-next { right: 10px; }
   
   .slider-dots {
     position: absolute;
-    bottom: 14px;
+    bottom: 12px;
     left: 50%; transform: translateX(-50%);
-    display: flex; gap: 8px;
+    display: flex; gap: 6px;
     z-index: 5;
     background: rgba(0,0,0,0.3);
-    padding: 5px 10px;
+    padding: 4px 8px;
     border-radius: 20px;
   }
   .dot-indicator {
-    width: 9px; height: 9px;
+    width: 8px; height: 8px;
     border-radius: 50%;
     background: rgba(255,255,255,0.6);
     cursor: pointer;
     transition: background 0.2s;
   }
   .dot-indicator.active { background: #DCC384; transform: scale(1.2); }
+
+  /* KETERANGAN PERBER BESAR / ZOOM HINT */
+  .img-zoom-hint {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 4;
+  }
 
   .doc-photo-caption {
     font-size: 12px;
@@ -477,7 +492,7 @@
 <nav class="site-nav" id="siteNav">
   <div class="nav-inner">
     <a href="index.html" class="brand">
-      <div class="brand-mark">PC</div>
+      <div class="brand-mark">IP</div>
       <div class="brand-text">
         <div class="t1">PC IPNU-IPPNU</div>
         <div class="t2">Kota Blitar</div>
@@ -567,7 +582,7 @@
     <!-- DETAIL BERITA VIEW -->
     <div id="detailBeritaSection" style="display: none;">
       
-      <!-- ARTIKEL REORGANISASI PK MA MA'ARIF NU (8 Paragraf Lengkap & Sidang Pleno PAC Kepanjenkidul) -->
+      <!-- ARTIKEL REORGANISASI PK MA MA'ARIF NU -->
       <div id="beritaDemisPK" class="news-detail-container" style="display: none;">
         <span style="background:#0B3B27; color:#FFFFFF; font-size:11px; font-weight:700; padding:4px 12px; border-radius:6px; text-transform:uppercase;">Kaderisasi Komisariat &amp; Reorganisasi</span>
         <h2 style="font-size: clamp(20px, 2.8vw, 26px); font-weight:800; color:#0B3B27; margin:12px 0 4px; line-height:1.3;">Regenerasi Kepemimpinan Pelajar: PK IPNU MA Ma'arif NU Kota Blitar Gelar Reorganisasi Masa Khidmah 2025–2026</h2>
@@ -579,15 +594,15 @@
           </div>
         </div>
         
-        <!-- FOTO SLIDER (2 GAMBAR BISA DIGESER) -->
+        <!-- FOTO SLIDER (DENGAN TOMBOL GESER LEBIH KECIL DAN KETERANGAN ZOOM) -->
         <div class="news-slider-wrapper" id="sliderPK">
           <div class="slide-item active" onclick="bukaFotoModal('demispk1.jpeg', 'Dokumentasi Sidang Pleno Reorganisasi PK IPNU MA Ma\'arif NU Kota Blitar Masa Khidmah 2025–2026')">
             <img src="demispk1.jpeg" alt="Reorganisasi PK IPNU MA Ma'arif NU Blitar 1">
-            <div class="img-zoom-hint">🔍 Foto 1 dari 2 (Klik untuk Perbesar)</div>
+            <div class="img-zoom-hint">🔍 Klik untuk Perbesar</div>
           </div>
           <div class="slide-item" onclick="bukaFotoModal('demispk2.jpeg', 'Dokumentasi Pengurus dan Kader Pelajar MA Ma\'arif NU Kota Blitar')">
             <img src="demispk2.jpeg" alt="Reorganisasi PK IPNU MA Ma'arif NU Blitar 2">
-            <div class="img-zoom-hint">🔍 Foto 2 dari 2 (Klik untuk Perbesar)</div>
+            <div class="img-zoom-hint">🔍 Klik untuk Perbesar</div>
           </div>
           
           <button class="slider-btn slider-prev" onclick="geserSlide(-1)">❮</button>
@@ -620,9 +635,15 @@
           Puncak dari persidangan pleno tersebut ditandai dengan proses pendemisioneran pengurus lama. Secara resmi, Rekan Mahda selaku Ketua PAC Kepanjenkidul memimpin prosesi pendemisioneran yang menyatakan bahwa kepengurusan masa khidmah 2025–2026 telah resmi purna tugas dan dikembalikan statusnya menjadi anggota biasa.
         </p>
 
+        <!-- KATA SAMBUTAN & PESAN PERPISAHAN REKAN ALMAZ -->
+        <div class="news-quote" style="border-left-color: #B4923A; background: #FFF9E6;">
+          <strong>Pesan &amp; Kesan Rekan Almaz (Mantan Ketua PK IPNU MA Ma'arif NU):</strong><br><br>
+          "Saya mengucapkan terima kasih yang sebesar-besarnya kepada seluruh rekan-rekan pengurus dan kader sekalian. Selama satu periode ini kita telah berjuang bersama, melangkah bersama, dan menghadapi berbagai dinamika organisasi dengan penuh rasa kekeluargaan. Dari lubuk hati yang paling dalam, saya memohon maaf yang sebesar-besarnya apabila selama saya memegang amanah sebagai ketua terdapat banyak kekurangan, kesalahan kata, maupun khilaf perbuatan. Semoga apa yang telah kita ikhtiarkan bersama menjadi amal jariyah dan membawa kemajuan bagi komisariat kita tercinta."
+        </div>
+
         <!-- KATA SAMBUTAN KETUA PC IPNU KOTA BLITAR 2025-2027 -->
         <div class="news-quote" style="border-left-color: #0B3B27; background: #E6F4EA;">
-          <strong>Pesan &amp; Sambutan Ketua PC IPNU Kota Blitar 2025–2027 Rekan Ahmad Hafy Akmal Moeslim:</strong><br><br>
+          <strong>Pesan &amp; Sambutan Ketua PC IPNU Kota Blitar (2025–2027):</strong><br><br>
           "Kepada seluruh pengurus baru PK IPNU MA Ma'arif NU Kota Blitar nanti, saya berpesan agar senantiasa meresapi makna hakiki dari trilogi pelajar: <strong>Belajar, Berjuang, Bertakwa</strong>. 
           <br><br>
           <strong>Belajar</strong> adalah kewajiban utama kita untuk menguasai ilmu pengetahuan dan teknologi tanpa meninggalkan akar keislaman. <strong>Berjuang</strong> berarti mendedikasikan tenaga dan pikiran untuk kemaslahatan umat serta kemajuan organisasi di lingkungan madrasah. Dan <strong>Bertakwa</strong> adalah benteng spiritual agar setiap langkah pengabdian kita senantiasa mendapatkan ridha Allah SWT. Jadikan komisariat ini sebagai rumah yang nyaman untuk tumbuh bersama."
@@ -663,7 +684,7 @@
         
         <div class="news-card-img" onclick="bukaFotoModal('muktamar.jpeg', 'Dokumentasi Kehadiran Jajaran Pengurus PC IPNU-IPPNU Kota Blitar di Arena Muktamar Nahdlatul Ulama')" style="width:100%; height:clamp(240px, 40vw, 380px); background:#0B3B27; border-radius:12px; overflow:hidden; margin-bottom:6px; cursor:pointer; position:relative;">
           <img src="muktamar.jpeg" alt="PC IPNU-IPPNU Kota Blitar Hadir Penuh Khidmat di Muktamar NU" style="width:100%; height:100%; object-fit:cover;">
-          <div class="img-zoom-hint">🔍 Klik untuk Buka Foto Penuh</div>
+          <div class="img-zoom-hint">🔍 Klik untuk Perbesar</div>
         </div>
         <div class="doc-photo-caption">Dokumentasi Kehadiran Jajaran Pengurus PC IPNU-IPPNU Kota Blitar di Arena Muktamar Nahdlatul Ulama</div>
 
@@ -722,7 +743,7 @@
         
         <div class="news-card-img" onclick="bukaFotoModal('audiensiatmi.jpeg', 'Dokumentasi Rapat Koordinasi Pembahasan Rencana MAKESTA dan Reaktivasi PK IPNU-IPPNU SMK Islam 1 Blitar')" style="width:100%; height:clamp(240px, 40vw, 380px); background:#0B3B27; border-radius:12px; overflow:hidden; margin-bottom:6px; cursor:pointer; position:relative;">
           <img src="audiensiatmi.jpeg" alt="Rapat Koordinasi SMK Islam 1 Blitar" style="width:100%; height:100%; object-fit:cover;">
-          <div class="img-zoom-hint">🔍 Klik untuk Buka Foto Penuh</div>
+          <div class="img-zoom-hint">🔍 Klik untuk Perbesar</div>
         </div>
         <div class="doc-photo-caption">Dokumentasi Rapat Koordinasi Pembahasan Rencana MAKESTA dan Reaktivasi PK IPNU-IPPNU SMK Islam 1 Blitar</div>
 
