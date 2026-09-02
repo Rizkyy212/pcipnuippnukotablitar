@@ -261,7 +261,7 @@
   .author-info h4 { margin: 0; font-size: 13.5px; color: #0F172A; }
   .author-info p { margin: 2px 0 0; font-size: 11.5px; color: #64748B; }
   
-  /* SLIDER FOTO INTERAKTIF (TOMBOL GESER LEBIH KECIL & KETERANGAN ZOOM) */
+  /* SLIDER FOTO INTERAKTIF (3 FOTO BERKELANJUTAN) */
   .news-slider-wrapper {
     position: relative;
     width: 100%;
@@ -488,7 +488,6 @@
 </head>
 <body>
 
-<!-- NAVIGASI UTAMA -->
 <nav class="site-nav" id="siteNav">
   <div class="nav-inner">
     <a href="index.html" class="brand">
@@ -515,17 +514,14 @@
   </div>
 </nav>
 
-<!-- HEADER -->
 <section class="page-header">
   <h1>Warta &amp; Informasi Resmi</h1>
   <p>Kumpulan kabar terbaru, laporan kegiatan mendalam, serta pers rilis resmi dari Pimpinan Cabang IPNU-IPPNU Kota Blitar.</p>
 </section>
 
-<!-- KONTEN UTAMA HALAMAN BERITA -->
 <section class="section">
   <div class="wrap">
     
-    <!-- DAFTAR SEMUA BERITA -->
     <div id="semuaBeritaSection">
       <div class="section-head">
         <div class="section-eyebrow">Arsip Warta Utama</div>
@@ -534,7 +530,19 @@
 
       <div class="card-grid-3">
         
-        <!-- Berita Baru: Reorganisasi PK MA Ma'arif NU -->
+        <article class="news-card-pro" onclick="bukaBerita('beritaPelantikanMaMts')">
+          <div class="news-thumb-pro">
+            <span class="news-tag-pro" style="background:#B4923A;">Pelantikan</span>
+            <img src="pelantikanmamts1.jpeg" alt="Pelantikan Pengurus PK MA &amp; MTs Ma'arif NU Kota Blitar">
+          </div>
+          <div class="news-body-pro">
+            <h3 class="news-title-pro">Simbol Harapan &amp; Pengabdian: Semarak Pelantikan Pengurus PK IPNU-IPPNU MA &amp; MTs Ma'arif NU Kota Blitar Diwarnai Prosesi Pelepasan Merpati</h3>
+            <div class="news-meta-pro">02 September 2026 / 20 Rabiul Awwal 1448H · Tim Media</div>
+            <p class="news-excerpt-pro">Pengukuhan khidmat nakhoda baru komisariat madrasah di Lapangan PP Nurul Ulum dilengkapi prosesi pelepasan burung merpati...</p>
+            <span class="news-action-link">Baca Selengkapnya →</span>
+          </div>
+        </article>
+
         <article class="news-card-pro" onclick="bukaBerita('beritaDemisPK')">
           <div class="news-thumb-pro">
             <span class="news-tag-pro" style="background:#0B3B27;">Kaderisasi</span>
@@ -548,7 +556,6 @@
           </div>
         </article>
 
-        <!-- Berita Utama: Muktamar NU -->
         <article class="news-card-pro" onclick="bukaBerita('beritaMuktamar')">
           <div class="news-thumb-pro">
             <span class="news-tag-pro" style="background:#B4923A;">Nasional</span>
@@ -562,7 +569,6 @@
           </div>
         </article>
 
-        <!-- Berita 1 -->
         <article class="news-card-pro" onclick="bukaBerita('berita1')">
           <div class="news-thumb-pro">
             <span class="news-tag-pro">Kaderisasi</span>
@@ -579,10 +585,86 @@
       </div>
     </div>
 
-    <!-- DETAIL BERITA VIEW -->
     <div id="detailBeritaSection" style="display: none;">
       
-      <!-- ARTIKEL REORGANISASI PK MA MA'ARIF NU -->
+      <div id="beritaPelantikanMaMts" class="news-detail-container" style="display: none;">
+        <span style="background:#B4923A; color:#FFFFFF; font-size:11px; font-weight:700; padding:4px 12px; border-radius:6px; text-transform:uppercase;">Pelantikan &amp; Pengukuhan Komisariat</span>
+        <h2 style="font-size: clamp(20px, 2.8vw, 26px); font-weight:800; color:#0B3B27; margin:12px 0 4px; line-height:1.3;">Simbol Harapan &amp; Pengabdian: Semarak Pelantikan Pengurus PK IPNU-IPPNU MA &amp; MTs Ma'arif NU Kota Blitar Diwarnai Prosesi Pelepasan Merpati</h2>
+        <div class="news-meta-box">
+          <div class="author-avatar">TM</div>
+          <div class="author-info">
+            <h4>Tim Media PC IPNU-IPPNU Kota Blitar</h4>
+            <p>📍 Lapangan PP Nurul Ulum &nbsp;|&nbsp; 📅 02 September 2026 / 20 Rabiul Awwal 1448H</p>
+          </div>
+        </div>
+        
+        <div class="news-slider-wrapper" id="sliderPelantikan">
+          <div class="slide-item active" onclick="bukaFotoModal('pelantikanmamts1.jpeg', 'Dokumentasi Prosesi Pelantikan Pengurus PK IPNU-IPPNU MA & MTs Ma\'arif NU di Lapangan PP Nurul Ulum')">
+            <img src="pelantikanmamts1.jpeg" alt="Pelantikan PK MA &amp; MTs Ma'arif NU 1">
+            <div class="img-zoom-hint">🔍 Klik untuk Perbesar</div>
+          </div>
+          <div class="slide-item" onclick="bukaFotoModal('pelantikanmamts2.jpeg', 'Dokumentasi Prosesi Pelepasan Burung Merpati Simbolik di Lapangan PP Nurul Ulum')">
+            <img src="pelantikanmamts2.jpeg" alt="Pelantikan PK MA &amp; MTs Ma'arif NU 2">
+            <div class="img-zoom-hint">🔍 Klik untuk Perbesar</div>
+          </div>
+          <div class="slide-item" onclick="bukaFotoModal('pelantikanmamts3.jpeg', 'Dokumentasi Kebersamaan Pengurus Terlantik dan Jajaran PC IPNU-IPPNU Kota Blitar')">
+            <img src="pelantikanmamts3.jpeg" alt="Pelantikan PK MA &amp; MTs Ma'arif NU 3">
+            <div class="img-zoom-hint">🔍 Klik untuk Perbesar</div>
+          </div>
+          
+          <button class="slider-btn slider-prev" onclick="geserSlidePelantikan(-1)">❮</button>
+          <button class="slider-btn slider-next" onclick="geserSlidePelantikan(1)">❯</button>
+          
+          <div class="slider-dots">
+            <span class="dot-indicator active" onclick="pilihSlidePelantikan(0)"></span>
+            <span class="dot-indicator" onclick="pilihSlidePelantikan(1)"></span>
+            <span class="dot-indicator" onclick="pilihSlidePelantikan(2)"></span>
+          </div>
+        </div>
+        <div class="doc-photo-caption">Dokumentasi Pelaksanaan Pelantikan dan Pelepasan Merpati di Lapangan PP Nurul Ulum (Geser panah untuk melihat foto lainnya)</div>
+
+        <p class="article-body-text">
+          <strong>KOTA BLITAR</strong> — Denyut pengkaderan pelajar Nahdlatul Ulama di lingkungan institusi pendidikan kembali mencatatkan momentum penting yang sarat makna. Pimpinan Komisariat (PK) Ikatan Pelajar Nahdlatul Ulama (IPNU) dan Ikatan Pelajar Putri Nahdlatul Ulama (IPPNU) Madrasah Aliyah (MA) serta Madrasah Tsanawiyah (MTs) Ma'arif NU Kota Blitar dengan khidmat menyelenggarakan rangkaian acara pelantikan pengurus baru untuk Masa Khidmah 2025–2026. Pelaksanaan kegiatan sakral ini mengambil tanggal istimewa bertepatan dengan 20 Rabiul Awwal 1448 Hijriah atau pada tanggal 02 September 2026 Masehi.
+        </p>
+        
+        <p class="article-body-text">
+          Bertempat di lapangan utama Kompleks Pondok Pesantren (PP) Nurul Ulum Kota Blitar, acara pengukuhan akbar ini dihadiri oleh ratusan kader pelajar dari tingkat tsanawiyah dan aliyah, jajaran dewan guru, pengasuh pondok pesantren, pembina yayasan, serta pengurus harian Pimpinan Cabang (PC) IPNU-IPPNU Kota Blitar. Suasana lapangan mendadak terasa begitu khidmat tatkala lantunan ayat suci Al-Qur'an dan pembacaan selawat kebangsaan berkumandang, menggugah semangat kebersamaan seluruh hadirin yang memadati area lapangan.
+        </p>
+
+        <p class="article-body-text">
+          Prosesi inti dimulai dengan pembacaan surat keputusan kepengurusan dilanjutkan pengucapan ikrar sumpah jabatan yang dipandu secara langsung oleh perwakilan pengurus harian PC IPNU-IPPNU Kota Blitar. Seluruh pengurus baru unsur putra maupun putri berdiri tegap mengucapkan janji setia untuk mengawal tradisi keislaman Ahlussunnah wal Jamaah an-Nahdliyah, menjalankan roda organisasi dengan penuh tanggung jawab, serta mendedikasikan diri bagi kemajuan intelektual dan spiritual pelajar madrasah.
+        </p>
+
+        <p class="article-body-text">
+          Setelah prosesi penyerahan pataka organisasi selesai dilaksanakan, suasana acara semakin meriah dan penuh kekhidmatan tatkala memasuki agenda prosesi simbolis yang dinanti-nantikan oleh seluruh peserta di Lapangan PP Nurul Ulum, yakni <strong>pelepasan sepasang burung merpati ke udara bebas</strong>. Pelepasan burung merpati ini dilakukan secara bersama-sama oleh perwakilan pengurus cabang, pengasuh pesantren, serta ketua komisariat terpilih di tengah lapangan terbuka.
+        </p>
+
+        <div class="news-quote" style="border-left-color: #B4923A; background: #FDF8E2;">
+          <strong>Makna Filosofis Pelepasan Burung Merpati di Lapangan PP Nurul Ulum:</strong><br><br>
+          "Pelepasan burung merpati putih ke angkasa bukan sekadar seremonial pemanis acara, melainkan sebuah lambang filosofis yang mendalam. Merpati dikenal sebagai simbol kesetiaan, ketulusan, serta perdamaian. Harapannya, para pengurus baru PK IPNU-IPPNU MA dan MTs Ma'arif NU Kota Blitar dapat terbang tinggi mengejar cita-cita luhur, membawa nama baik organisasi dengan penuh loyalitas, serta menebarkan kedamaian dan kemaslahatan di lingkungan madrasah maupun masyarakat luas."
+        </div>
+
+        <p class="article-body-text">
+          Pihak dewan guru dan kepala madrasah MA &amp; MTs Ma'arif NU Kota Blitar yang memberikan sambutan seusai prosesi menyampaikan rasa bangga serta apresiasi mendalam atas suksesnya acara pelantikan ini. Pihak madrasah menilai bahwa kolaborasi aktif melalui organisasi IPNU-IPPNU merupakan sarana pembentukan karakter (character building) yang sangat efektif bagi para siswa agar memiliki ketahanan mental, jiwa kepemimpinan, serta kepekaan sosial yang tinggi.
+        </p>
+
+        <p class="article-body-text">
+          "Kami berpesan kepada anak-anakku yang baru saja dilantik agar merawat amanah ini dengan sebaik-baiknya. Jadikan organisasi ini sebagai wadah berlatih memimpin dan dipimpin, serta tempat mengasah kreativitas tanpa melupakan kewajiban utama dalam menuntut ilmu di bangku madrasah," ungkap salah satu perwakilan guru pembina dalam sesi ramah tamah.
+        </p>
+
+        <p class="article-body-text">
+          Rangkaian acara pelantikan yang bertepatan dengan bulan Rabiul Awwal ini ditutup dengan doa bersama demi memohon keberkahan dan kelancaran dalam menjalankan program kerja satu periode ke depan. Acara diakhiri dengan sesi foto bersama, jabat tangan hangat, serta pekikan yel-yel perjuangan pelajar Nahdliyin yang menggema penuh semangat di Lapangan PP Nurul Ulum.
+        </p>
+
+        <div class="article-actions-bar">
+          <a href="berita.html" class="back-btn-ui"><span>←</span> Kembali ke Semua Berita</a>
+          <div class="action-buttons-group">
+            <button class="like-btn" id="like-beritaPelantikanMaMts" onclick="toggleLike('beritaPelantikanMaMts')">❤️ <span id="like-count-beritaPelantikanMaMts">75</span> Suka</button>
+            <button class="share-btn" onclick="copyToClipboard()">🔗 Salin Tautan</button>
+          </div>
+        </div>
+      </div>
+
       <div id="beritaDemisPK" class="news-detail-container" style="display: none;">
         <span style="background:#0B3B27; color:#FFFFFF; font-size:11px; font-weight:700; padding:4px 12px; border-radius:6px; text-transform:uppercase;">Kaderisasi Komisariat &amp; Reorganisasi</span>
         <h2 style="font-size: clamp(20px, 2.8vw, 26px); font-weight:800; color:#0B3B27; margin:12px 0 4px; line-height:1.3;">Regenerasi Kepemimpinan Pelajar: PK IPNU MA Ma'arif NU Kota Blitar Gelar Reorganisasi Masa Khidmah 2025–2026</h2>
@@ -594,7 +676,6 @@
           </div>
         </div>
         
-        <!-- FOTO SLIDER (DENGAN TOMBOL GESER LEBIH KECIL DAN KETERANGAN ZOOM) -->
         <div class="news-slider-wrapper" id="sliderPK">
           <div class="slide-item active" onclick="bukaFotoModal('demispk1.jpeg', 'Dokumentasi Sidang Pleno Reorganisasi PK IPNU MA Ma\'arif NU Kota Blitar Masa Khidmah 2025–2026')">
             <img src="demispk1.jpeg" alt="Reorganisasi PK IPNU MA Ma'arif NU Blitar 1">
@@ -605,12 +686,12 @@
             <div class="img-zoom-hint">🔍 Klik untuk Perbesar</div>
           </div>
           
-          <button class="slider-btn slider-prev" onclick="geserSlide(-1)">❮</button>
-          <button class="slider-btn slider-next" onclick="geserSlide(1)">❯</button>
+          <button class="slider-btn slider-prev" onclick="geserSlidePK(-1)">❮</button>
+          <button class="slider-btn slider-next" onclick="geserSlidePK(1)">❯</button>
           
           <div class="slider-dots">
-            <span class="dot-indicator active" onclick="pilihSlide(0)"></span>
-            <span class="dot-indicator" onclick="pilihSlide(1)"></span>
+            <span class="dot-indicator active" onclick="pilihSlidePK(0)"></span>
+            <span class="dot-indicator" onclick="pilihSlidePK(1)"></span>
           </div>
         </div>
         <div class="doc-photo-caption">Dokumentasi Pelaksanaan Reorganisasi Pimpinan Komisariat (PK) IPNU MA Ma'arif NU Kota Blitar (Geser panah untuk melihat foto lainnya)</div>
@@ -631,7 +712,6 @@
           Setelah pemaparan dan evaluasi LPJ dari pengurus PK IPNU MA Ma'arif NU masa khidmah 2025–2026 yang disampaikan oleh ketua komisariat, Rekan Almaz, acara dilanjutkan dengan puncak persidangan pleno berupa proses pendemisioneran pengurus lama. Secara resmi, prosesi pendemisioneran dipimpin langsung oleh Ketua Pimpinan Anak Cabang (PAC) IPNU Kepanjenkidul, <strong>Rekan Mahda</strong>, yang menyatakan bahwa kepengurusan masa khidmah tersebut telah resmi purna tugas.
         </p>
 
-        <!-- KATA SAMBUTAN KETUA PC IPNU KOTA BLITAR 2025-2027 -->
         <div class="news-quote" style="border-left-color: #0B3B27; background: #E6F4EA;">
           <strong>Pesan &amp; Sambutan Ketua PC IPNU Kota Blitar 2025–2027 Rekan Ahmad Hafy Akmal Moeslim :</strong><br><br>
           "Kepada seluruh pengurus baru PK IPNU MA Ma'arif NU Kota Blitar nanti, saya berpesan agar senantiasa meresapi makna hakiki dari trilogi pelajar: <strong>Belajar, Berjuang, Bertakwa</strong>. 
@@ -660,7 +740,6 @@
         </div>
       </div>
 
-      <!-- ARTIKEL MUKTAMAR NU -->
       <div id="beritaMuktamar" class="news-detail-container" style="display: none;">
         <span style="background:#B4923A; color:#FFFFFF; font-size:11px; font-weight:700; padding:4px 12px; border-radius:6px; text-transform:uppercase;">Liputan Khusus Nasional &amp; Muktamar NU</span>
         <h2 style="font-size: clamp(20px, 2.8vw, 26px); font-weight:800; color:#0B3B27; margin:12px 0 4px; line-height:1.3;">Hadir Penuh Khidmat, Jajaran PC IPNU-IPPNU Kota Blitar Ikuti Rangkaian Muktamar Nahdlatul Ulama</h2>
@@ -719,7 +798,6 @@
         </div>
       </div>
 
-      <!-- ARTIKEL BERITA 1 -->
       <div id="berita1" class="news-detail-container" style="display: none;">
         <span style="background:#DCC384; color:#0B3B27; font-size:11px; font-weight:700; padding:4px 12px; border-radius:6px; text-transform:uppercase;">Kaderisasi &amp; Organisasi Sekolah</span>
         <h2 style="font-size: clamp(20px, 2.8vw, 26px); font-weight:800; color:#0B3B27; margin:12px 0 4px; line-height:1.3;">Perkuat Basis Pelajar Sekolah, PC IPNU-IPPNU Kota Blitar Matangkan Agenda MAKESTA &amp; Reaktivasi PK SMK Islam 1 Blitar</h2>
@@ -783,7 +861,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer-modern">
   <div class="footer-content">
     <h4>PC IPNU–IPPNU Kota Blitar</h4>
@@ -799,40 +876,69 @@
   </div>
 </footer>
 
-<!-- SCRIPT INTERAKTIF -->
 <script>
   function bukaBerita(id) {
     window.location.href = `berita.html?id=${id}`;
   }
 
-  // Logika Slider Foto (Dua Foto Berkelanjutan)
-  let currentIndex = 0;
-  function geserSlide(arah) {
-    const slides = document.querySelectorAll('#sliderPK .slide-item');
-    const dots = document.querySelectorAll('#sliderPK .dot-indicator');
+  // Logika Slider Foto Pelantikan (3 Foto Berkelanjutan)
+  let currentPelantikanIndex = 0;
+  function geserSlidePelantikan(arah) {
+    const slides = document.querySelectorAll('#sliderPelantikan .slide-item');
+    const dots = document.querySelectorAll('#sliderPelantikan .dot-indicator');
     if (slides.length === 0) return;
     
-    slides[currentIndex].classList.remove('active');
-    dots[currentIndex].classList.remove('active');
+    slides[currentPelantikanIndex].classList.remove('active');
+    dots[currentPelantikanIndex].classList.remove('active');
     
-    currentIndex = (currentIndex + arah + slides.length) % slides.length;
+    currentPelantikanIndex = (currentPelantikanIndex + arah + slides.length) % slides.length;
     
-    slides[currentIndex].classList.add('active');
-    dots[currentIndex].classList.add('active');
+    slides[currentPelantikanIndex].classList.add('active');
+    dots[currentPelantikanIndex].classList.add('active');
   }
 
-  function pilihSlide(index) {
+  function pilihSlidePelantikan(index) {
+    const slides = document.querySelectorAll('#sliderPelantikan .slide-item');
+    const dots = document.querySelectorAll('#sliderPelantikan .dot-indicator');
+    if (slides.length === 0) return;
+    
+    slides[currentPelantikanIndex].classList.remove('active');
+    dots[currentPelantikanIndex].classList.remove('active');
+    
+    currentPelantikanIndex = index;
+    
+    slides[currentPelantikanIndex].classList.add('active');
+    dots[currentPelantikanIndex].classList.add('active');
+  }
+
+  // Logika Slider Foto Reorganisasi PK (2 Foto)
+  let currentPKIndex = 0;
+  function geserSlidePK(arah) {
     const slides = document.querySelectorAll('#sliderPK .slide-item');
     const dots = document.querySelectorAll('#sliderPK .dot-indicator');
     if (slides.length === 0) return;
     
-    slides[currentIndex].classList.remove('active');
-    dots[currentIndex].classList.remove('active');
+    slides[currentPKIndex].classList.remove('active');
+    dots[currentPKIndex].classList.remove('active');
     
-    currentIndex = index;
+    currentPKIndex = (currentPKIndex + arah + slides.length) % slides.length;
     
-    slides[currentIndex].classList.add('active');
-    dots[currentIndex].classList.add('active');
+    slides[currentPKIndex].classList.add('active');
+    dots[currentPKIndex].classList.add('active');
+  }
+
+  function pilihSlidePK(index) {
+    const slides = document.querySelectorAll('#sliderPK .slide-item');
+    const dots = document.querySelectorAll('#sliderPK .dot-indicator');
+    if (slides.length === 0) return;
+    
+    slides[currentPKIndex].classList.remove('active');
+    dots[currentPKIndex].classList.remove('active');
+    
+    currentPKIndex = index;
+    
+    slides[currentPKIndex].classList.add('active');
+    dots[currentPKIndex].classList.add('active');
   }
 
   // Fungsi Pratinjau Foto Penuh (Lightbox Window)
